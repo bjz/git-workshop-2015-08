@@ -1,0 +1,7 @@
+# Package managers
+elm-stuff/
+node_modules/
+
+# Build directories
+dist/
+tmp/

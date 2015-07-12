@@ -1,0 +1,25 @@
+{
+  "name": "git-workshop-2015-08",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bjz/git-workshop-2015-08.git"
+  },
+  "author": "Brendan Zabarauskas",
+  "license": "",
+  "homepage": "https://bjz.github.com/git-workshop-2015-08",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-elm": "^0.2.0",
+    "gulp-gh-pages": "^0.5.2",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.0.3",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.2.4",
+    "tildify": "^1.1.0"
+  }
+}
