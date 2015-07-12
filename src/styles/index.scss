@@ -34,6 +34,11 @@ pre {
   border-radius: 0.5em;
 }
 
+pre.command-line {
+  &.bash .command:before { content: '$ '; }
+  &.cmd-exe .command:before { content: 'C:\\> '; }
+}
+
 #slideshow {
   padding: 1em;
   font-size: 3em;
