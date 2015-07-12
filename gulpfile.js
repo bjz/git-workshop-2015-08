@@ -33,14 +33,11 @@ gulp.task('build:pages', function() {
     .pipe(gulp.dest('./tmp'));
 });
 
-gulp.task('build', ['build:elm', 'build:sass', 'build:pages'], function() {
-  return gulp.src('./tmp/**/*')
-    .pipe(gulp.dest('./dist'));
-});
+gulp.task('build', ['build:elm', 'build:sass', 'build:pages']);
 
 // Watcher
 
-gulp.task('watch', ['build:elm', 'build:sass', 'build:pages'], function() {
+gulp.task('watch', ['build'], function() {
   var index_path = tildify(__dirname + '/tmp/index.html');
   util.log('Homepage built to', util.colors.magenta(index_path));
   gulp.watch(['./src/elm/**/*.elm', './elm-package.json'], ['build:elm']);
@@ -51,14 +48,18 @@ gulp.task('watch', ['build:elm', 'build:sass', 'build:pages'], function() {
 // Github Deployment
 
 gulp.task('deploy', ['build'], function() {
-  return gulp.src('./dist/**/*')
+  return gulp.src('./tmp/**/*')
     .pipe(ghPages());
 });
 
 // Cleaning
 
 gulp.task('clean', function(cb) {
-  del(['./tmp', './dist'], cb);
+  del(['./tmp', './.publish'], cb);
+});
+
+gulp.task('nuke', ['clean'], function(cb) {
+  del(['./elm-stuff', './node_modules']);
 });
 
 // Default
