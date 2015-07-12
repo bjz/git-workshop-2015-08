@@ -47,7 +47,12 @@ gulp.task('watch', ['build'], function() {
 
 // Github Deployment
 
-gulp.task('deploy', ['build'], function() {
+gulp.task('readme', function() {
+  return gulp.src('./README.md')
+    .pipe(gulp.dest('./tmp'));
+})
+
+gulp.task('deploy', ['build', 'readme'], function() {
   return gulp.src('./tmp/**/*')
     .pipe(ghPages());
 });
