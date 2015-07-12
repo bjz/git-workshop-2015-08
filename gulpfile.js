@@ -6,6 +6,7 @@ var del         = require('del');
 var elm         = require('gulp-elm');
 var ghPages     = require('gulp-gh-pages');
 var plumber     = require('gulp-plumber');
+var prompt      = require('gulp-prompt');
 var sass        = require('gulp-sass');
 var tildify     = require('tildify');
 var util        = require('gulp-util');
@@ -54,6 +55,7 @@ gulp.task('readme', function() {
 
 gulp.task('deploy', ['build', 'readme'], function() {
   return gulp.src('./tmp/**/*')
+    .pipe(prompt.confirm('This will update the live site. Are you sure?'))
     .pipe(ghPages());
 });
 
