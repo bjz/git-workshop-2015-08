@@ -1,5 +1,7 @@
 # git-workshop-2015-08
 
+Homepage: [bjz.github.io/git-workshop-2015-08](https://bjz.github.io/git-workshop-2015-08)
+
 ## Development
 
 ### Prerequisites
@@ -39,7 +41,7 @@ If you edit the pages within `./src`, they will automatically rebuilt to `./tmp`
 
 Press `ctrl + C` to stop watching.
 
-### Deploying to Github Pages
+### Deployment to Github Pages
 
 ```
 gulp deploy
