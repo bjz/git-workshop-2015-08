@@ -1,0 +1,25 @@
+$link-default: rgb(15,102,230);
+$link-hover: rgb(234,21,122);
+
+html, head, body {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+}
+
+a {
+  color: $link-default;
+
+  &:link { text-decoration: none; }
+  &:visited { text-decoration: none; }
+  &:active { text-decoration: none; }
+  &:hover { text-decoration: underline; color: $link-hover; }
+}

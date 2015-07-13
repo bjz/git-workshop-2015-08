@@ -1,0 +1,33 @@
+$code-background: #444;
+$code-color: #ddd;
+$code-color-prompt: #7B7;
+$code-color-comment: #999;
+$code-color-string: #FD8;
+
+pre {
+  background: $code-background;
+  color: $code-color;
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow: scroll;
+}
+
+pre.command-line {
+  // Prompts
+  &.bash .command:before {
+    content: '$ ';
+    color: $code-color-prompt;
+  }
+  &.cmd-exe .command:before {
+    content: 'C:\\> ';
+    color: $code-color-prompt;
+  }
+
+  // Syntax highlighting
+  .comment {
+    color: $code-color-comment;
+  }
+  .string {
+    color: $code-color-string;
+  }
+}
