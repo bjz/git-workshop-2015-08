@@ -1,0 +1,20 @@
+pre {
+  background: #444;
+  color: #ddd;
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow: scroll; }
+
+pre.command-line.bash .command:before {
+  content: '$ ';
+  color: #7B7; }
+
+pre.command-line.cmd-exe .command:before {
+  content: 'C:\\> ';
+  color: #7B7; }
+
+pre.command-line .comment {
+  color: #999; }
+
+pre.command-line .string {
+  color: #FD8; }

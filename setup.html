@@ -3,46 +3,53 @@
   <head>
     <meta charset="UTF-8">
     <title>Setting Up Git</title>
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/site.css">
   </head>
   <body>
     <h1>Setting Up Git</h1>
+
+    <p>Before getting started with Git, we first need to a bit of setup. We will be installing a bunch of things as well as Git, like a package manager and an editor, the value of which may be unclear at first, but rest assured that these will serve you well as you start to use the command line more and more in your daily workflow.</p>
 
     <h2>Installation</h2>
 
     <h3>Windows</h3>
 
     <ol>
-      <li>install <a href="https://chocolatey.org/">Chocolatey</a></li>
-      <li>
+      <li>Install <a href="https://chocolatey.org/">Chocolatey</a></li>
+      <li>In an administrator-enabled command prompt, run the following commands:
 <pre class="command-line cmd-exe">
-<span class="command">choco install git</span>
-<span class="command">choco install cmder -pre</span>
-<span class="command">choco install sublimetext3</span>
-<span class="command">choco install sublimetext3.powershellalias</span>
+<span class="command">choco install git</span>                            <span class="comment"># Git!</span>
+<span class="command">choco install cmder -pre</span>                     <span class="comment"># A prettier terminal than cmd.exe :)</span>
+<span class="command">choco install sublimetext3</span>                   <span class="comment"># The editor we will be using</span>
+<span class="command">choco install sublimetext3.powershellalias</span>   <span class="comment"># A handy `subl` alias for opening sublime text</span>
 </pre>
       </li>
-      <li>install <a href="https://www.microsoft.com/en-US/download/details.aspx?id=46881">Visual C++ Redistributable</a></li>
+      <li>Install <a href="https://www.microsoft.com/en-US/download/details.aspx?id=46881">Visual C++ Redistributable</a> (this should allow you to run cmder)</li>
+      <li>Check if everything installed correctly by opening up the Cmder application that you installed before, then running:
+<pre class="command-line cmd-exe">
+<span class="command">git help</span>   <span class="comment"># This should print out a help message for Git</span>
+<span class="command">subl .</span>     <span class="comment"># Sublime text should open in the current working directory</span>
+</pre></li>
     </ol>
 
     <h3>Mac</h3>
 
     <ol>
-      <li>install <a href="http://www.sublimetext.com/3">Sublime Text 3</a></li>
-      <li>install <a href="http://brew.sh/">Brew</a></li>
+      <li>Install <a href="http://www.sublimetext.com/3">Sublime Text 3</a></li>
+      <li>Install <a href="http://brew.sh/">Brew</a></li>
       <li>
 <pre class="command-line bash">
-<span class="command">ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl</span>
+<span class="command">ln -s <span class="string">"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"</span> /usr/local/bin/subl</span>
 <span class="command">brew install git</span>
 <span class="command">subl ~/.bashrc</span>
 </pre>
       </li>
       <li>Enter <code>export PATH=/user/local/bin:$PATH</code> into the file and save</li>
-      <li>
+      <li>We'll now add some handy configuration stuff to our <code>~/.gitconfig</code>:
 <pre class="command-line bash">
-<span class="command">git config --global user.name "YOUR NAME"</span>
-<span class="command">git config --global user.email "YOUR EMAIL"</span>
-<span class="command">git config --global core.editor "subl -n -w"</span>
+<span class="command">git config --global user.name <span class="string">"YOUR NAME"</span></span>
+<span class="command">git config --global user.email <span class="string">"YOUR EMAIL"</span></span>
+<span class="command">git config --global core.editor <span class="string">"subl -n -w"</span></span>
 <span class="command">git config --global color.ui true</span>
 <span class="command">git config --global push.default simple</span>
 </pre>
@@ -61,11 +68,14 @@
 <span class="command">cyg-get openssh</span>
 </pre>
       </li>
-      <li>Follow Github's <a href="https://help.github.com/articles/generating-ssh-keys/#platform-windows">instructions for setting up your SSH keys</a>, but use <code>C:\tools\cygwin\bin\ssh-keygen</code> instead of <code>ssh-keygen</code></li>
+      <li>Follow Github's <a href="https://help.github.com/articles/generating-ssh-keys/#platform-windows">instructions for setting up your SSH keys</a>, but use <code>C:\tools\cygwin\bin\ssh-keygen</code> instead of <code>ssh-keygen</code>.</li>
     </ol>
 
     <h2>Mac</h2>
 
+    <ol>
+      <li>Follow Github's <a href="https://help.github.com/articles/generating-ssh-keys/#platform-mac">instructions for setting up your SSH keys.</a>
+    </ol>
 
   </body>
 </html>

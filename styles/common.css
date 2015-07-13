@@ -2,6 +2,10 @@ html, head, body {
   padding: 0;
   margin: 0; }
 
+html, body {
+  height: 100%;
+  margin: 0px; }
+
 body {
   font-family: helvetica, arial, sans-serif; }
 
@@ -16,23 +20,3 @@ a {
   a:hover {
     text-decoration: underline;
     color: #ea157a; }
-
-html, body {
-  height: 100%;
-  margin: 0px; }
-
-pre {
-  background: #444;
-  color: #ddd;
-  padding: 1em;
-  border-radius: 0.5em; }
-
-pre.command-line.bash .command:before {
-  content: '$ '; }
-
-pre.command-line.cmd-exe .command:before {
-  content: 'C:\\> '; }
-
-#slideshow {
-  padding: 1em;
-  font-size: 3em; }
