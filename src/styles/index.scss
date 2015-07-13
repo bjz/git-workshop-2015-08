@@ -3,6 +3,9 @@ $link-hover: rgb(234,21,122);
 
 $code-background: #444;
 $code-color: #ddd;
+$code-color-prompt: #7B7;
+$code-color-comment: #999;
+$code-color-string: #FD8;
 
 html, head, body {
   padding: 0;
@@ -35,8 +38,13 @@ pre {
 }
 
 pre.command-line {
-  &.bash .command:before { content: '$ '; }
-  &.cmd-exe .command:before { content: 'C:\\> '; }
+  // Prompts
+  &.bash .command:before { content: '$ '; color: $code-color-prompt; }
+  &.cmd-exe .command:before { content: 'C:\\> '; color: $code-color-prompt; }
+
+  // Syntax highlighting
+  .comment { color: $code-color-comment }
+  .string { color: $code-color-string }
 }
 
 #slideshow {
