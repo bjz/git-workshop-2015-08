@@ -3,8 +3,9 @@ import History
 import Html exposing (Html)
 import Keyboard
 import Markdown
-import Signal exposing (Mailbox, (<~), (~))
+import Signal exposing ((<~), (~))
 import String
+import Task exposing (Task)
 
 import SlideShow exposing (SlideShow)
 
@@ -236,6 +237,14 @@ hashToInt =
     >> String.toInt
     >> Result.toMaybe
 
+currentPath : SlideShow -> String
+currentPath slideShow =
+  "#" ++ toString slideShow.currentIndex
+
+port runTask : Signal (Task error ())
+port runTask =
+  History.setPath <~ (currentPath <~ slideShows)
+
 -- Update
 
 update : Action -> SlideShow -> SlideShow
@@ -270,9 +279,13 @@ hashToAction hash =
 input : Signal Action
 input =
     Signal.mergeMany
-      [ hashToAction <~ History.hash
+      [ hashToAction <~ Signal.dropRepeats History.hash
       , keysToAction <~ Keyboard.arrows
       ]
+
+slideShows : Signal SlideShow
+slideShows =
+  Signal.foldp update slideShow input
 
 -- Main
 
@@ -284,4 +297,4 @@ slideShow =
 
 main : Signal Html
 main =
-  view <~ Signal.foldp update slideShow input
+  view <~ slideShows
