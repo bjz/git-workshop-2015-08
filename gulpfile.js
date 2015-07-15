@@ -61,13 +61,9 @@ gulp.task('deploy', ['build', 'readme'], function() {
 
 // Cleaning
 
-gulp.task('clean', function(cb) {
-  del(['./tmp', './.publish'], cb);
-});
-
-gulp.task('nuke', ['clean'], function(cb) {
-  del(['./elm-stuff', './node_modules']);
-});
+gulp.task('clean', function(cb) { del(['./tmp', './.publish'], cb); });
+gulp.task('clean:elm', function(cb) { del(['./elm-stuff']); });
+gulp.task('clean:npm', function(cb) { del(['./elm-stuff']); });
 
 // Default
 
