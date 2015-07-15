@@ -508,7 +508,7 @@ Elm.Color.make = function (_elm) {
                         ,saturation: s};
               }();}
          _U.badCase($moduleName,
-         "between lines 114 and 121");
+         "between lines 114 and 118");
       }();
    };
    var HSLA = F4(function (a,
@@ -564,7 +564,7 @@ Elm.Color.make = function (_elm) {
                  color._3);
               }();}
          _U.badCase($moduleName,
-         "between lines 105 and 111");
+         "between lines 105 and 108");
       }();
    };
    var grayscale = function (p) {
@@ -844,7 +844,7 @@ Elm.Dict.make = function (_elm) {
               A3(foldr,f,acc,t._4)),
               t._3);}
          _U.badCase($moduleName,
-         "between lines 417 and 425");
+         "between lines 417 and 421");
       }();
    });
    var keys = function (dict) {
@@ -900,7 +900,7 @@ Elm.Dict.make = function (_elm) {
               A3(foldl,f,acc,dict._3)),
               dict._4);}
          _U.badCase($moduleName,
-         "between lines 406 and 414");
+         "between lines 406 and 410");
       }();
    });
    var isBBlack = function (dict) {
@@ -924,7 +924,7 @@ Elm.Dict.make = function (_elm) {
             case "Remove": return "Remove";
             case "Same": return "Same";}
          _U.badCase($moduleName,
-         "between lines 182 and 188");
+         "between lines 182 and 185");
       }();
    };
    var Same = {ctor: "Same"};
@@ -954,10 +954,10 @@ Elm.Dict.make = function (_elm) {
                       targetKey,
                       dict._3);}
                  _U.badCase($moduleName,
-                 "between lines 129 and 135");
+                 "between lines 129 and 132");
               }();}
          _U.badCase($moduleName,
-         "between lines 124 and 135");
+         "between lines 124 and 132");
       }();
    });
    var member = F2(function (key,
@@ -968,7 +968,7 @@ Elm.Dict.make = function (_elm) {
          {case "Just": return true;
             case "Nothing": return false;}
          _U.badCase($moduleName,
-         "between lines 138 and 146");
+         "between lines 138 and 140");
       }();
    });
    var max = function (dict) {
@@ -984,7 +984,7 @@ Elm.Dict.make = function (_elm) {
                         ,_1: dict._2};}
               return max(dict._4);}
          _U.badCase($moduleName,
-         "between lines 100 and 121");
+         "between lines 100 and 108");
       }();
    };
    var min = function (dict) {
@@ -1056,7 +1056,7 @@ Elm.Dict.make = function (_elm) {
               A2(map,f,dict._3),
               A2(map,f,dict._4));}
          _U.badCase($moduleName,
-         "between lines 394 and 403");
+         "between lines 394 and 399");
       }();
    });
    var showNColor = function (c) {
@@ -1105,7 +1105,7 @@ Elm.Dict.make = function (_elm) {
                    dict._4);}
               break;}
          _U.badCase($moduleName,
-         "between lines 154 and 166");
+         "between lines 154 and 162");
       }();
    };
    var blackish = function (t) {
@@ -1189,7 +1189,7 @@ Elm.Dict.make = function (_elm) {
               t._3,
               t._4);}
          _U.badCase($moduleName,
-         "between lines 386 and 391");
+         "between lines 386 and 388");
       }();
    };
    var balance_node = function (t) {
@@ -1656,7 +1656,7 @@ Elm.Dict.make = function (_elm) {
                case "Same":
                return updatedDict;}
             _U.badCase($moduleName,
-            "between lines 222 and 228");
+            "between lines 222 and 225");
          }();
       }();
    });
@@ -1917,7 +1917,7 @@ Elm.Graphics.Collage.make = function (_elm) {
                               ,["y",f.y + _v0._1]],
               f);}
          _U.badCase($moduleName,
-         "on line 226, column 7 to 35");
+         "on line 226, column 3 to 37");
       }();
    });
    var form = function (f) {
@@ -2600,7 +2600,7 @@ Elm.Graphics.Element.make = function (_elm) {
                  maxOrZero(ws),
                  $List.sum(hs));}
             _U.badCase($moduleName,
-            "between lines 362 and 373");
+            "between lines 362 and 368");
          }();
       }();
    });
@@ -2699,7 +2699,11 @@ Elm.History.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "History",
+   $Basics = Elm.Basics.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
    $Native$History = Elm.Native.History.make(_elm),
+   $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
    $Task = Elm.Task.make(_elm);
    var path = $Native$History.path;
@@ -2732,7 +2736,12 @@ Elm.Html.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Html",
+   $Basics = Elm.Basics.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
    $VirtualDom = Elm.VirtualDom.make(_elm);
    var fromElement = $VirtualDom.fromElement;
    var toElement = $VirtualDom.toElement;
@@ -3372,7 +3381,7 @@ Elm.List.make = function (_elm) {
             case "[]":
             return $Maybe.Nothing;}
          _U.badCase($moduleName,
-         "between lines 87 and 95");
+         "between lines 87 and 89");
       }();
    };
    var head = function (list) {
@@ -3383,7 +3392,7 @@ Elm.List.make = function (_elm) {
             case "[]":
             return $Maybe.Nothing;}
          _U.badCase($moduleName,
-         "between lines 75 and 84");
+         "between lines 75 and 77");
       }();
    };
    _op["::"] = $Native$List.cons;
@@ -3422,7 +3431,7 @@ Elm.List.make = function (_elm) {
             return A2(_op["::"],_v15._0,xs);
             case "Nothing": return xs;}
          _U.badCase($moduleName,
-         "between lines 179 and 186");
+         "between lines 179 and 181");
       }();
    });
    var filterMap = F2(function (f,
@@ -3569,7 +3578,7 @@ Elm.List.make = function (_elm) {
             case "[]":
             return _L.fromArray([]);}
          _U.badCase($moduleName,
-         "between lines 350 and 361");
+         "between lines 350 and 356");
       }();
    });
    _elm.List.values = {_op: _op
@@ -3632,7 +3641,8 @@ Elm.Main.make = function (_elm) {
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
    $SlideShow = Elm.SlideShow.make(_elm),
-   $String = Elm.String.make(_elm);
+   $String = Elm.String.make(_elm),
+   $Task = Elm.Task.make(_elm);
    var Navigate = function (a) {
       return {ctor: "Navigate"
              ,_0: a};
@@ -3652,8 +3662,20 @@ Elm.Main.make = function (_elm) {
             case "NoOp":
             return $Basics.identity;}
          _U.badCase($moduleName,
-         "between lines 243 and 245");
+         "between lines 258 and 260");
       }();
+   };
+   var makeTitle = function (slideShow) {
+      return A2($Basics._op["++"],
+      "Git Tutorial Presentation (slide ",
+      A2($Basics._op["++"],
+      $Basics.toString(slideShow.currentIndex),
+      ")"));
+   };
+   var makeHash = function (slideShow) {
+      return A2($Basics._op["++"],
+      "#",
+      $Basics.toString(slideShow.currentIndex));
    };
    var hashToInt = function ($) {
       return $Result.toMaybe($String.toInt($String.dropLeft(1)($)));
@@ -3666,12 +3688,12 @@ Elm.Main.make = function (_elm) {
             return Navigate($SlideShow.gotoIndex(_v2._0));
             case "Nothing": return NoOp;}
          _U.badCase($moduleName,
-         "between lines 266 and 268");
+         "between lines 281 and 283");
       }();
    };
    var input = $Signal.mergeMany(_L.fromArray([A2($Signal._op["<~"],
                                               hashToAction,
-                                              $History.hash)
+                                              $Signal.dropRepeats($History.hash))
                                               ,A2($Signal._op["<~"],
                                               keysToAction,
                                               $Keyboard.arrows)]));
@@ -3692,17 +3714,33 @@ Elm.Main.make = function (_elm) {
    var slideShow = A2($SlideShow.$new,
    $Array.fromList(slides),
    $Maybe.withDefault(0)(hashToInt(initialHash)));
-   var main = A2($Signal._op["<~"],
-   view,
-   A3($Signal.foldp,
+   var slideShows = $Signal.dropRepeats(A3($Signal.foldp,
    update,
    slideShow,
    input));
+   var runTask = Elm.Native.Task.make(_elm).performSignal("runTask",
+   A2($Signal._op["<~"],
+   $History.setPath,
+   A2($Signal._op["<~"],
+   makeHash,
+   slideShows)));
+   var title = Elm.Native.Port.make(_elm).outboundSignal("title",
+   function (v) {
+      return v;
+   },
+   A2($Signal._op["<~"],
+   makeTitle,
+   slideShows));
+   var main = A2($Signal._op["<~"],
+   view,
+   slideShows);
    _elm.Main.values = {_op: _op
                       ,parseMarkdown: parseMarkdown
                       ,slides: slides
                       ,src: src
                       ,hashToInt: hashToInt
+                      ,makeHash: makeHash
+                      ,makeTitle: makeTitle
                       ,update: update
                       ,view: view
                       ,NoOp: NoOp
@@ -3710,6 +3748,7 @@ Elm.Main.make = function (_elm) {
                       ,keysToAction: keysToAction
                       ,hashToAction: hashToAction
                       ,input: input
+                      ,slideShows: slideShows
                       ,slideShow: slideShow
                       ,main: main};
    return _elm.Main.values;
@@ -3725,10 +3764,14 @@ Elm.Markdown.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "Markdown",
+   $Basics = Elm.Basics.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
    $Html = Elm.Html.make(_elm),
+   $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
-   $Native$Markdown = Elm.Native.Markdown.make(_elm);
+   $Native$Markdown = Elm.Native.Markdown.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var toElementWith = $Native$Markdown.toElementWith;
    var toHtmlWith = $Native$Markdown.toHtmlWith;
    var defaultOptions = {_: {}
@@ -3783,7 +3826,7 @@ Elm.Maybe.make = function (_elm) {
             case "Nothing":
             return $default;}
          _U.badCase($moduleName,
-         "between lines 45 and 56");
+         "between lines 45 and 47");
       }();
    });
    var Nothing = {ctor: "Nothing"};
@@ -3796,11 +3839,11 @@ Elm.Maybe.make = function (_elm) {
                     case "Nothing":
                     return oneOf(maybes._1);}
                  _U.badCase($moduleName,
-                 "between lines 64 and 73");
+                 "between lines 64 and 66");
               }();
             case "[]": return Nothing;}
          _U.badCase($moduleName,
-         "between lines 59 and 73");
+         "between lines 59 and 66");
       }();
    };
    var andThen = F2(function (maybeValue,
@@ -3825,7 +3868,7 @@ Elm.Maybe.make = function (_elm) {
             return Just(f(maybe._0));
             case "Nothing": return Nothing;}
          _U.badCase($moduleName,
-         "between lines 76 and 107");
+         "between lines 76 and 78");
       }();
    });
    _elm.Maybe.values = {_op: _op
@@ -12197,7 +12240,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return $Maybe.Just(result._0);}
          _U.badCase($moduleName,
-         "between lines 164 and 177");
+         "between lines 164 and 166");
       }();
    };
    var Err = function (a) {
@@ -12212,7 +12255,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return callback(result._0);}
          _U.badCase($moduleName,
-         "between lines 126 and 145");
+         "between lines 126 and 128");
       }();
    });
    var Ok = function (a) {
@@ -12226,7 +12269,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return Ok(func(ra._0));}
          _U.badCase($moduleName,
-         "between lines 41 and 52");
+         "between lines 41 and 43");
       }();
    });
    var map2 = F3(function (func,
@@ -12380,7 +12423,7 @@ Elm.Result.make = function (_elm) {
                  return Err(_v39._4._0);}
               break;}
          _U.badCase($moduleName,
-         "between lines 82 and 123");
+         "between lines 82 and 88");
       }();
    });
    var formatError = F2(function (f,
@@ -12392,7 +12435,7 @@ Elm.Result.make = function (_elm) {
             case "Ok":
             return Ok(result._0);}
          _U.badCase($moduleName,
-         "between lines 148 and 161");
+         "between lines 148 and 150");
       }();
    });
    var fromMaybe = F2(function (err,
@@ -12628,7 +12671,7 @@ Elm.Signal.make = function (_elm) {
             case "[]":
             return $Debug.crash("mergeMany was given an empty list!");}
          _U.badCase($moduleName,
-         "between lines 177 and 197");
+         "between lines 177 and 182");
       }();
    };
    var foldp = $Native$Signal.foldp;
@@ -12684,98 +12727,139 @@ Elm.Slide.make = function (_elm) {
    $Basics = Elm.Basics.make(_elm),
    $Html = Elm.Html.make(_elm),
    $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm);
-   var stepBackward = function (_v0) {
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var stepBackward = function (nodes) {
       return function () {
-         switch (_v0.ctor)
-         {case "Slide":
-            return $Maybe.Nothing;}
-         _U.badCase($moduleName,
-         "on line 67, column 3 to 10");
-      }();
-   };
-   var stepForward = function (_v3) {
-      return function () {
-         switch (_v3.ctor)
-         {case "Slide":
-            return $Maybe.Nothing;}
-         _U.badCase($moduleName,
-         "on line 63, column 3 to 10");
+         var stepBackward$ = F2(function (nodes,
+         acc) {
+            return $Maybe.Nothing;
+         });
+         return A2(stepBackward$,
+         nodes,
+         _L.fromArray([]));
       }();
    };
    var renderNode = function (node) {
       return function () {
          switch (node.ctor)
-         {case "Fragment":
+         {case "Animation":
             switch (node._0.ctor)
               {case "Complete":
-                 return $Maybe.Just(node._1);
+                 return renderNode(node._1);
                  case "Pending":
                  return $Maybe.Nothing;}
               break;
-            case "StaticHtml":
-            return $Maybe.Just(node._0);
-            case "StaticNode":
+            case "GroupNode":
             return $Maybe.Just(node._0(A2($List.filterMap,
               renderNode,
-              node._1)));}
+              node._1)));
+            case "ItemNode":
+            return $Maybe.Just(node._0);}
          _U.badCase($moduleName,
-         "between lines 49 and 53");
+         "between lines 45 and 49");
       }();
    };
-   var render = function (_v12) {
-      return function () {
-         switch (_v12.ctor)
-         {case "Slide":
-            return A2($List.filterMap,
-              renderNode,
-              _v12._0);}
-         _U.badCase($moduleName,
-         "on line 57, column 3 to 34");
-      }();
+   var render = function (nodes) {
+      return A2($List.filterMap,
+      renderNode,
+      nodes);
    };
-   var Fragment = F2(function (a,
+   var Animation = F2(function (a,
    b) {
-      return {ctor: "Fragment"
+      return {ctor: "Animation"
              ,_0: a
              ,_1: b};
    });
-   var StaticNode = F2(function (a,
+   var GroupNode = F2(function (a,
    b) {
-      return {ctor: "StaticNode"
+      return {ctor: "GroupNode"
              ,_0: a
              ,_1: b};
    });
-   var node = StaticNode;
-   var StaticHtml = function (a) {
-      return {ctor: "StaticHtml"
+   var group = GroupNode;
+   var ItemNode = function (a) {
+      return {ctor: "ItemNode"
              ,_0: a};
    };
-   var html = StaticHtml;
+   var item = ItemNode;
    var Complete = {ctor: "Complete"};
-   var Pending = {ctor: "Pending"};
-   var fragment = Fragment(Pending);
-   var Slide = function (a) {
-      return {ctor: "Slide",_0: a};
+   var stepForward = function (nodes) {
+      return function () {
+         var stepCons = F2(function (node,
+         rest) {
+            return A2($Maybe.map,
+            function (rest) {
+               return A2($List._op["::"],
+               node,
+               rest);
+            },
+            stepForward(rest));
+         });
+         return function () {
+            switch (nodes.ctor)
+            {case "::":
+               switch (nodes._0.ctor)
+                 {case "Animation":
+                    switch (nodes._0._0.ctor)
+                      {case "Complete":
+                         return A2(stepCons,
+                           A2(Animation,
+                           Complete,
+                           nodes._0._1),
+                           nodes._1);
+                         case "Pending":
+                         return $Maybe.Just(A2($List._op["::"],
+                           A2(Animation,
+                           Complete,
+                           nodes._0._1),
+                           nodes._1));}
+                      break;
+                    case "GroupNode":
+                    return A2(stepCons,
+                      A2(GroupNode,
+                      nodes._0._0,
+                      nodes._0._1),
+                      nodes._1);
+                    case "ItemNode":
+                    return A2(stepCons,
+                      ItemNode(nodes._0._0),
+                      nodes._1);}
+                 break;
+               case "[]":
+               return $Maybe.Nothing;}
+            _U.badCase($moduleName,
+            "between lines 65 and 70");
+         }();
+      }();
    };
-   var slide = Slide;
-   var testSlides = _L.fromArray([slide(_L.fromArray([html(A2($Html.h1,
+   var Pending = {ctor: "Pending"};
+   var appear = Animation(Pending);
+   var testSlides = _L.fromArray([_L.fromArray([item(A2($Html.h1,
                                  _L.fromArray([]),
-                                 _L.fromArray([$Html.text("Git Presentation")])))]))
-                                 ,slide(_L.fromArray([html(A2($Html.h1,
-                                                     _L.fromArray([]),
-                                                     _L.fromArray([$Html.text("A typical git workflow")])))
-                                                     ,A2(node,
-                                                     $Html.code(_L.fromArray([])),
-                                                     _L.fromArray([fragment($Html.text("$ git init my_project"))
-                                                                  ,fragment($Html.text("$ cd my_project"))
-                                                                  ,fragment($Html.text("$ git add ."))
-                                                                  ,fragment($Html.text("$ git commit -m \"Initial commit\""))]))]))]);
+                                 _L.fromArray([$Html.text("Git Presentation")])))])
+                                 ,_L.fromArray([item(A2($Html.h1,
+                                               _L.fromArray([]),
+                                               _L.fromArray([$Html.text("A typical git workflow")])))
+                                               ,A2(group,
+                                               $Html.code(_L.fromArray([])),
+                                               _L.fromArray([function ($) {
+                                                               return appear(item($));
+                                                            }($Html.text("$ git init my_project"))
+                                                            ,function ($) {
+                                                               return appear(item($));
+                                                            }($Html.text("$ cd my_project"))
+                                                            ,function ($) {
+                                                               return appear(item($));
+                                                            }($Html.text("$ git add ."))
+                                                            ,function ($) {
+                                                               return appear(item($));
+                                                            }($Html.text("$ git commit -m \"Initial commit\""))]))])]);
    _elm.Slide.values = {_op: _op
-                       ,slide: slide
-                       ,html: html
-                       ,node: node
-                       ,fragment: fragment
+                       ,item: item
+                       ,group: group
+                       ,appear: appear
                        ,renderNode: renderNode
                        ,render: render
                        ,stepForward: stepForward
@@ -12796,7 +12880,10 @@ Elm.SlideShow.make = function (_elm) {
    $Array = Elm.Array.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Html = Elm.Html.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm);
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
    var gotoFirst = function (slideShow) {
       return _U.replace([["currentIndex"
                          ,0]],
@@ -13360,9 +13447,13 @@ Elm.VirtualDom.make = function (_elm) {
    _U = _N.Utils.make(_elm),
    _L = _N.List.make(_elm),
    $moduleName = "VirtualDom",
+   $Basics = Elm.Basics.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
    $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
    $Native$VirtualDom = Elm.Native.VirtualDom.make(_elm),
+   $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var lazy3 = $Native$VirtualDom.lazy3;
    var lazy2 = $Native$VirtualDom.lazy2;
