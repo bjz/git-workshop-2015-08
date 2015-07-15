@@ -237,13 +237,19 @@ hashToInt =
     >> String.toInt
     >> Result.toMaybe
 
-currentPath : SlideShow -> String
-currentPath slideShow =
+makeHash slideShow =
   "#" ++ toString slideShow.currentIndex
 
 port runTask : Signal (Task error ())
 port runTask =
-  History.setPath <~ (currentPath <~ slideShows)
+  History.setPath <~ (makeHash <~ slideShows)
+
+makeTitle slideShow =
+  "Git Tutorial Presentation (slide " ++ toString slideShow.currentIndex ++ ")"
+
+port title : Signal String
+port title =
+  makeTitle <~ slideShows
 
 -- Update
 
@@ -285,7 +291,7 @@ input =
 
 slideShows : Signal SlideShow
 slideShows =
-  Signal.foldp update slideShow input
+  Signal.foldp update slideShow input |> Signal.dropRepeats
 
 -- Main
 
