@@ -1,14 +1,14 @@
 module Slide
-  ( Slide, slide
-  , Node, html, node, fragment
+  ( Group, Node
+  , item, group, appear
   , renderNode, render
   , stepForward, stepBackward
   ) where
 
-import Html exposing (Html, code, h1, text)
+import Html exposing (Html)
 import Markdown
 
-{-| A HTML slide that can be animated to update incrementally.
+{-| A slide that can be animated to update incrementally.
 
 Not currently used
 
@@ -16,11 +16,7 @@ Not currently used
 
 -- Model
 
-type Slide
-  = Slide (List Node)
-
-slide : List Node -> Slide
-slide = Slide
+type alias Group = List Node
 
 {-| Animation state -}
 type State
@@ -29,57 +25,71 @@ type State
 
 {-| A node in the slide layout -}
 type Node
-  = StaticHtml Html
-  | StaticNode (List Html -> Html) (List Node)
-  | Fragment State Html
+  = ItemNode Html
+  | GroupNode (List Html -> Html) (Group)
+  | Animation State Node
 
-html : Html -> Node
-html = StaticHtml
+item : Html -> Node
+item = ItemNode
 
-node : (List Html -> Html) -> List Node -> Node
-node = StaticNode
+group : (List Html -> Html) -> Group -> Node
+group = GroupNode
 
-fragment : Html -> Node
-fragment = Fragment Pending
+appear : Node -> Node
+appear = Animation Pending
 
 -- View
 
 renderNode : Node -> Maybe Html
 renderNode node =
   case node of
-    StaticHtml html        -> Just html
-    StaticNode f nodes     -> Just (f (List.filterMap renderNode nodes))
-    Fragment Pending _     -> Nothing
-    Fragment Complete html -> Just html
+    ItemNode x               -> Just x
+    GroupNode f nodes        -> Just (f (List.filterMap renderNode nodes))
+    Animation Pending _      -> Nothing
+    Animation Complete node  -> renderNode node
 
-render : Slide -> List Html
-render (Slide nodes) =
+render : Group -> List Html
+render nodes =
   List.filterMap renderNode nodes
 
 -- Update
 
-stepForward : Slide -> Maybe Slide
-stepForward (Slide nodes) =
-  Nothing -- TODO
+{-| Steps the animation forward once, returning Nothing if there is no more
+animation to be done -}
+stepForward : Group -> Maybe Group
+stepForward nodes =
+  let stepCons node rest =
+        Maybe.map (\rest -> node :: rest)
+                  (stepForward rest)
+  in
+    case nodes of
+      ItemNode x              :: rest  -> stepCons (ItemNode x) rest
+      GroupNode f nodes       :: rest  -> stepCons (GroupNode f nodes) rest
+      Animation Complete node :: rest  -> stepCons (Animation Complete node) rest
+      Animation Pending node  :: rest  -> Just (Animation Complete node :: rest)
+      []                               -> Nothing
 
-stepBackward : Slide -> Maybe Slide
-stepBackward (Slide nodes) =
-  Nothing -- TODO
+{-| Steps the animation backward once, returning Nothing if there is no more
+animation to be undone -}
+stepBackward : Group -> Maybe Group
+stepBackward nodes =
+  let stepBackward' nodes acc = Nothing
+  in
+    -- TODO
+    stepBackward' nodes []
 
 -- Test data
 
-testSlides : List Slide
+testSlides : List Group
 testSlides =
-  [ slide
-      [ html <| h1 [] [text "Git Presentation"]
-      ]
-  , slide
-      [ html <| h1 [] [text "A typical git workflow"]
-      , node (code [])
-          [ fragment <| text "$ git init my_project"
-          , fragment <| text "$ cd my_project"
-          , fragment <| text "$ git add ."
-          , fragment <| text "$ git commit -m \"Initial commit\""
-          ]
-      ]
+  [ [ item <| Html.h1 [] [ Html.text "Git Presentation" ]
+    ]
+  , [ item <| Html.h1 [] [ Html.text "A typical git workflow" ]
+    , group (Html.code [])
+        [ item >> appear <| Html.text "$ git init my_project"
+        , item >> appear <| Html.text "$ cd my_project"
+        , item >> appear <| Html.text "$ git add ."
+        , item >> appear <| Html.text "$ git commit -m \"Initial commit\""
+        ]
+    ]
   ]
