@@ -30,12 +30,47 @@
 <span class="command">git help</span>   <span class="comment"># This should print out a help message for Git</span>
 <span class="command">subl .</span>     <span class="comment"># Sublime text should open in the current working directory</span>
 </pre></li>
+      <li>Suggested Sublime Text settings:
+<pre>
+{
+  <span class="string">"default_line_ending"</span>: <span class="string">"unix"</span>,
+  <span class="string">"highlight_line"</span>: <span class="literal">true</span>,
+  <span class="string">"ignored_packages"</span>: [<span class="string">"Vintage"</span>],
+  <span class="string">"preview_on_click"</span>: <span class="literal">false</span>,
+  <span class="string">"scroll_past_end"</span>: <span class="literal">true</span>,
+  <span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,
+  <span class="string">"trim_trailing_white_space_on_save"</span>: <span class="literal">true</span>
+}
+</pre>
+      </li>
+      <li>We'll now add some handy configuration stuff to our <code>~/.gitconfig</code>:
+<pre class="command-line cmd-exe">
+<span class="command">git config --global user.name <span class="string">"YOUR NAME"</span></span>
+<span class="command">git config --global user.email <span class="string">"YOUR EMAIL"</span></span>
+<span class="command">git config --global core.autocrlf true     <span class="comment"># For more info, see <a href="https://help.github.com/articles/dealing-with-line-endings/#platform-windows">Dealing with line endings</a></span></span>
+<span class="command">git config --global core.editor subl -n -w</span>
+<span class="command">git config --global color.ui true</span>
+<span class="command">git config --global push.default simple</span>
+</pre>
+      </li>
     </ol>
 
     <h3>Mac</h3>
 
     <ol>
       <li>Install <a href="http://www.sublimetext.com/3">Sublime Text 3</a></li>
+      <li>Suggested Sublime Text settings:
+<pre>
+{
+  <span class="string">"highlight_line"</span>: <span class="literal">true</span>,
+  <span class="string">"ignored_packages"</span>: [<span class="string">"Vintage"</span>],
+  <span class="string">"preview_on_click"</span>: <span class="literal">false</span>,
+  <span class="string">"scroll_past_end"</span>: <span class="literal">true</span>,
+  <span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,
+  <span class="string">"trim_trailing_white_space_on_save"</span>: <span class="literal">true</span>
+}
+</pre>
+      </li>
       <li>Install <a href="http://brew.sh/">Brew</a></li>
       <li>
 <pre class="command-line bash">
@@ -49,7 +84,8 @@
 <pre class="command-line bash">
 <span class="command">git config --global user.name <span class="string">"YOUR NAME"</span></span>
 <span class="command">git config --global user.email <span class="string">"YOUR EMAIL"</span></span>
-<span class="command">git config --global core.editor <span class="string">"subl -n -w"</span></span>
+<span class="command">git config --global core.autocrlf input      <span class="comment"># For more info, see <a href="https://help.github.com/articles/dealing-with-line-endings/#platform-mac">Dealing with line endings</a></span></span>
+<span class="command">git config --global core.editor subl -n -w</span>
 <span class="command">git config --global color.ui true</span>
 <span class="command">git config --global push.default simple</span>
 </pre>

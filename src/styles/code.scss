@@ -3,6 +3,7 @@ $code-color: #ddd;
 $code-color-prompt: #7B7;
 $code-color-comment: #999;
 $code-color-string: #FD8;
+$code-color-literal: #F67;
 
 pre {
   background: $code-background;
@@ -10,6 +11,24 @@ pre {
   padding: 1em;
   border-radius: 0.5em;
   overflow: scroll;
+
+  // Syntax highlighting
+  .comment {
+    color: $code-color-comment;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover { color: white; }
+    }
+  }
+  .string {
+    color: $code-color-string;
+  }
+  .literal {
+    color: $code-color-literal;
+  }
 }
 
 pre.command-line {
@@ -21,13 +40,5 @@ pre.command-line {
   &.cmd-exe .command:before {
     content: 'C:\\> ';
     color: $code-color-prompt;
-  }
-
-  // Syntax highlighting
-  .comment {
-    color: $code-color-comment;
-  }
-  .string {
-    color: $code-color-string;
   }
 }
