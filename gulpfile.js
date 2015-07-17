@@ -10,7 +10,6 @@ var prompt      = require('gulp-prompt');
 var sass        = require('gulp-sass');
 var tildify     = require('tildify');
 var util        = require('gulp-util');
-var watch       = require('gulp-watch');
 
 // Build
 
@@ -61,9 +60,9 @@ gulp.task('deploy', ['build', 'readme'], function() {
 
 // Cleaning
 
-gulp.task('clean', function(cb) { del(['./tmp', './.publish'], cb); });
+gulp.task('clean:build', function(cb) { del(['./tmp', './.publish'], cb); });
 gulp.task('clean:elm', function(cb) { del(['./elm-stuff']); });
-gulp.task('clean:npm', function(cb) { del(['./elm-stuff']); });
+gulp.task('clean:npm', function(cb) { del(['./node_modules']); });
 
 // Default
 
