@@ -4,6 +4,17 @@ pre {
   padding: 1em;
   border-radius: 0.5em;
   overflow: scroll; }
+  pre .comment {
+    color: #999; }
+    pre .comment a {
+      color: inherit;
+      text-decoration: underline; }
+      pre .comment a:hover {
+        color: white; }
+  pre .string {
+    color: #FD8; }
+  pre .literal {
+    color: #F67; }
 
 pre.command-line.bash .command:before {
   content: '$ ';
@@ -12,9 +23,3 @@ pre.command-line.bash .command:before {
 pre.command-line.cmd-exe .command:before {
   content: 'C:\\> ';
   color: #7B7; }
-
-pre.command-line .comment {
-  color: #999; }
-
-pre.command-line .string {
-  color: #FD8; }
