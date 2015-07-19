@@ -1,6 +1,7 @@
 module SlideShow
-  ( Slides, SlideShow, new, toHtml
-  , Update, gotoIndex, gotoNext, gotoPrevious, gotoFirst, gotoLast
+  ( Model, init
+  , Action, gotoIndex, gotoNext, gotoPrevious, gotoFirst, gotoLast
+  , update, view
   ) where
 
 import Array exposing (Array)
@@ -9,56 +10,59 @@ import String
 
 import Slide
 
--- SlideShow
+-- Model
 
-type alias Slides = Array Html
-
-type alias SlideShow =
+type alias Model =
   { currentIndex : Int
-  , slides : Slides
+  , slides : Array Html
   }
 
-getCurrent : SlideShow -> Maybe Html
-getCurrent slideShow =
-  Array.get slideShow.currentIndex slideShow.slides
-
-lastIndex : SlideShow -> Int
-lastIndex slideShow =
-  (Array.length slideShow.slides) - 1
-
-new : Slides -> Int -> SlideShow
-new slides index =
+init : Array Html -> Int -> Model
+init slides index =
   { currentIndex = index
   , slides = slides
   }
 
-toHtml : SlideShow -> Html
-toHtml slideShow =
+getCurrent : Model -> Maybe Html
+getCurrent slideShow =
+  Array.get slideShow.currentIndex slideShow.slides
+
+lastIndex : Model -> Int
+lastIndex slideShow =
+  (Array.length slideShow.slides) - 1
+
+-- Update
+
+type Action
+  = GotoIndex Int
+  | GotoNext
+  | GotoPrevious
+  | GotoFirst
+  | GotoLast
+
+gotoIndex = GotoIndex
+gotoNext = GotoNext
+gotoPrevious = GotoPrevious
+gotoFirst = GotoFirst
+gotoLast = GotoLast
+
+update : Action -> Model -> Model
+update action slideShow =
+  let goto = clamp 0 (lastIndex slideShow)
+      nextIndex = case action of
+        GotoIndex index -> goto index
+        GotoNext -> goto (slideShow.currentIndex + 1)
+        GotoPrevious -> goto (slideShow.currentIndex - 1)
+        GotoFirst -> 0
+        GotoLast -> lastIndex slideShow
+  in
+    { slideShow | currentIndex <- nextIndex }
+
+-- View
+
+view : Model -> Html
+view slideShow =
   case getCurrent slideShow of
     Just slide -> slide
     Nothing -> Html.text <|
       "Error: slideShow.currentIndex = " ++ (toString slideShow.currentIndex) ++ " does not exist!"
-
--- Navigation
-
-type alias Update = SlideShow -> SlideShow
-
-gotoIndex : Int -> Update
-gotoIndex index slideShow =
-  { slideShow | currentIndex <- clamp 0 (lastIndex slideShow) index }
-
-gotoNext : Update
-gotoNext slideShow =
-  gotoIndex (slideShow.currentIndex + 1) slideShow
-
-gotoPrevious : Update
-gotoPrevious slideShow =
-  gotoIndex (slideShow.currentIndex - 1) slideShow
-
-gotoFirst : Update
-gotoFirst slideShow =
-  { slideShow | currentIndex <- 0 }
-
-gotoLast : Update
-gotoLast slideShow =
-  { slideShow | currentIndex <- lastIndex slideShow }

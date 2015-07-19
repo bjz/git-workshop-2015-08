@@ -3,25 +3,13 @@ import History
 import Html exposing (Html)
 import Keyboard
 import Markdown
-import Signal exposing ((<~), (~))
+import Signal exposing ((<~))
 import String
 import Task exposing (Task)
 
-import SlideShow exposing (SlideShow)
+import SlideShow
 
 -- Presentation
-
-parseMarkdown =
-  Markdown.toHtmlWith
-    { githubFlavored = Just { tables = True, breaks = True }
-    , sanitize = False
-    , smartypants = False
-    }
-
-slides =
-  src
-    |> String.split "---"
-    |> List.map parseMarkdown
 
 src = """
 
@@ -227,48 +215,56 @@ $ git rebase -i HEAD~3
 
 """
 
--- Routing
+-- Model
+
+type alias Model = SlideShow.Model
 
 port initialHash : String
 
 hashToInt : String -> Maybe Int
-hashToInt =
-  String.dropLeft 1 -- Drop the preceding '#'
-    >> String.toInt
-    >> Result.toMaybe
+hashToInt src =
+  src
+    |> String.dropLeft 1 -- Drop the preceding '#'
+    |> String.toInt
+    |> Result.toMaybe
 
-makeHash slideShow =
-  "#" ++ toString slideShow.currentIndex
+parseMarkdown =
+  Markdown.toHtmlWith
+    { githubFlavored = Just { tables = True, breaks = True }
+    , sanitize = False
+    , smartypants = False
+    }
 
-port runTask : Signal (Task error ())
-port runTask =
-  History.setPath <~ (makeHash <~ slideShows)
+slides =
+  src
+    |> String.split "---"
+    |> List.map parseMarkdown
 
-makeTitle slideShow =
-  "Git Tutorial Presentation (slide " ++ toString slideShow.currentIndex ++ ")"
-
-port title : Signal String
-port title =
-  makeTitle <~ slideShows
+slideShow : Model
+slideShow =
+  SlideShow.init
+    (slides |> Array.fromList)
+    (hashToInt initialHash |> Maybe.withDefault 0)
 
 -- Update
 
-update : Action -> SlideShow -> SlideShow
-update action =
+update : Action -> Model -> Model
+update action slideShow =
   case action of
-    NoOp       -> identity
-    Navigate f -> f
+    NoOp -> slideShow
+    Navigate action ->
+      SlideShow.update action slideShow
 
 -- View
 
-view : SlideShow -> Html
-view = SlideShow.toHtml
+view : Model -> Html
+view = SlideShow.view
 
 -- Input
 
 type Action
   = NoOp
-  | Navigate SlideShow.Update
+  | Navigate SlideShow.Action
 
 keysToAction : { x : Int, y : Int } -> Action
 keysToAction keys =
@@ -289,18 +285,23 @@ input =
       , keysToAction <~ Keyboard.arrows
       ]
 
-slideShows : Signal SlideShow
+slideShows : Signal Model
 slideShows =
   Signal.foldp update slideShow input |> Signal.dropRepeats
 
--- Main
+-- Output
 
-slideShow : SlideShow
-slideShow =
-  SlideShow.new
-    (slides |> Array.fromList)
-    (hashToInt initialHash |> Maybe.withDefault 0)
+setHash slideShow =
+  History.setPath ("#" ++ toString slideShow.currentIndex)
+
+port runTask : Signal (Task error ())
+port runTask = setHash <~ slideShows
+
+makeTitle slideShow =
+  "Git Tutorial Presentation (slide " ++ toString slideShow.currentIndex ++ ")"
+
+port title : Signal String
+port title = makeTitle <~ slideShows
 
 main : Signal Html
-main =
-  view <~ slideShows
+main = view <~ slideShows
