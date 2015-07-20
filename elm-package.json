@@ -10,9 +10,9 @@
     "dependencies": {
         "TheSeamau5/elm-history": "1.0.0 <= v < 2.0.0",
         "TheSeamau5/elm-router": "1.0.0 <= v < 2.0.0",
+        "circuithub/elm-html-shorthand": "9.0.0 <= v < 10.0.0",
         "elm-lang/core": "2.1.0 <= v < 3.0.0",
         "evancz/elm-html": "1.0.0 <= v < 4.0.0",
-        "evancz/elm-markdown": "1.1.4 <= v < 2.0.0",
         "vilterp/elm-diagrams": "5.1.0 <= v < 6.0.0"
     },
     "elm-version": "0.15.0 <= v < 0.16.0"

@@ -6,7 +6,6 @@ module Slide
   ) where
 
 import Html exposing (Html)
-import Markdown
 
 {-| A slide that can be animated to update incrementally.
 
