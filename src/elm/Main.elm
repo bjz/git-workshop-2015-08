@@ -45,18 +45,18 @@ type alias Model = SlideShow.Model
 
 port initialHash : String
 
-hashToInt : String -> Maybe Int
-hashToInt src =
-  src
-    |> String.dropLeft 1 -- Drop the preceding '#'
-    |> String.toInt
-    |> Result.toMaybe
+parseHash : String -> Maybe Int
+parseHash src =
+  case String.uncons src of
+    Just ('#', x) -> Result.toMaybe (String.toInt x)
+    Just (_, x) -> Nothing
+    Nothing -> Nothing
 
 slideShow : Model
 slideShow =
   SlideShow.init
     (slides |> Array.fromList)
-    (hashToInt initialHash |> Maybe.withDefault 0)
+    (parseHash initialHash |> Maybe.withDefault 0)
 
 -- Update
 
@@ -86,7 +86,7 @@ keysToAction keys =
 
 hashToAction : String -> Action
 hashToAction hash =
-  case hashToInt hash of
+  case parseHash hash of
     Just index -> Navigate (SlideShow.gotoIndex index)
     Nothing    -> NoOp
 
