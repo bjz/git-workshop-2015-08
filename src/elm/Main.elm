@@ -88,7 +88,7 @@ hashToAction : String -> Action
 hashToAction hash =
   case parseHash hash of
     Just index -> Navigate (SlideShow.gotoIndex index)
-    Nothing    -> NoOp
+    Nothing -> NoOp
 
 input : Signal Action
 input =
