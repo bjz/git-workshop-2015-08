@@ -104,7 +104,7 @@ slideShows =
 -- Output
 
 setHash slideShow =
-  History.setPath ("#" ++ toString slideShow.currentIndex)
+  History.replacePath ("#" ++ toString slideShow.currentIndex)
 
 port runTask : Signal (Task error ())
 port runTask = setHash <~ slideShows
