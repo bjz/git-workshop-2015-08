@@ -1,6 +1,6 @@
 module SlideShow
   ( Model, init
-  , Action, gotoIndex, gotoNext, gotoPrevious, gotoFirst, gotoLast
+  , Action, goto, gotoNext, gotoPrevious, gotoFirst, gotoLast
   , update, view
   ) where
 
@@ -40,15 +40,15 @@ lastIndex slideShow =
 
 
 type Action
-  = GotoIndex Int
+  = Goto Int
   | GotoNext
   | GotoPrevious
   | GotoFirst
   | GotoLast
 
 
-gotoIndex : Int -> Action
-gotoIndex = GotoIndex
+goto : Int -> Action
+goto = Goto
 
 
 gotoNext : Action
@@ -69,12 +69,12 @@ gotoLast = GotoLast
 
 update : Action -> Model -> Model
 update action slideShow =
-  let goto = clamp 0 (lastIndex slideShow)
+  let goto' = clamp 0 (lastIndex slideShow)
       nextIndex =
         case action of
-          GotoIndex index -> goto index
-          GotoNext -> goto (slideShow.currentIndex + 1)
-          GotoPrevious -> goto (slideShow.currentIndex - 1)
+          Goto index -> goto' index
+          GotoNext -> goto' (slideShow.currentIndex + 1)
+          GotoPrevious -> goto' (slideShow.currentIndex - 1)
           GotoFirst -> 0
           GotoLast -> lastIndex slideShow
   in
@@ -89,4 +89,4 @@ view slideShow =
   case getCurrent slideShow of
     Just slide -> slide
     Nothing -> Html.text <|
-      "Error: slideShow.currentIndex = " ++ (toString slideShow.currentIndex) ++ " does not exist!"
+      "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!"
