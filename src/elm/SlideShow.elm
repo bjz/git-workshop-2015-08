@@ -1,5 +1,5 @@
 module SlideShow
-  ( Model, init
+  ( Model, Slide, init
   , Action, goto, gotoNext, gotoPrevious, gotoFirst, gotoLast
   , update, view
   ) where
@@ -15,20 +15,23 @@ import Slide
 -- Model
 
 
+type alias Slide = List Html
+
+
 type alias Model =
   { currentIndex : Int
-  , slides : Array (List Html)
+  , slides : Array Slide
   }
 
 
-init : Array (List Html) -> Int -> Model
+init : Array Slide -> Int -> Model
 init slides index =
   { currentIndex = index
   , slides = slides
   }
 
 
-getCurrent : Model -> Maybe (List Html)
+getCurrent : Model -> Maybe Slide
 getCurrent slideShow =
   Array.get slideShow.currentIndex slideShow.slides
 

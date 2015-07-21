@@ -7,11 +7,11 @@ import Signal exposing ((<~))
 import String
 import Task exposing (Task)
 
-import SlideShow
+import SlideShow exposing (Slide)
 
 -- Presentation
 
-slides : List (List Html)
+slides : List Slide
 slides =
   [ [ Html.h1_ "Git"
     ]
