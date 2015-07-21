@@ -72,12 +72,12 @@ gotoLast = GotoLast
 
 update : Action -> Model -> Model
 update action slideShow =
-  let goto' = clamp 0 (lastIndex slideShow)
+  let clampIndex = clamp 0 (lastIndex slideShow)
       nextIndex =
         case action of
-          Goto index -> goto' index
-          GotoNext -> goto' (slideShow.currentIndex + 1)
-          GotoPrevious -> goto' (slideShow.currentIndex - 1)
+          Goto index -> clampIndex index
+          GotoNext -> clampIndex (slideShow.currentIndex + 1)
+          GotoPrevious -> clampIndex (slideShow.currentIndex - 1)
           GotoFirst -> 0
           GotoLast -> lastIndex slideShow
   in
