@@ -20,20 +20,19 @@ type alias Slide = List Html
 
 type alias Model =
   { currentIndex : Int
+  , currentSlide : Maybe Slide
   , slides : Array Slide
   }
 
 
 init : Array Slide -> Int -> Model
 init slides index =
-  { currentIndex = index
-  , slides = slides
-  }
+  update (goto index)
+    { currentIndex = 0
+    , currentSlide = Nothing
+    , slides = slides
+    }
 
-
-getCurrent : Model -> Maybe Slide
-getCurrent slideShow =
-  Array.get slideShow.currentIndex slideShow.slides
 
 lastIndex : Model -> Int
 lastIndex slideShow =
@@ -82,7 +81,10 @@ update action slideShow =
           GotoFirst -> 0
           GotoLast -> lastIndex slideShow
   in
-    { slideShow | currentIndex <- nextIndex }
+    { slideShow
+    | currentIndex <- nextIndex
+    , currentSlide <- Array.get nextIndex slideShow.slides
+    }
 
 
 -- View
@@ -92,7 +94,7 @@ view : Model -> Html
 view slideShow =
   Html.section
     [ Html.class "slide" ]
-    <| case getCurrent slideShow of
+    <| case slideShow.currentSlide of
       Just slide -> slide
       Nothing ->
         [ Html.text <| "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!" ]
