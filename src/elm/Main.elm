@@ -3,6 +3,7 @@ import History
 import Html exposing (Html)
 import Html.Shorthand as Html
 import Keyboard
+import Mouse
 import Signal exposing ((<~))
 import String
 import Task exposing (Task)
@@ -81,6 +82,10 @@ keysToAction keys =
      | keys.x < 0 -> Navigate SlideShow.gotoPrevious
      | otherwise  -> NoOp
 
+clicksToAction : () -> Action
+clicksToAction () =
+  Navigate SlideShow.gotoNext
+
 hashToAction : String -> Action
 hashToAction hash =
   case parseHash hash of
@@ -91,6 +96,7 @@ input : Signal Action
 input =
     Signal.mergeMany
       [ hashToAction <~ Signal.dropRepeats History.hash
+      , clicksToAction <~ Mouse.clicks
       , keysToAction <~ Keyboard.arrows
       ]
 
