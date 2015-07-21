@@ -6,6 +6,7 @@ module SlideShow
 
 import Array exposing (Array)
 import Html exposing (Html)
+import Html.Attributes as Html
 import String
 
 import Slide
@@ -16,18 +17,18 @@ import Slide
 
 type alias Model =
   { currentIndex : Int
-  , slides : Array Html
+  , slides : Array (List Html)
   }
 
 
-init : Array Html -> Int -> Model
+init : Array (List Html) -> Int -> Model
 init slides index =
   { currentIndex = index
   , slides = slides
   }
 
 
-getCurrent : Model -> Maybe Html
+getCurrent : Model -> Maybe (List Html)
 getCurrent slideShow =
   Array.get slideShow.currentIndex slideShow.slides
 
@@ -86,7 +87,9 @@ update action slideShow =
 
 view : Model -> Html
 view slideShow =
-  case getCurrent slideShow of
-    Just slide -> slide
-    Nothing -> Html.text <|
-      "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!"
+  Html.section
+    [ Html.class "slide" ]
+    <| case getCurrent slideShow of
+      Just slide -> slide
+      Nothing ->
+        [ Html.text <| "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!" ]

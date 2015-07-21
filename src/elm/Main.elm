@@ -11,32 +11,29 @@ import SlideShow
 
 -- Presentation
 
-slides : List Html
+slides : List (List Html)
 slides =
-  [ Html.section []
-      [ Html.h1_ "Git"
-      ]
+  [ [ Html.h1_ "Git"
+    ]
 
-  , Html.section []
-      [ Html.p []
-          [ Html.text "Most common workflow:" ]
-      , Html.ol []
-          [ Html.li [] [ Html.text "create" ]
-          , Html.li [] [ Html.text "edit" ]
-          , Html.li [] [ Html.text "save" ]
-          , Html.li [] [ Html.text "goto 2" ]
-          ]
-      ]
+  , [ Html.p []
+        [ Html.text "Most common workflow:" ]
+    , Html.ol []
+        [ Html.li [] [ Html.text "create" ]
+        , Html.li [] [ Html.text "edit" ]
+        , Html.li [] [ Html.text "save" ]
+        , Html.li [] [ Html.text "goto 2" ]
+        ]
+    ]
 
-  , Html.section []
-      [ Html.h2_ "Starting a git repository"
-      , Html.p []
-          [ Html.text "In a new directory:" ]
-      , Html.code []
-          [ Html.text "git init" ]
-      , Html.p []
-          [ Html.text "This will initialize a new repository in that directory." ]
-      ]
+  , [ Html.h2_ "Starting a git repository"
+    , Html.p []
+        [ Html.text "In a new directory:" ]
+    , Html.code []
+        [ Html.text "git init" ]
+    , Html.p []
+        [ Html.text "This will initialize a new repository in that directory." ]
+    ]
   ]
 
 -- Model
