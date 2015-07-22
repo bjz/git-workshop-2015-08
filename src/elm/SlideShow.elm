@@ -86,9 +86,14 @@ update action slideShow =
 -- View
 
 
+viewOverflow : Int -> Slide
+viewOverflow index =
+  [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
+
+
 view : SlideShow -> Html
 view slideShow =
   Html.section [ Html.class "slide" ] <|
     case slideShow.currentSlide of
       Just slide -> slide
-      Nothing -> [ Html.text <| "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!" ]
+      Nothing -> viewOverflow slideShow.currentIndex
