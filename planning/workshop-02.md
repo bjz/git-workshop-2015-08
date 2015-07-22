@@ -6,17 +6,32 @@
 
 ### 1
 
-Add new repository on github
-
 ```
-cd ~/code
 mkdir my_repo
 cd my_repo
 git init
-echo "# my_repo" > README.md
+```
+
+Make a `README.md` file in the root of your repository with `subl README.md`.
+
+```
+# My repository!
+
+This is an amazing repo!
+```
+
+Now stage the changes and commit.
+
+```
 git add README.md
 git commit -m "Initial commit"
+```
+
+Create a github repository, then add it as a remote and push your commits:
+
+```
 git remote add origin <url>
+git push
 ```
 
 ### 2
@@ -38,6 +53,23 @@ git push
 ```
 
 Make a new PR, targeting main repo, with a message
+
+## Extension
+
+Additional tasks:
+
+Make an `index.html` page:
+
+```
+<head>
+  <title>A page!</title>
+</head>
+<body>
+  <p>Hi there!</p>
+</body>
+```
+
+Do something to make it a github page. :P
 
 ## Examples
 
