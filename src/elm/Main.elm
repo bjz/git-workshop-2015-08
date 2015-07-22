@@ -76,24 +76,21 @@ type Action
   = NoOp
   | Navigate SlideShow.Action
 
-keysToAction : { x : Int, y : Int } -> Action
-keysToAction keys =
-  if | keys.x > 0 -> Navigate SlideShow.gotoNext
-     | keys.x < 0 -> Navigate SlideShow.gotoPrevious
-     | otherwise  -> NoOp
-
-clicksToAction : () -> Action
-clicksToAction () =
-  Navigate SlideShow.gotoNext
-
-hashToAction : String -> Action
-hashToAction hash =
-  case parseHash hash of
-    Just index -> Navigate (SlideShow.goto index)
-    Nothing -> NoOp
-
 input : Signal Action
 input =
+  let keysToAction keys =
+        if | keys.x > 0 -> Navigate SlideShow.gotoNext
+           | keys.x < 0 -> Navigate SlideShow.gotoPrevious
+           | otherwise  -> NoOp
+
+      clicksToAction () =
+        Navigate SlideShow.gotoNext
+
+      hashToAction hash =
+        case parseHash hash of
+          Just index -> Navigate (SlideShow.goto index)
+          Nothing -> NoOp
+  in
     Signal.mergeMany
       [ hashToAction <~ Signal.dropRepeats History.hash
       , clicksToAction <~ Mouse.clicks
