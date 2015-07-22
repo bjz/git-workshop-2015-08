@@ -7,6 +7,7 @@ module SlideShow
 import Array exposing (Array)
 import Html exposing (Html)
 import Html.Attributes as Html
+import TypedStyles as Style exposing (px)
 import String
 
 import Slide
@@ -91,9 +92,15 @@ viewOverflow index =
   [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
 
 
-view : SlideShow -> Html
-view slideShow =
-  Html.section [ Html.class "slide" ] <|
+view : { width : Int, height : Int } -> SlideShow -> Html
+view dimensions slideShow =
+  Html.section
+    [ Html.class "slide"
+    , Html.style
+        [ Style.width dimensions.width px
+        , Style.height dimensions.height px
+        ]
+    ] <|
     case slideShow.currentSlide of
       Just slide -> slide
       Nothing -> viewOverflow slideShow.currentIndex

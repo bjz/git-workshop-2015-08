@@ -4,9 +4,10 @@ import Html exposing (Html)
 import Html.Shorthand as Html
 import Keyboard
 import Mouse
-import Signal exposing ((<~))
+import Signal exposing ((<~), (~))
 import String
 import Task exposing (Task)
+import Window
 
 import SlideShow exposing (SlideShow, Slide)
 
@@ -65,8 +66,9 @@ update action slideShow =
 
 -- View
 
-view : SlideShow -> Html
-view = SlideShow.view
+view : (Int, Int) -> SlideShow -> Html
+view (w, h) =
+  SlideShow.view { width = w, height = h }
 
 -- Input
 
@@ -117,4 +119,4 @@ port title : Signal String
 port title = makeTitle <~ slideShows
 
 main : Signal Html
-main = view <~ slideShows
+main = view <~ Window.dimensions ~ slideShows

@@ -40,7 +40,7 @@ gulp.task('build', ['build:elm', 'build:sass', 'build:pages']);
 gulp.task('watch', ['build'], function() {
   var index_path = tildify(__dirname + '/tmp/index.html');
   util.log('Homepage built to', util.colors.magenta(index_path));
-  gulp.watch(['./src/elm/**/*.elm', './elm-package.json'], ['build:elm']);
+  gulp.watch(['./src/elm/**/*.elm'], ['build:elm']);
   gulp.watch(['./src/styles/**/*.scss'], ['build:sass']);
   gulp.watch(['./src/pages/**/*.html'], ['build:pages']);
 });
