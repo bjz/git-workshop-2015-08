@@ -1,5 +1,5 @@
 module SlideShow
-  ( Model, Slide, init
+  ( SlideShow, Slide, init
   , Action, goto, gotoNext, gotoPrevious, gotoFirst, gotoLast
   , update, view
   ) where
@@ -12,20 +12,20 @@ import String
 import Slide
 
 
--- Model
+-- SlideShow
 
 
 type alias Slide = List Html
 
 
-type alias Model =
+type alias SlideShow =
   { currentIndex : Int
   , currentSlide : Maybe Slide
   , slides : Array Slide
   }
 
 
-init : Array Slide -> Int -> Model
+init : Array Slide -> Int -> SlideShow
 init slides index =
   update (goto index)
     { currentIndex = 0
@@ -34,7 +34,7 @@ init slides index =
     }
 
 
-lastIndex : Model -> Int
+lastIndex : SlideShow -> Int
 lastIndex slideShow =
   (Array.length slideShow.slides) - 1
 
@@ -70,7 +70,7 @@ gotoLast : Action
 gotoLast = GotoLast
 
 
-update : Action -> Model -> Model
+update : Action -> SlideShow -> SlideShow
 update action slideShow =
   let clampIndex = clamp 0 (lastIndex slideShow)
       nextIndex =
@@ -90,11 +90,9 @@ update action slideShow =
 -- View
 
 
-view : Model -> Html
+view : SlideShow -> Html
 view slideShow =
-  Html.section
-    [ Html.class "slide" ]
-    <| case slideShow.currentSlide of
+  Html.section [ Html.class "slide" ] <|
+    case slideShow.currentSlide of
       Just slide -> slide
-      Nothing ->
-        [ Html.text <| "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!" ]
+      Nothing -> [ Html.text <| "Slide #" ++ (toString slideShow.currentIndex) ++ " does not exist!" ]

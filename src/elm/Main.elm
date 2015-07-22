@@ -8,7 +8,7 @@ import Signal exposing ((<~))
 import String
 import Task exposing (Task)
 
-import SlideShow exposing (Slide)
+import SlideShow exposing (SlideShow, Slide)
 
 -- Presentation
 
@@ -39,8 +39,6 @@ slides =
 
 -- Model
 
-type alias Model = SlideShow.Model
-
 port initialHash : String
 
 parseHash : String -> Maybe Int
@@ -50,7 +48,7 @@ parseHash src =
     Just (_, x) -> Nothing
     Nothing -> Nothing
 
-slideShow : Model
+slideShow : SlideShow
 slideShow =
   SlideShow.init
     (slides |> Array.fromList)
@@ -58,7 +56,7 @@ slideShow =
 
 -- Update
 
-update : Action -> Model -> Model
+update : Action -> SlideShow -> SlideShow
 update action slideShow =
   case action of
     NoOp -> slideShow
@@ -67,7 +65,7 @@ update action slideShow =
 
 -- View
 
-view : Model -> Html
+view : SlideShow -> Html
 view = SlideShow.view
 
 -- Input
@@ -100,9 +98,9 @@ input =
       , keysToAction <~ Keyboard.arrows
       ]
 
-slideShows : Signal Model
+slideShows : Signal SlideShow
 slideShows =
-  Signal.foldp update slideShow input |> Signal.dropRepeats
+  Signal.foldp update slideShow input
 
 -- Output
 
