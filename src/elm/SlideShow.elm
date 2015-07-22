@@ -34,11 +34,6 @@ init slides index =
     }
 
 
-lastIndex : SlideShow -> Int
-lastIndex slideShow =
-  (Array.length slideShow.slides) - 1
-
-
 -- Update
 
 
@@ -72,14 +67,15 @@ gotoLast = GotoLast
 
 update : Action -> SlideShow -> SlideShow
 update action slideShow =
-  let clampIndex = clamp 0 (lastIndex slideShow)
+  let lastIndex = (Array.length slideShow.slides) - 1
+      clampIndex = clamp 0 lastIndex
       nextIndex =
         case action of
           Goto index -> clampIndex index
           GotoNext -> clampIndex (slideShow.currentIndex + 1)
           GotoPrevious -> clampIndex (slideShow.currentIndex - 1)
           GotoFirst -> 0
-          GotoLast -> lastIndex slideShow
+          GotoLast -> lastIndex
   in
     { slideShow
     | currentIndex <- nextIndex
