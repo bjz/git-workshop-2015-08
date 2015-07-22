@@ -19,12 +19,6 @@ git clone https://github.com/bjz/git-workshop-2015-08.git
 cd git-workshop-2015-08
 ```
 
-Checkout the development branch:
-
-```
-git checkout -b master --track origin/master
-```
-
 Install the javascript dependencies:
 
 ```
@@ -46,4 +40,3 @@ Press `ctrl + C` to stop watching.
 ```
 gulp deploy
 ```
-
