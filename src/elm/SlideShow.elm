@@ -10,8 +10,6 @@ import Html.Attributes as Html
 import TypedStyles as Style exposing (px)
 import String
 
-import Slide
-
 
 -- SlideShow
 
@@ -33,6 +31,12 @@ init slides index =
     , currentSlide = Nothing
     , slides = slides
     }
+
+
+{-| A slide to be shown if the index is out of bounds -}
+overflowSlide : Int -> Slide
+overflowSlide index =
+  [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
 
 
 -- Update
@@ -87,11 +91,6 @@ update action slideShow =
 -- View
 
 
-viewOverflow : Int -> Slide
-viewOverflow index =
-  [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
-
-
 view : { width : Int, height : Int } -> SlideShow -> Html
 view dimensions slideShow =
   Html.section
@@ -103,4 +102,4 @@ view dimensions slideShow =
     ] <|
     case slideShow.currentSlide of
       Just slide -> slide
-      Nothing -> viewOverflow slideShow.currentIndex
+      Nothing -> overflowSlide slideShow.currentIndex
