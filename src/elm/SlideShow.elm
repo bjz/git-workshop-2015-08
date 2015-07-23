@@ -7,7 +7,7 @@ module SlideShow
 import Array exposing (Array)
 import Html exposing (Html)
 import Html.Attributes as Html
-import TypedStyles as Style exposing (px)
+import TypedStyles as Css exposing (px)
 import String
 
 
@@ -92,12 +92,12 @@ update action slideShow =
 
 
 view : { width : Int, height : Int } -> SlideShow -> Html
-view dimensions slideShow =
+view { width, height } slideShow =
   Html.section
     [ Html.class "slide"
     , Html.style
-        [ Style.width dimensions.width px
-        , Style.height dimensions.height px
+        [ Css.width width px
+        , Css.height height px
         ]
     ] <|
     case slideShow.currentSlide of
