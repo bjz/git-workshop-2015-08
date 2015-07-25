@@ -63,7 +63,9 @@ gulp.task('readme', function() {
 gulp.task('deploy', ['build', 'readme'], function() {
   return gulp.src('./tmp/**/*')
     .pipe(prompt.confirm('This will update the live site. Are you sure?'))
-    .pipe(ghPages());
+    .pipe(ghPages({
+      remoteUrl: 'git@github.com:bjz/git-workshop-2015-08.git',
+    }));
 });
 
 // Cleaning
