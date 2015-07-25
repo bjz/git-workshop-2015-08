@@ -15833,7 +15833,7 @@ Elm.SlideShow.make = function (_elm) {
                case "Previous":
                return clampIndex(slideShow.currentIndex - 1);}
             _U.badCase($moduleName,
-            "between lines 96 and 103");
+            "between lines 88 and 95");
          }();
          return _U.replace([["currentIndex"
                             ,nextIndex]
@@ -15847,26 +15847,13 @@ Elm.SlideShow.make = function (_elm) {
    var NoOp = {ctor: "NoOp"};
    var current = NoOp;
    var Last = {ctor: "Last"};
-   var gotoLast = Last;
+   var last = Last;
    var First = {ctor: "First"};
    var first = First;
    var Previous = {ctor: "Previous"};
    var previous = Previous;
    var Next = {ctor: "Next"};
    var next = Next;
-   var Goto = function (a) {
-      return {ctor: "Goto",_0: a};
-   };
-   var $goto = Goto;
-   var overflowSlide = function (index) {
-      return {_: {}
-             ,notes: ""
-             ,view: _L.fromArray([$Html.text(A2($Basics._op["++"],
-             "Slide #",
-             A2($Basics._op["++"],
-             $Basics.toString(index),
-             " does not exist!")))])};
-   };
    var view = F2(function (address,
    slideShow) {
       return function () {
@@ -15876,9 +15863,13 @@ Elm.SlideShow.make = function (_elm) {
             {case "Just":
                return _v2._0.view;
                case "Nothing":
-               return overflowSlide(slideShow.currentIndex).view;}
+               return _L.fromArray([$Html.text(A2($Basics._op["++"],
+                 "Slide #",
+                 A2($Basics._op["++"],
+                 $Basics.toString(slideShow.currentIndex),
+                 " does not exist!")))]);}
             _U.badCase($moduleName,
-            "between lines 133 and 136");
+            "between lines 125 and 129");
          }());
          var navButton = F3(function ($class,
          text,
@@ -15907,6 +15898,10 @@ Elm.SlideShow.make = function (_elm) {
          _L.fromArray([controls,slide]));
       }();
    });
+   var Goto = function (a) {
+      return {ctor: "Goto",_0: a};
+   };
+   var $goto = Goto;
    var init = function (options) {
       return A2(update,
       $goto(options.index),
@@ -15940,7 +15935,7 @@ Elm.SlideShow.make = function (_elm) {
                            ,next: next
                            ,previous: previous
                            ,first: first
-                           ,gotoLast: gotoLast
+                           ,last: last
                            ,current: current
                            ,update: update
                            ,view: view
