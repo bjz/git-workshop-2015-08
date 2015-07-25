@@ -19,18 +19,17 @@
       <li>In an administrator-enabled command prompt, run the following commands:
 <pre class="command-line cmd-exe">
 <span class="command">choco install git</span>                            <span class="comment"># Git!</span>
-<span class="command">choco install cmder -pre</span>                     <span class="comment"># A prettier terminal than cmd.exe :)</span>
 <span class="command">choco install sublimetext3</span>                   <span class="comment"># The editor we will be using</span>
-<span class="command">choco install sublimetext3.powershellalias</span>   <span class="comment"># A handy `subl` alias for opening sublime text</span>
+<span class="command">choco install cmder</span>                          <span class="comment"># A prettier terminal than cmd.exe :)</span>
 </pre>
-      </li>
-      <li>Install <a href="https://www.microsoft.com/en-US/download/details.aspx?id=46881">Visual C++ Redistributable</a> (this should allow you to run cmder)</li>
+      Note: If you see an error when installing cmder, you might need to install <a href="https://www.microsoft.com/en-US/download/details.aspx?id=46881">Visual C++ Redistributable</a>.</li>
+      <li>Add the <code>subl</code> command to your <code>PATH</code>. (See <a href="https://scotch.io/tutorials/open-sublime-text-from-the-command-line-using-subl-exe-windows">this blog post</a> for help)</li>
       <li>Check if everything installed correctly by opening up the Cmder application that you installed before, then running:
 <pre class="command-line cmd-exe">
 <span class="command">git help</span>   <span class="comment"># This should print out a help message for Git</span>
 <span class="command">subl .</span>     <span class="comment"># Sublime text should open in the current working directory</span>
 </pre></li>
-      <li>Suggested Sublime Text settings:
+      <li>Suggested Sublime Text settings (under <code>Preferences > Settings - User</code>):
 <pre>
 {
   <span class="string">"default_line_ending"</span>: <span class="string">"unix"</span>,
@@ -59,7 +58,7 @@
 
     <ol>
       <li>Install <a href="http://www.sublimetext.com/3">Sublime Text 3</a></li>
-      <li>Suggested Sublime Text settings:
+      <li>Suggested Sublime Text settings (under <code>Sublime Text > Preferences > Settings - User</code>):
 <pre>
 {
   <span class="string">"highlight_line"</span>: <span class="literal">true</span>,

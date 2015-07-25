@@ -2952,6 +2952,3021 @@ Elm.Html.make = function (_elm) {
                       ,menu: menu};
    return _elm.Html.values;
 };
+Elm.Html = Elm.Html || {};
+Elm.Html.Attributes = Elm.Html.Attributes || {};
+Elm.Html.Attributes.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Attributes = _elm.Html.Attributes || {};
+   if (_elm.Html.Attributes.values)
+   return _elm.Html.Attributes.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Attributes",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Json$Encode = Elm.Json.Encode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm),
+   $VirtualDom = Elm.VirtualDom.make(_elm);
+   var attribute = $VirtualDom.attribute;
+   var property = $VirtualDom.property;
+   var stringProperty = F2(function (name,
+   string) {
+      return A2(property,
+      name,
+      $Json$Encode.string(string));
+   });
+   var $class = function (name) {
+      return A2(stringProperty,
+      "className",
+      name);
+   };
+   var id = function (name) {
+      return A2(stringProperty,
+      "id",
+      name);
+   };
+   var title = function (name) {
+      return A2(stringProperty,
+      "title",
+      name);
+   };
+   var accesskey = function ($char) {
+      return A2(stringProperty,
+      "accesskey",
+      $String.fromList(_L.fromArray([$char])));
+   };
+   var contextmenu = function (value) {
+      return A2(stringProperty,
+      "contextmenu",
+      value);
+   };
+   var dir = function (value) {
+      return A2(stringProperty,
+      "dir",
+      value);
+   };
+   var draggable = function (value) {
+      return A2(stringProperty,
+      "draggable",
+      value);
+   };
+   var dropzone = function (value) {
+      return A2(stringProperty,
+      "dropzone",
+      value);
+   };
+   var itemprop = function (value) {
+      return A2(stringProperty,
+      "itemprop",
+      value);
+   };
+   var lang = function (value) {
+      return A2(stringProperty,
+      "lang",
+      value);
+   };
+   var tabindex = function (n) {
+      return A2(stringProperty,
+      "tabIndex",
+      $Basics.toString(n));
+   };
+   var charset = function (value) {
+      return A2(stringProperty,
+      "charset",
+      value);
+   };
+   var content = function (value) {
+      return A2(stringProperty,
+      "content",
+      value);
+   };
+   var httpEquiv = function (value) {
+      return A2(stringProperty,
+      "httpEquiv",
+      value);
+   };
+   var language = function (value) {
+      return A2(stringProperty,
+      "language",
+      value);
+   };
+   var src = function (value) {
+      return A2(stringProperty,
+      "src",
+      value);
+   };
+   var height = function (value) {
+      return A2(stringProperty,
+      "height",
+      $Basics.toString(value));
+   };
+   var width = function (value) {
+      return A2(stringProperty,
+      "width",
+      $Basics.toString(value));
+   };
+   var alt = function (value) {
+      return A2(stringProperty,
+      "alt",
+      value);
+   };
+   var preload = function (value) {
+      return A2(stringProperty,
+      "preload",
+      value);
+   };
+   var poster = function (value) {
+      return A2(stringProperty,
+      "poster",
+      value);
+   };
+   var kind = function (value) {
+      return A2(stringProperty,
+      "kind",
+      value);
+   };
+   var srclang = function (value) {
+      return A2(stringProperty,
+      "srclang",
+      value);
+   };
+   var sandbox = function (value) {
+      return A2(stringProperty,
+      "sandbox",
+      value);
+   };
+   var srcdoc = function (value) {
+      return A2(stringProperty,
+      "srcdoc",
+      value);
+   };
+   var type$ = function (value) {
+      return A2(stringProperty,
+      "type",
+      value);
+   };
+   var value = function (value) {
+      return A2(stringProperty,
+      "value",
+      value);
+   };
+   var placeholder = function (value) {
+      return A2(stringProperty,
+      "placeholder",
+      value);
+   };
+   var accept = function (value) {
+      return A2(stringProperty,
+      "accept",
+      value);
+   };
+   var acceptCharset = function (value) {
+      return A2(stringProperty,
+      "acceptCharset",
+      value);
+   };
+   var action = function (value) {
+      return A2(stringProperty,
+      "action",
+      value);
+   };
+   var autocomplete = function (bool) {
+      return A2(stringProperty,
+      "autocomplete",
+      bool ? "on" : "off");
+   };
+   var autosave = function (value) {
+      return A2(stringProperty,
+      "autosave",
+      value);
+   };
+   var enctype = function (value) {
+      return A2(stringProperty,
+      "enctype",
+      value);
+   };
+   var formaction = function (value) {
+      return A2(stringProperty,
+      "formaction",
+      value);
+   };
+   var list = function (value) {
+      return A2(stringProperty,
+      "list",
+      value);
+   };
+   var minlength = function (n) {
+      return A2(stringProperty,
+      "minLength",
+      $Basics.toString(n));
+   };
+   var maxlength = function (n) {
+      return A2(stringProperty,
+      "maxLength",
+      $Basics.toString(n));
+   };
+   var method = function (value) {
+      return A2(stringProperty,
+      "method",
+      value);
+   };
+   var name = function (value) {
+      return A2(stringProperty,
+      "name",
+      value);
+   };
+   var pattern = function (value) {
+      return A2(stringProperty,
+      "pattern",
+      value);
+   };
+   var size = function (n) {
+      return A2(stringProperty,
+      "size",
+      $Basics.toString(n));
+   };
+   var $for = function (value) {
+      return A2(stringProperty,
+      "htmlFor",
+      value);
+   };
+   var form = function (value) {
+      return A2(stringProperty,
+      "form",
+      value);
+   };
+   var max = function (value) {
+      return A2(stringProperty,
+      "max",
+      value);
+   };
+   var min = function (value) {
+      return A2(stringProperty,
+      "min",
+      value);
+   };
+   var step = function (n) {
+      return A2(stringProperty,
+      "step",
+      n);
+   };
+   var cols = function (n) {
+      return A2(stringProperty,
+      "cols",
+      $Basics.toString(n));
+   };
+   var rows = function (n) {
+      return A2(stringProperty,
+      "rows",
+      $Basics.toString(n));
+   };
+   var wrap = function (value) {
+      return A2(stringProperty,
+      "wrap",
+      value);
+   };
+   var usemap = function (value) {
+      return A2(stringProperty,
+      "useMap",
+      value);
+   };
+   var shape = function (value) {
+      return A2(stringProperty,
+      "shape",
+      value);
+   };
+   var coords = function (value) {
+      return A2(stringProperty,
+      "coords",
+      value);
+   };
+   var challenge = function (value) {
+      return A2(stringProperty,
+      "challenge",
+      value);
+   };
+   var keytype = function (value) {
+      return A2(stringProperty,
+      "keytype",
+      value);
+   };
+   var align = function (value) {
+      return A2(stringProperty,
+      "align",
+      value);
+   };
+   var cite = function (value) {
+      return A2(stringProperty,
+      "cite",
+      value);
+   };
+   var href = function (value) {
+      return A2(stringProperty,
+      "href",
+      value);
+   };
+   var target = function (value) {
+      return A2(stringProperty,
+      "target",
+      value);
+   };
+   var downloadAs = function (value) {
+      return A2(stringProperty,
+      "download",
+      value);
+   };
+   var hreflang = function (value) {
+      return A2(stringProperty,
+      "hreflang",
+      value);
+   };
+   var media = function (value) {
+      return A2(stringProperty,
+      "media",
+      value);
+   };
+   var ping = function (value) {
+      return A2(stringProperty,
+      "ping",
+      value);
+   };
+   var rel = function (value) {
+      return A2(stringProperty,
+      "rel",
+      value);
+   };
+   var datetime = function (value) {
+      return A2(stringProperty,
+      "datetime",
+      value);
+   };
+   var pubdate = function (value) {
+      return A2(stringProperty,
+      "pubdate",
+      value);
+   };
+   var start = function (n) {
+      return A2(stringProperty,
+      "start",
+      $Basics.toString(n));
+   };
+   var colspan = function (n) {
+      return A2(stringProperty,
+      "colSpan",
+      $Basics.toString(n));
+   };
+   var headers = function (value) {
+      return A2(stringProperty,
+      "headers",
+      value);
+   };
+   var rowspan = function (n) {
+      return A2(stringProperty,
+      "rowSpan",
+      $Basics.toString(n));
+   };
+   var scope = function (value) {
+      return A2(stringProperty,
+      "scope",
+      value);
+   };
+   var manifest = function (value) {
+      return A2(stringProperty,
+      "manifest",
+      value);
+   };
+   var boolProperty = F2(function (name,
+   bool) {
+      return A2(property,
+      name,
+      $Json$Encode.bool(bool));
+   });
+   var hidden = function (bool) {
+      return A2(boolProperty,
+      "hidden",
+      bool);
+   };
+   var contenteditable = function (bool) {
+      return A2(boolProperty,
+      "contentEditable",
+      bool);
+   };
+   var spellcheck = function (bool) {
+      return A2(boolProperty,
+      "spellcheck",
+      bool);
+   };
+   var async = function (bool) {
+      return A2(boolProperty,
+      "async",
+      bool);
+   };
+   var defer = function (bool) {
+      return A2(boolProperty,
+      "defer",
+      bool);
+   };
+   var scoped = function (bool) {
+      return A2(boolProperty,
+      "scoped",
+      bool);
+   };
+   var autoplay = function (bool) {
+      return A2(boolProperty,
+      "autoplay",
+      bool);
+   };
+   var controls = function (bool) {
+      return A2(boolProperty,
+      "controls",
+      bool);
+   };
+   var loop = function (bool) {
+      return A2(boolProperty,
+      "loop",
+      bool);
+   };
+   var $default = function (bool) {
+      return A2(boolProperty,
+      "default",
+      bool);
+   };
+   var seamless = function (bool) {
+      return A2(boolProperty,
+      "seamless",
+      bool);
+   };
+   var checked = function (bool) {
+      return A2(boolProperty,
+      "checked",
+      bool);
+   };
+   var selected = function (bool) {
+      return A2(boolProperty,
+      "selected",
+      bool);
+   };
+   var autofocus = function (bool) {
+      return A2(boolProperty,
+      "autofocus",
+      bool);
+   };
+   var disabled = function (bool) {
+      return A2(boolProperty,
+      "disabled",
+      bool);
+   };
+   var multiple = function (bool) {
+      return A2(boolProperty,
+      "multiple",
+      bool);
+   };
+   var novalidate = function (bool) {
+      return A2(boolProperty,
+      "noValidate",
+      bool);
+   };
+   var readonly = function (bool) {
+      return A2(boolProperty,
+      "readOnly",
+      bool);
+   };
+   var required = function (bool) {
+      return A2(boolProperty,
+      "required",
+      bool);
+   };
+   var ismap = function (value) {
+      return A2(boolProperty,
+      "isMap",
+      value);
+   };
+   var download = function (bool) {
+      return A2(boolProperty,
+      "download",
+      bool);
+   };
+   var reversed = function (bool) {
+      return A2(boolProperty,
+      "reversed",
+      bool);
+   };
+   var classList = function (list) {
+      return $class($String.join(" ")($List.map($Basics.fst)($List.filter($Basics.snd)(list))));
+   };
+   var style = function (props) {
+      return property("style")($Json$Encode.object($List.map(function (_v0) {
+         return function () {
+            switch (_v0.ctor)
+            {case "_Tuple2":
+               return {ctor: "_Tuple2"
+                      ,_0: _v0._0
+                      ,_1: $Json$Encode.string(_v0._1)};}
+            _U.badCase($moduleName,
+            "on line 133, column 35 to 57");
+         }();
+      })(props)));
+   };
+   var key = function (k) {
+      return A2(stringProperty,
+      "key",
+      k);
+   };
+   _elm.Html.Attributes.values = {_op: _op
+                                 ,key: key
+                                 ,style: style
+                                 ,classList: classList
+                                 ,property: property
+                                 ,stringProperty: stringProperty
+                                 ,boolProperty: boolProperty
+                                 ,attribute: attribute
+                                 ,$class: $class
+                                 ,hidden: hidden
+                                 ,id: id
+                                 ,title: title
+                                 ,accesskey: accesskey
+                                 ,contenteditable: contenteditable
+                                 ,contextmenu: contextmenu
+                                 ,dir: dir
+                                 ,draggable: draggable
+                                 ,dropzone: dropzone
+                                 ,itemprop: itemprop
+                                 ,lang: lang
+                                 ,spellcheck: spellcheck
+                                 ,tabindex: tabindex
+                                 ,async: async
+                                 ,charset: charset
+                                 ,content: content
+                                 ,defer: defer
+                                 ,httpEquiv: httpEquiv
+                                 ,language: language
+                                 ,scoped: scoped
+                                 ,src: src
+                                 ,height: height
+                                 ,width: width
+                                 ,alt: alt
+                                 ,autoplay: autoplay
+                                 ,controls: controls
+                                 ,loop: loop
+                                 ,preload: preload
+                                 ,poster: poster
+                                 ,$default: $default
+                                 ,kind: kind
+                                 ,srclang: srclang
+                                 ,sandbox: sandbox
+                                 ,seamless: seamless
+                                 ,srcdoc: srcdoc
+                                 ,type$: type$
+                                 ,value: value
+                                 ,checked: checked
+                                 ,placeholder: placeholder
+                                 ,selected: selected
+                                 ,accept: accept
+                                 ,acceptCharset: acceptCharset
+                                 ,action: action
+                                 ,autocomplete: autocomplete
+                                 ,autofocus: autofocus
+                                 ,autosave: autosave
+                                 ,disabled: disabled
+                                 ,enctype: enctype
+                                 ,formaction: formaction
+                                 ,list: list
+                                 ,minlength: minlength
+                                 ,maxlength: maxlength
+                                 ,method: method
+                                 ,multiple: multiple
+                                 ,name: name
+                                 ,novalidate: novalidate
+                                 ,pattern: pattern
+                                 ,readonly: readonly
+                                 ,required: required
+                                 ,size: size
+                                 ,$for: $for
+                                 ,form: form
+                                 ,max: max
+                                 ,min: min
+                                 ,step: step
+                                 ,cols: cols
+                                 ,rows: rows
+                                 ,wrap: wrap
+                                 ,ismap: ismap
+                                 ,usemap: usemap
+                                 ,shape: shape
+                                 ,coords: coords
+                                 ,challenge: challenge
+                                 ,keytype: keytype
+                                 ,align: align
+                                 ,cite: cite
+                                 ,href: href
+                                 ,target: target
+                                 ,download: download
+                                 ,downloadAs: downloadAs
+                                 ,hreflang: hreflang
+                                 ,media: media
+                                 ,ping: ping
+                                 ,rel: rel
+                                 ,datetime: datetime
+                                 ,pubdate: pubdate
+                                 ,reversed: reversed
+                                 ,start: start
+                                 ,colspan: colspan
+                                 ,headers: headers
+                                 ,rowspan: rowspan
+                                 ,scope: scope
+                                 ,manifest: manifest};
+   return _elm.Html.Attributes.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Attributes = Elm.Html.Attributes || {};
+Elm.Html.Attributes.Extra = Elm.Html.Attributes.Extra || {};
+Elm.Html.Attributes.Extra.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Attributes = _elm.Html.Attributes || {};
+   _elm.Html.Attributes.Extra = _elm.Html.Attributes.Extra || {};
+   if (_elm.Html.Attributes.Extra.values)
+   return _elm.Html.Attributes.Extra.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Attributes.Extra",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Json$Encode = Elm.Json.Encode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var optimum = $Html$Attributes.stringProperty("optimum");
+   var high = $Html$Attributes.stringProperty("high");
+   var low = $Html$Attributes.stringProperty("low");
+   var role = function (r) {
+      return A2($Html$Attributes.attribute,
+      "role",
+      r);
+   };
+   var intProperty = F2(function (name,
+   $int) {
+      return A2($Html$Attributes.property,
+      name,
+      $Json$Encode.$int($int));
+   });
+   var valueAsInt = function (value) {
+      return A2(intProperty,
+      "valueAsNumber",
+      value);
+   };
+   var floatProperty = F2(function (name,
+   $float) {
+      return A2($Html$Attributes.property,
+      name,
+      $Json$Encode.$float($float));
+   });
+   var valueAsFloat = function (value) {
+      return A2(floatProperty,
+      "valueAsNumber",
+      value);
+   };
+   var volume = floatProperty("volume");
+   _elm.Html.Attributes.Extra.values = {_op: _op
+                                       ,floatProperty: floatProperty
+                                       ,intProperty: intProperty
+                                       ,valueAsFloat: valueAsFloat
+                                       ,valueAsInt: valueAsInt
+                                       ,role: role
+                                       ,low: low
+                                       ,high: high
+                                       ,optimum: optimum
+                                       ,volume: volume};
+   return _elm.Html.Attributes.Extra.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Events = Elm.Html.Events || {};
+Elm.Html.Events.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Events = _elm.Html.Events || {};
+   if (_elm.Html.Events.values)
+   return _elm.Html.Events.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Events",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $VirtualDom = Elm.VirtualDom.make(_elm);
+   var keyCode = A2($Json$Decode._op[":="],
+   "keyCode",
+   $Json$Decode.$int);
+   var targetChecked = A2($Json$Decode.at,
+   _L.fromArray(["target"
+                ,"checked"]),
+   $Json$Decode.bool);
+   var targetValue = A2($Json$Decode.at,
+   _L.fromArray(["target"
+                ,"value"]),
+   $Json$Decode.string);
+   var on = $VirtualDom.on;
+   var messageOn = F3(function (name,
+   addr,
+   msg) {
+      return A3(on,
+      name,
+      $Json$Decode.value,
+      function (_v0) {
+         return function () {
+            return A2($Signal.message,
+            addr,
+            msg);
+         }();
+      });
+   });
+   var onClick = messageOn("click");
+   var onDoubleClick = messageOn("dblclick");
+   var onMouseMove = messageOn("mousemove");
+   var onMouseDown = messageOn("mousedown");
+   var onMouseUp = messageOn("mouseup");
+   var onMouseEnter = messageOn("mouseenter");
+   var onMouseLeave = messageOn("mouseleave");
+   var onMouseOver = messageOn("mouseover");
+   var onMouseOut = messageOn("mouseout");
+   var onBlur = messageOn("blur");
+   var onFocus = messageOn("focus");
+   var onSubmit = messageOn("submit");
+   var onKey = F3(function (name,
+   addr,
+   handler) {
+      return A3(on,
+      name,
+      keyCode,
+      function (code) {
+         return A2($Signal.message,
+         addr,
+         handler(code));
+      });
+   });
+   var onKeyUp = onKey("keyup");
+   var onKeyDown = onKey("keydown");
+   var onKeyPress = onKey("keypress");
+   _elm.Html.Events.values = {_op: _op
+                             ,onBlur: onBlur
+                             ,onFocus: onFocus
+                             ,onSubmit: onSubmit
+                             ,onKeyUp: onKeyUp
+                             ,onKeyDown: onKeyDown
+                             ,onKeyPress: onKeyPress
+                             ,onClick: onClick
+                             ,onDoubleClick: onDoubleClick
+                             ,onMouseMove: onMouseMove
+                             ,onMouseDown: onMouseDown
+                             ,onMouseUp: onMouseUp
+                             ,onMouseEnter: onMouseEnter
+                             ,onMouseLeave: onMouseLeave
+                             ,onMouseOver: onMouseOver
+                             ,onMouseOut: onMouseOut
+                             ,on: on
+                             ,targetValue: targetValue
+                             ,targetChecked: targetChecked
+                             ,keyCode: keyCode};
+   return _elm.Html.Events.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Events = Elm.Html.Events || {};
+Elm.Html.Events.Extra = Elm.Html.Events.Extra || {};
+Elm.Html.Events.Extra.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Events = _elm.Html.Events || {};
+   _elm.Html.Events.Extra = _elm.Html.Events.Extra || {};
+   if (_elm.Html.Events.Extra.values)
+   return _elm.Html.Events.Extra.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Events.Extra",
+   $Basics = Elm.Basics.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm);
+   var targetValueIntParse = A2($Json$Decode.customDecoder,
+   $Html$Events.targetValue,
+   $String.toInt);
+   var targetValueFloatParse = A2($Json$Decode.customDecoder,
+   $Html$Events.targetValue,
+   $String.toFloat);
+   var targetValueMaybe = A2($Json$Decode.customDecoder,
+   $Html$Events.targetValue,
+   function (s) {
+      return $Result.Ok(_U.eq(s,
+      "") ? $Maybe.Nothing : $Maybe.Just(s));
+   });
+   var targetValueMaybeInt = function () {
+      var traverse = F2(function (f,
+      mx) {
+         return function () {
+            switch (mx.ctor)
+            {case "Just":
+               return A2($Result.map,
+                 $Maybe.Just,
+                 f(mx._0));
+               case "Nothing":
+               return $Result.Ok($Maybe.Nothing);}
+            _U.badCase($moduleName,
+            "between lines 92 and 95");
+         }();
+      });
+      return A2($Json$Decode.customDecoder,
+      targetValueMaybe,
+      traverse($String.toInt));
+   }();
+   var targetValueMaybeFloatParse = function () {
+      var traverse = F2(function (f,
+      mx) {
+         return function () {
+            switch (mx.ctor)
+            {case "Just":
+               return A2($Result.map,
+                 $Maybe.Just,
+                 f(mx._0));
+               case "Nothing":
+               return $Result.Ok($Maybe.Nothing);}
+            _U.badCase($moduleName,
+            "between lines 116 and 119");
+         }();
+      });
+      return A2($Json$Decode.customDecoder,
+      targetValueMaybe,
+      traverse($String.toFloat));
+   }();
+   var targetValueMaybeIntParse = function () {
+      var traverse = F2(function (f,
+      mx) {
+         return function () {
+            switch (mx.ctor)
+            {case "Just":
+               return A2($Result.map,
+                 $Maybe.Just,
+                 f(mx._0));
+               case "Nothing":
+               return $Result.Ok($Maybe.Nothing);}
+            _U.badCase($moduleName,
+            "between lines 126 and 129");
+         }();
+      });
+      return A2($Json$Decode.customDecoder,
+      targetValueMaybe,
+      traverse($String.toInt));
+   }();
+   var targetValueInt = A2($Json$Decode.at,
+   _L.fromArray(["target"
+                ,"valueAsNumber"]),
+   $Json$Decode.$int);
+   var targetValueFloat = $Json$Decode.customDecoder(A2($Json$Decode.at,
+   _L.fromArray(["target"
+                ,"valueAsNumber"]),
+   $Json$Decode.$float))(function (v) {
+      return $Basics.isNaN(v) ? $Result.Err("Not a number") : $Result.Ok(v);
+   });
+   var targetValueMaybeFloat = A2($Json$Decode.andThen,
+   targetValueMaybe,
+   function (mval) {
+      return function () {
+         switch (mval.ctor)
+         {case "Just":
+            return A2($Json$Decode.map,
+              $Maybe.Just,
+              targetValueFloat);
+            case "Nothing":
+            return $Json$Decode.succeed($Maybe.Nothing);}
+         _U.badCase($moduleName,
+         "between lines 84 and 86");
+      }();
+   });
+   var charCode = A2($Json$Decode.map,
+   function ($) {
+      return $Maybe.map($Basics.fst)($String.uncons($));
+   },
+   A2($Json$Decode._op[":="],
+   "charCode",
+   $Json$Decode.string));
+   _elm.Html.Events.Extra.values = {_op: _op
+                                   ,charCode: charCode
+                                   ,targetValueFloat: targetValueFloat
+                                   ,targetValueInt: targetValueInt
+                                   ,targetValueMaybe: targetValueMaybe
+                                   ,targetValueMaybeFloat: targetValueMaybeFloat
+                                   ,targetValueMaybeInt: targetValueMaybeInt
+                                   ,targetValueFloatParse: targetValueFloatParse
+                                   ,targetValueIntParse: targetValueIntParse
+                                   ,targetValueMaybeFloatParse: targetValueMaybeFloatParse
+                                   ,targetValueMaybeIntParse: targetValueMaybeIntParse};
+   return _elm.Html.Events.Extra.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Shorthand = Elm.Html.Shorthand || {};
+Elm.Html.Shorthand.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Shorthand = _elm.Html.Shorthand || {};
+   if (_elm.Html.Shorthand.values)
+   return _elm.Html.Shorthand.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Shorthand",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Attributes$Extra = Elm.Html.Attributes.Extra.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $Html$Events$Extra = Elm.Html.Events.Extra.make(_elm),
+   $Html$Shorthand$Event = Elm.Html.Shorthand.Event.make(_elm),
+   $Html$Shorthand$Internal = Elm.Html.Shorthand.Internal.make(_elm),
+   $Html$Shorthand$Type = Elm.Html.Shorthand.Type.make(_elm),
+   $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm);
+   var meter$ = F2(function (p,t) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return A2($Html.meter,
+         A2($Basics._op["++"],
+         _L.fromArray([$Html$Attributes.value($Basics.toString(p.value))
+                      ,$Html$Attributes.min($Basics.toString($Basics.min))
+                      ,$Html$Attributes.max($Basics.toString(p.max))]),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes$Extra.low($Basics.toString($));
+                                 },
+                                 p.low)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes$Extra.high($Basics.toString($));
+                                 },
+                                 p.high)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes$Extra.optimum($Basics.toString($));
+                                 },
+                                 p.optimum)]))),
+         _L.fromArray([$Html.text(t)]));
+      }();
+   });
+   var progress$ = F2(function (p,
+   t) {
+      return A2($Html.progress,
+      _L.fromArray([$Html$Attributes.value($Basics.toString(p.value))
+                   ,$Html$Attributes.max($Basics.toString(p.max))]),
+      _L.fromArray([$Html.text(t)]));
+   });
+   var option$ = function (p) {
+      return A2($Html.option,
+      _L.fromArray([A2($Html$Attributes.stringProperty,
+                   "label",
+                   p.label)
+                   ,$Html$Attributes.value($Basics.toString(p.value))
+                   ,$Html$Attributes.selected(p.selected)]),
+      _L.fromArray([]));
+   };
+   var option_ = F2(function (val,
+   sel) {
+      return A2($Html.option,
+      _L.fromArray([$Html$Attributes.selected(sel)]),
+      _L.fromArray([$Html.text(val)]));
+   });
+   var buttonReset_ = function (t) {
+      return A2($Html.button,
+      _L.fromArray([$Html$Attributes.type$("reset")]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var buttonSubmit_ = function (t) {
+      return A2($Html.button,
+      _L.fromArray([$Html$Attributes.type$("submit")]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var buttonLink_ = F3(function (t,
+   clickAddr,
+   click) {
+      return A2($Html.button,
+      _L.fromArray([$Html$Attributes.type$("button")
+                   ,A2($Html$Events.onClick,
+                   clickAddr,
+                   click)]),
+      _L.fromArray([$Html.text(t)]));
+   });
+   var button_ = F3(function (t,
+   clickAddr,
+   click) {
+      return A2($Html.button,
+      _L.fromArray([$Html$Attributes.type$("button")
+                   ,A2($Html$Events.onClick,
+                   clickAddr,
+                   click)]),
+      _L.fromArray([$Html.text(t)]));
+   });
+   var label_ = F2(function ($for,
+   t) {
+      return A2($Html.label,
+      _L.fromArray([$Html$Attributes.$for($for)]),
+      _L.fromArray([$Html.text(t)]));
+   });
+   var legend_ = function (t) {
+      return A2($Html.legend,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var fieldset_ = function (disabled) {
+      return $Html.fieldset(_L.fromArray([$Html$Attributes.disabled(disabled)]));
+   };
+   var th_ = $Html.th(_L.fromArray([]));
+   var td_ = $Html.td(_L.fromArray([]));
+   var tr_ = $Html.tr(_L.fromArray([]));
+   var tfoot_ = $Html.tfoot(_L.fromArray([]));
+   var thead_ = $Html.thead(_L.fromArray([]));
+   var tbody_ = $Html.tbody(_L.fromArray([]));
+   var caption_ = $Html.caption(_L.fromArray([]));
+   var table_ = $Html.table(_L.fromArray([]));
+   var audio_ = function (url) {
+      return A2($Html.audio,
+      _L.fromArray([$Html$Attributes.src(url)]),
+      _L.fromArray([]));
+   };
+   var video_ = function (url) {
+      return A2($Html.video,
+      _L.fromArray([$Html$Attributes.src(url)]),
+      _L.fromArray([]));
+   };
+   var param$ = F2(function (n,v) {
+      return A2($Html.param,
+      _L.fromArray([$Html$Attributes.name(n)
+                   ,$Html$Attributes.value(v)]),
+      _L.fromArray([]));
+   });
+   var img_ = F4(function (w,
+   h,
+   s,
+   a) {
+      return A2($Html.img,
+      _L.fromArray([$Html$Attributes.width(w)
+                   ,$Html$Attributes.height(h)
+                   ,$Html$Attributes.src(s)
+                   ,$Html$Attributes.alt(a)]),
+      _L.fromArray([]));
+   });
+   var del_ = $Html.del(_L.fromArray([]));
+   var ins_ = $Html.ins(_L.fromArray([]));
+   var wbr$ = A2($Html.wbr,
+   _L.fromArray([]),
+   _L.fromArray([]));
+   var br$ = A2($Html.br,
+   _L.fromArray([]),
+   _L.fromArray([]));
+   var span_ = $Html.span(_L.fromArray([]));
+   var bdo$ = function (dir) {
+      return $Html.bdo(_L.fromArray([$Html$Attributes.dir(function () {
+         switch (dir.ctor)
+         {case "AutoDirection":
+            return "auto";
+            case "LeftToRight":
+            return "ltr";
+            case "RightToLeft":
+            return "rtl";}
+         _U.badCase($moduleName,
+         "between lines 1016 and 1020");
+      }())]));
+   };
+   var bdi_ = function (t) {
+      return A2($Html.bdi,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var rp_ = function (t) {
+      return A2($Html.rp,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var rt_ = function (t) {
+      return A2($Html.rt,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var ruby_ = $Html.ruby(_L.fromArray([]));
+   var mark_ = $Html.mark(_L.fromArray([]));
+   var u_ = function (t) {
+      return A2($Html.u,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var b_ = function (t) {
+      return A2($Html.b,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var i_ = function (t) {
+      return A2($Html.i,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var sup_ = function (t) {
+      return A2($Html.sup,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var sub_ = function (t) {
+      return A2($Html.sub,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var kbd_ = $Html.kbd(_L.fromArray([]));
+   var samp_ = $Html.samp(_L.fromArray([]));
+   var var_ = function (t) {
+      return A2($Html.$var,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var code_ = $Html.code(_L.fromArray([]));
+   var abbr_ = function (t) {
+      return A2($Html.abbr,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var q_ = function (t) {
+      return A2($Html.q,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var cite_ = $Html.cite(_L.fromArray([]));
+   var s_ = function (t) {
+      return A2($Html.s,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var small_ = function (t) {
+      return A2($Html.small,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var strong_ = function (t) {
+      return A2($Html.strong,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var em_ = function (t) {
+      return A2($Html.em,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var a_ = F2(function (href,t) {
+      return A2($Html.a,
+      _L.fromArray([$Html$Attributes.href(href)]),
+      _L.fromArray([$Html.text(t)]));
+   });
+   var div_ = $Html.div(_L.fromArray([]));
+   var figcaption_ = $Html.figcaption(_L.fromArray([]));
+   var dd_ = $Html.dd(_L.fromArray([]));
+   var dl_ = $Html.dl(_L.fromArray([]));
+   var li_ = $Html.li(_L.fromArray([]));
+   var ul_ = $Html.ul(_L.fromArray([]));
+   var ol_ = $Html.ol(_L.fromArray([]));
+   var blockquote_ = $Html.blockquote(_L.fromArray([]));
+   var pre_ = $Html.pre(_L.fromArray([]));
+   var hr_ = A2($Html.hr,
+   _L.fromArray([]),
+   _L.fromArray([]));
+   var p_ = $Html.p(_L.fromArray([]));
+   var main_ = $Html.main$(_L.fromArray([]));
+   var address_ = $Html.address(_L.fromArray([]));
+   var footer_ = $Html.footer(_L.fromArray([]));
+   var header_ = $Html.header(_L.fromArray([]));
+   var h6_ = function (t) {
+      return A2($Html.h6,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var h5_ = function (t) {
+      return A2($Html.h5,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var h4_ = function (t) {
+      return A2($Html.h4,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var h3_ = function (t) {
+      return A2($Html.h3,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var h2_ = function (t) {
+      return A2($Html.h2,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var h1_ = function (t) {
+      return A2($Html.h1,
+      _L.fromArray([]),
+      _L.fromArray([$Html.text(t)]));
+   };
+   var nav_ = $Html.nav(_L.fromArray([]));
+   var body_ = $Html.body(_L.fromArray([]));
+   var class$ = $Html$Shorthand$Internal.class$;
+   var body$ = function (p) {
+      return $Html.body(_L.fromArray([class$(p.$class)]));
+   };
+   var nav$ = function (p) {
+      return $Html.nav(_L.fromArray([class$(p.$class)]));
+   };
+   var h1$ = function (p) {
+      return $Html.h1(_L.fromArray([class$(p.$class)]));
+   };
+   var h2$ = function (p) {
+      return $Html.h2(_L.fromArray([class$(p.$class)]));
+   };
+   var h3$ = function (p) {
+      return $Html.h3(_L.fromArray([class$(p.$class)]));
+   };
+   var h4$ = function (p) {
+      return $Html.h4(_L.fromArray([class$(p.$class)]));
+   };
+   var h5$ = function (p) {
+      return $Html.h5(_L.fromArray([class$(p.$class)]));
+   };
+   var h6$ = function (p) {
+      return $Html.h6(_L.fromArray([class$(p.$class)]));
+   };
+   var header$ = function (p) {
+      return $Html.header(_L.fromArray([class$(p.$class)]));
+   };
+   var footer$ = function (p) {
+      return $Html.footer(_L.fromArray([class$(p.$class)]));
+   };
+   var address$ = function (p) {
+      return $Html.address(_L.fromArray([class$(p.$class)]));
+   };
+   var p$ = function (param) {
+      return $Html.p(_L.fromArray([class$(param.$class)]));
+   };
+   var pre$ = function (p) {
+      return $Html.pre(_L.fromArray([class$(p.$class)]));
+   };
+   var blockquote$ = function (p) {
+      return $Html.blockquote(_L.fromArray([class$(p.$class)
+                                           ,$Html$Attributes.cite(p.cite)]));
+   };
+   var ol$ = function (p) {
+      return $Html.ol(_L.fromArray([class$(p.$class)]));
+   };
+   var ul$ = function (p) {
+      return $Html.ul(_L.fromArray([class$(p.$class)]));
+   };
+   var li$ = function (p) {
+      return $Html.li(_L.fromArray([class$(p.$class)]));
+   };
+   var dl$ = function (p) {
+      return $Html.dl(_L.fromArray([class$(p.$class)]));
+   };
+   var dd$ = function (p) {
+      return $Html.dd(_L.fromArray([class$(p.$class)]));
+   };
+   var figcaption$ = function (p) {
+      return $Html.figcaption(_L.fromArray([class$(p.$class)]));
+   };
+   var div$ = function (p) {
+      return $Html.div(_L.fromArray([class$(p.$class)]));
+   };
+   var a$ = function (p) {
+      return $Html.a(_L.fromArray([class$(p.$class)
+                                  ,$Html$Attributes.href(p.href)]));
+   };
+   var em$ = function (p) {
+      return $Html.em(_L.fromArray([class$(p.$class)]));
+   };
+   var strong$ = function (p) {
+      return $Html.strong(_L.fromArray([class$(p.$class)]));
+   };
+   var small$ = function (p) {
+      return $Html.small(_L.fromArray([class$(p.$class)]));
+   };
+   var s$ = function (p) {
+      return $Html.s(_L.fromArray([class$(p.$class)]));
+   };
+   var cite$ = function (p) {
+      return $Html.cite(_L.fromArray([class$(p.$class)]));
+   };
+   var q$ = function (p) {
+      return $Html.q(_L.fromArray([class$(p.$class)
+                                  ,$Html$Attributes.cite(p.cite)]));
+   };
+   var abbr$ = function (p) {
+      return $Html.abbr(_L.fromArray([class$(p.$class)]));
+   };
+   var code$ = function (p) {
+      return $Html.code(_L.fromArray([class$(p.$class)]));
+   };
+   var var$ = function (p) {
+      return $Html.$var(_L.fromArray([class$(p.$class)]));
+   };
+   var samp$ = function (p) {
+      return $Html.samp(_L.fromArray([class$(p.$class)]));
+   };
+   var kbd$ = function (p) {
+      return $Html.kbd(_L.fromArray([class$(p.$class)]));
+   };
+   var sub$ = function (p) {
+      return $Html.sub(_L.fromArray([class$(p.$class)]));
+   };
+   var sup$ = function (p) {
+      return $Html.sup(_L.fromArray([class$(p.$class)]));
+   };
+   var i$ = function (p) {
+      return $Html.i(_L.fromArray([class$(p.$class)]));
+   };
+   var b$ = function (p) {
+      return $Html.b(_L.fromArray([class$(p.$class)]));
+   };
+   var u$ = function (p) {
+      return $Html.u(_L.fromArray([class$(p.$class)]));
+   };
+   var mark$ = function (p) {
+      return $Html.mark(_L.fromArray([class$(p.$class)]));
+   };
+   var ruby$ = function (p) {
+      return $Html.ruby(_L.fromArray([class$(p.$class)]));
+   };
+   var rt$ = function (p) {
+      return $Html.rt(_L.fromArray([class$(p.$class)]));
+   };
+   var rp$ = function (p) {
+      return $Html.rp(_L.fromArray([class$(p.$class)]));
+   };
+   var bdi$ = function (p) {
+      return $Html.bdi(_L.fromArray([class$(p.$class)]));
+   };
+   var span$ = function (p) {
+      return $Html.span(_L.fromArray([class$(p.$class)]));
+   };
+   var ins$ = function (p) {
+      return $Html.ins(_L.fromArray([class$(p.$class)
+                                    ,$Html$Attributes.cite(p.cite)
+                                    ,$Html$Attributes.datetime(p.datetime)]));
+   };
+   var del$ = function (p) {
+      return $Html.del(_L.fromArray([class$(p.$class)
+                                    ,$Html$Attributes.cite(p.cite)
+                                    ,$Html$Attributes.datetime(p.datetime)]));
+   };
+   var img$ = function (p) {
+      return A2($Html.img,
+      _L.fromArray([class$(p.$class)
+                   ,$Html$Attributes.src(p.src)
+                   ,$Html$Attributes.width(p.width)
+                   ,$Html$Attributes.height(p.height)
+                   ,$Html$Attributes.alt(p.alt)]),
+      _L.fromArray([]));
+   };
+   var video$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return $Html.video(A2($Basics._op["++"],
+         _L.fromArray([class$(p.$class)
+                      ,$Html$Attributes.width(p.width)
+                      ,$Html$Attributes.height(p.height)
+                      ,$Html$Attributes.autoplay(p.autoplay)
+                      ,$Html$Attributes.controls(p.controls)
+                      ,$Html$Attributes.loop(p.loop)]),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 $Html$Attributes.src,
+                                 p.src)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes.stringProperty("preload"),
+                                 p.preload)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes.poster,
+                                 p.poster)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes$Extra.volume,
+                                 p.volume)]))));
+      }();
+   };
+   var audio$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return $Html.audio(A2($Basics._op["++"],
+         _L.fromArray([class$(p.$class)
+                      ,$Html$Attributes.autoplay(p.autoplay)
+                      ,$Html$Attributes.controls(p.controls)
+                      ,$Html$Attributes.loop(p.loop)]),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 $Html$Attributes.src,
+                                 p.src)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes.stringProperty("preload"),
+                                 p.preload)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes.poster,
+                                 p.poster)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes$Extra.volume,
+                                 p.volume)]))));
+      }();
+   };
+   var table$ = function (p) {
+      return $Html.table(_L.fromArray([class$(p.$class)]));
+   };
+   var caption$ = function (p) {
+      return $Html.caption(_L.fromArray([class$(p.$class)]));
+   };
+   var tbody$ = function (p) {
+      return $Html.tbody(_L.fromArray([class$(p.$class)]));
+   };
+   var thead$ = function (p) {
+      return $Html.thead(_L.fromArray([class$(p.$class)]));
+   };
+   var tfoot$ = function (p) {
+      return $Html.tfoot(_L.fromArray([class$(p.$class)]));
+   };
+   var tr$ = function (p) {
+      return $Html.tr(_L.fromArray([class$(p.$class)]));
+   };
+   var td$ = function (p) {
+      return $Html.td(_L.fromArray([class$(p.$class)]));
+   };
+   var th$ = function (p) {
+      return $Html.th(_L.fromArray([class$(p.$class)]));
+   };
+   var form$ = function (p) {
+      return function () {
+         var onEnter$ = function (msg) {
+            return A3($Html$Events.on,
+            "keypress",
+            $Json$Decode.customDecoder($Html$Events.keyCode)(function (c) {
+               return _U.eq(c,
+               13) ? $Result.Ok({ctor: "_Tuple0"}) : $Result.Err("expected key code 13");
+            }),
+            $Basics.always(msg));
+         };
+         var filterJust = $List.filterMap($Basics.identity);
+         return $Html.form(A2($List._op["::"],
+         class$(p.$class),
+         A2($List._op["::"],
+         $Html$Attributes.novalidate(p.novalidate),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 function ($) {
+                                    return A2($Html$Events.on,
+                                    "submit",
+                                    $Json$Decode.value)($Basics.always($));
+                                 },
+                                 p.update.onSubmit)
+                                 ,A2($Maybe.map,
+                                 onEnter$,
+                                 p.update.onSubmit)])))));
+      }();
+   };
+   var fieldset$ = function (p) {
+      return $Html.fieldset(_L.fromArray([class$(p.$class)
+                                         ,$Html$Attributes.disabled(p.disabled)]));
+   };
+   var legend$ = function (p) {
+      return $Html.legend(_L.fromArray([class$(p.$class)]));
+   };
+   var label$ = function (p) {
+      return $Html.label(_L.fromArray([class$(p.$class)
+                                      ,$Html$Attributes.$for(p.$for)]));
+   };
+   var button$ = function (p) {
+      return $Html.button(_L.fromArray([class$(p.$class)
+                                       ,$Html$Attributes.type$("button")
+                                       ,A3($Html$Events.on,
+                                       "click",
+                                       $Json$Decode.value,
+                                       $Basics.always(p.update.onClick))]));
+   };
+   var buttonLink$ = function (p) {
+      return $Html.a(_L.fromArray([class$(p.$class)
+                                  ,$Html$Attributes.href("#")
+                                  ,A3($Html$Events.on,
+                                  "click",
+                                  $Json$Decode.value,
+                                  $Basics.always(p.update.onClick))]));
+   };
+   var buttonSubmit$ = function (p) {
+      return $Html.button(_L.fromArray([class$(p.$class)
+                                       ,$Html$Attributes.type$("submit")]));
+   };
+   var buttonReset$ = function (p) {
+      return $Html.button(_L.fromArray([class$(p.$class)
+                                       ,$Html$Attributes.type$("reset")]));
+   };
+   var id$ = $Html$Shorthand$Internal.id$;
+   var section_ = function (i) {
+      return $Html.section(_L.fromArray([id$(i)]));
+   };
+   var section$ = function (p) {
+      return $Html.section(_L.fromArray([class$(p.$class)
+                                        ,id$(p.id)]));
+   };
+   var article_ = function (i) {
+      return $Html.article(_L.fromArray([id$(i)]));
+   };
+   var article$ = function (p) {
+      return $Html.article(_L.fromArray([class$(p.$class)
+                                        ,id$(p.id)]));
+   };
+   var aside$ = function (p) {
+      return $Html.aside(_L.fromArray([class$(p.$class)
+                                      ,id$(p.id)]));
+   };
+   var dt$ = function (p) {
+      return $Html.dt(_L.fromArray([class$(p.$class)
+                                   ,id$(p.id)]));
+   };
+   var figure$ = function (p) {
+      return $Html.figure(_L.fromArray([class$(p.$class)
+                                       ,id$(p.id)]));
+   };
+   var dfn$ = function (p) {
+      return $Html.dfn(_L.fromArray([class$(p.$class)
+                                    ,id$(p.id)]));
+   };
+   var embed$ = function (p) {
+      return A2($Html.embed,
+      _L.fromArray([class$(p.$class)
+                   ,id$(p.id)
+                   ,$Html$Attributes.src(p.src)
+                   ,$Html$Attributes.type$(p.type$)
+                   ,$Html$Attributes.width(p.width)
+                   ,$Html$Attributes.height(p.height)]),
+      _L.fromArray([]));
+   };
+   var encodeClass = $Html$Shorthand$Internal.encodeClass;
+   var encodeId = $Html$Shorthand$Internal.encodeId;
+   var iframe$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         var i$ = encodeId(p.name);
+         return A2($Html.iframe,
+         A2($Basics._op["++"],
+         _L.fromArray([class$(p.$class)
+                      ,$Html$Attributes.id(i$)
+                      ,$Html$Attributes.name(i$)
+                      ,$Html$Attributes.src(p.src)
+                      ,$Html$Attributes.width(p.width)
+                      ,$Html$Attributes.height(p.height)
+                      ,$Html$Attributes.seamless(p.seamless)]),
+         filterJust(_L.fromArray([A2($Maybe.map,
+         $Html$Attributes.sandbox,
+         p.sandbox)]))),
+         _L.fromArray([]));
+      }();
+   };
+   var object$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         var attrs = filterJust(_L.fromArray([A2($Maybe.map,
+         function ($) {
+            return $Html$Attributes.usemap($String.cons(_U.chr("#"))(encodeId($)));
+         },
+         p.useMapName)]));
+         var i$ = encodeId(p.name);
+         return $Html.object(A2($Basics._op["++"],
+         _L.fromArray([class$(p.$class)
+                      ,$Html$Attributes.id(i$)
+                      ,$Html$Attributes.name(i$)
+                      ,A2($Html$Attributes.attribute,
+                      "data",
+                      p.data)
+                      ,$Html$Attributes.type$(p.type$)]),
+         A2($Basics._op["++"],
+         attrs,
+         _L.fromArray([$Html$Attributes.height(p.height)
+                      ,$Html$Attributes.width(p.width)]))));
+      }();
+   };
+   var inputField$ = F2(function (p,
+   attrs) {
+      return function () {
+         var i$ = encodeId(p.name);
+         var filterJust = $List.filterMap($Basics.identity);
+         var pattrs = A2($Basics._op["++"],
+         _L.fromArray([$Html$Attributes.type$(p.type$)
+                      ,$Html$Attributes.id(i$)
+                      ,$Html$Attributes.name(i$)
+                      ,$Html$Attributes.required(p.required)]),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 class$,
+                                 _U.eq(p.$class,
+                                 "") ? $Maybe.Nothing : $Maybe.Just(p.$class))
+                                 ,A2($Maybe.map,
+                                 function (onEvent) {
+                                    return A2($Html$Shorthand$Event.onInput,
+                                    A2($Html$Shorthand$Event.messageDecoder,
+                                    p.decoder,
+                                    onEvent),
+                                    $Basics.identity);
+                                 },
+                                 p.update.onInput)
+                                 ,A2($Maybe.map,
+                                 function (onEvent) {
+                                    return A2($Html$Shorthand$Event.onEnter,
+                                    A2($Html$Shorthand$Event.messageDecoder,
+                                    p.decoder,
+                                    onEvent),
+                                    $Basics.identity);
+                                 },
+                                 p.update.onEnter)
+                                 ,A2($Maybe.map,
+                                 function (onEvent) {
+                                    return A2($Html$Shorthand$Event.onKeyboardLost,
+                                    A2($Html$Shorthand$Event.messageDecoder,
+                                    p.decoder,
+                                    onEvent),
+                                    $Basics.identity);
+                                 },
+                                 p.update.onKeyboardLost)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes.placeholder,
+                                 p.placeholder)
+                                 ,A2($Maybe.map,
+                                 $Html$Attributes.pattern,
+                                 p.pattern)])));
+         return A2($Html.input,
+         A2($Basics._op["++"],
+         pattrs,
+         attrs),
+         _L.fromArray([]));
+      }();
+   });
+   var inputText$ = function (p) {
+      return A2(inputField$,
+      {_: {}
+      ,$class: p.$class
+      ,decoder: $Html$Events.targetValue
+      ,name: p.name
+      ,pattern: $Maybe.Nothing
+      ,placeholder: p.placeholder
+      ,required: p.required
+      ,type$: "text"
+      ,update: p.update},
+      _L.fromArray([$Html$Attributes.value(p.value)
+                   ,$Html$Attributes.autocomplete(p.autocomplete)]));
+   };
+   var inputMaybeText$ = function (p) {
+      return A2(inputField$,
+      {_: {}
+      ,$class: p.$class
+      ,decoder: $Html$Events$Extra.targetValueMaybe
+      ,name: p.name
+      ,pattern: $Maybe.Nothing
+      ,placeholder: p.placeholder
+      ,required: false
+      ,type$: "text"
+      ,update: p.update},
+      _L.fromArray([$Html$Attributes.value(A2($Maybe.withDefault,
+                   "",
+                   p.value))
+                   ,$Html$Attributes.autocomplete(p.autocomplete)]));
+   };
+   var inputFloat$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return inputField$({_: {}
+                            ,$class: p.$class
+                            ,decoder: function () {
+                               var _v1 = {ctor: "_Tuple2"
+                                         ,_0: p.min
+                                         ,_1: p.max};
+                               switch (_v1.ctor)
+                               {case "_Tuple2":
+                                  switch (_v1._0.ctor)
+                                    {case "Nothing":
+                                       switch (_v1._1.ctor)
+                                         {case "Nothing":
+                                            return $Html$Events$Extra.targetValueFloat;}
+                                         break;}
+                                    break;}
+                               return $Json$Decode.customDecoder($Html$Events$Extra.targetValueFloat)(function (v) {
+                                  return _U.cmp(v,
+                                  A2($Maybe.withDefault,
+                                  -1 / 0,
+                                  p.min)) < 0 || _U.cmp(v,
+                                  A2($Maybe.withDefault,
+                                  1 / 0,
+                                  p.max)) > 0 ? $Result.Err("out of bounds") : $Result.Ok(v);
+                               });
+                            }()
+                            ,name: p.name
+                            ,pattern: $Maybe.Nothing
+                            ,placeholder: p.placeholder
+                            ,required: true
+                            ,type$: "number"
+                            ,update: p.update})(A2($List._op["::"],
+         $Html$Attributes$Extra.valueAsFloat(p.value),
+         A2($List._op["::"],
+         A2($Html$Attributes.stringProperty,
+         "step",
+         $Maybe.withDefault("any")(A2($Maybe.map,
+         $Basics.toString,
+         p.step))),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.min($Basics.toString($));
+                                 },
+                                 p.min)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.max($Basics.toString($));
+                                 },
+                                 p.max)])))));
+      }();
+   };
+   var inputMaybeFloat$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return inputField$({_: {}
+                            ,$class: p.$class
+                            ,decoder: function () {
+                               var _v6 = {ctor: "_Tuple2"
+                                         ,_0: p.min
+                                         ,_1: p.max};
+                               switch (_v6.ctor)
+                               {case "_Tuple2":
+                                  switch (_v6._0.ctor)
+                                    {case "Nothing":
+                                       switch (_v6._1.ctor)
+                                         {case "Nothing":
+                                            return $Html$Events$Extra.targetValueMaybeFloat;}
+                                         break;}
+                                    break;}
+                               return $Json$Decode.customDecoder($Html$Events$Extra.targetValueMaybeFloat)(function (mv) {
+                                  return function () {
+                                     switch (mv.ctor)
+                                     {case "Just":
+                                        return _U.cmp(mv._0,
+                                          A2($Maybe.withDefault,
+                                          -1 / 0,
+                                          p.min)) < 0 || _U.cmp(mv._0,
+                                          A2($Maybe.withDefault,
+                                          1 / 0,
+                                          p.max)) > 0 ? $Result.Err("out of bounds") : $Result.Ok(mv);
+                                        case "Nothing":
+                                        return $Result.Ok($Maybe.Nothing);}
+                                     _U.badCase($moduleName,
+                                     "between lines 1482 and 1487");
+                                  }();
+                               });
+                            }()
+                            ,name: p.name
+                            ,pattern: $Maybe.Nothing
+                            ,placeholder: p.placeholder
+                            ,required: false
+                            ,type$: "number"
+                            ,update: p.update})(A2($List._op["::"],
+         function () {
+            var _v4 = p.value;
+            switch (_v4.ctor)
+            {case "Just":
+               return $Html$Attributes$Extra.valueAsFloat(_v4._0);
+               case "Nothing":
+               return $Html$Attributes.value("");}
+            _U.badCase($moduleName,
+            "between lines 1488 and 1491");
+         }(),
+         A2($List._op["::"],
+         A2($Html$Attributes.stringProperty,
+         "step",
+         $Maybe.withDefault("any")(A2($Maybe.map,
+         $Basics.toString,
+         p.step))),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.min($Basics.toString($));
+                                 },
+                                 p.min)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.max($Basics.toString($));
+                                 },
+                                 p.max)])))));
+      }();
+   };
+   var inputInt$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return inputField$({_: {}
+                            ,$class: p.$class
+                            ,decoder: function () {
+                               var _v11 = {ctor: "_Tuple2"
+                                          ,_0: p.min
+                                          ,_1: p.max};
+                               switch (_v11.ctor)
+                               {case "_Tuple2":
+                                  switch (_v11._0.ctor)
+                                    {case "Nothing":
+                                       switch (_v11._1.ctor)
+                                         {case "Nothing":
+                                            return $Html$Events$Extra.targetValueInt;}
+                                         break;}
+                                    break;}
+                               return $Json$Decode.customDecoder($Html$Events$Extra.targetValueInt)(function (v) {
+                                  return _U.cmp(v,
+                                  A2($Maybe.withDefault,
+                                  $Basics.floor(-1 / 0),
+                                  p.min)) < 0 || _U.cmp(v,
+                                  A2($Maybe.withDefault,
+                                  $Basics.ceiling(1 / 0),
+                                  p.max)) > 0 ? $Result.Err("out of bounds") : $Result.Ok(v);
+                               });
+                            }()
+                            ,name: p.name
+                            ,pattern: $Maybe.Nothing
+                            ,placeholder: p.placeholder
+                            ,required: true
+                            ,type$: "number"
+                            ,update: p.update})(A2($List._op["::"],
+         $Html$Attributes$Extra.valueAsInt(p.value),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.min($Basics.toString($));
+                                 },
+                                 p.min)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.max($Basics.toString($));
+                                 },
+                                 p.max)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.stringProperty("step")($Basics.toString($));
+                                 },
+                                 p.step)]))));
+      }();
+   };
+   var inputMaybeInt$ = function (p) {
+      return function () {
+         var filterJust = $List.filterMap($Basics.identity);
+         return inputField$({_: {}
+                            ,$class: p.$class
+                            ,decoder: function () {
+                               var _v16 = {ctor: "_Tuple2"
+                                          ,_0: p.min
+                                          ,_1: p.max};
+                               switch (_v16.ctor)
+                               {case "_Tuple2":
+                                  switch (_v16._0.ctor)
+                                    {case "Nothing":
+                                       switch (_v16._1.ctor)
+                                         {case "Nothing":
+                                            return $Html$Events$Extra.targetValueMaybeInt;}
+                                         break;}
+                                    break;}
+                               return $Json$Decode.customDecoder($Html$Events$Extra.targetValueMaybeInt)(function (mv) {
+                                  return function () {
+                                     switch (mv.ctor)
+                                     {case "Just":
+                                        return _U.cmp(mv._0,
+                                          A2($Maybe.withDefault,
+                                          $Basics.floor(-1 / 0),
+                                          p.min)) < 0 || _U.cmp(mv._0,
+                                          A2($Maybe.withDefault,
+                                          $Basics.ceiling(1 / 0),
+                                          p.max)) > 0 ? $Result.Err("out of bounds") : $Result.Ok(mv);
+                                        case "Nothing":
+                                        return $Result.Ok($Maybe.Nothing);}
+                                     _U.badCase($moduleName,
+                                     "between lines 1541 and 1546");
+                                  }();
+                               });
+                            }()
+                            ,name: p.name
+                            ,pattern: $Maybe.Nothing
+                            ,placeholder: p.placeholder
+                            ,required: false
+                            ,type$: "number"
+                            ,update: p.update})(A2($List._op["::"],
+         function () {
+            var _v14 = p.value;
+            switch (_v14.ctor)
+            {case "Just":
+               return $Html$Attributes$Extra.valueAsInt(_v14._0);
+               case "Nothing":
+               return $Html$Attributes.value("");}
+            _U.badCase($moduleName,
+            "between lines 1547 and 1550");
+         }(),
+         filterJust(_L.fromArray([A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.min($Basics.toString($));
+                                 },
+                                 p.min)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.max($Basics.toString($));
+                                 },
+                                 p.max)
+                                 ,A2($Maybe.map,
+                                 function ($) {
+                                    return $Html$Attributes.stringProperty("step")($Basics.toString($));
+                                 },
+                                 p.step)]))));
+      }();
+   };
+   var inputUrl$ = function (p) {
+      return A2(inputField$,
+      {_: {}
+      ,$class: p.$class
+      ,decoder: $Html$Events.targetValue
+      ,name: p.name
+      ,pattern: $Maybe.Nothing
+      ,placeholder: p.placeholder
+      ,required: p.required
+      ,type$: "url"
+      ,update: p.update},
+      _L.fromArray([$Html$Attributes.value(p.value)
+                   ,$Html$Attributes.autocomplete(p.autocomplete)]));
+   };
+   var inputMaybeUrl$ = function (p) {
+      return A2(inputField$,
+      {_: {}
+      ,$class: p.$class
+      ,decoder: $Html$Events$Extra.targetValueMaybe
+      ,name: p.name
+      ,pattern: $Maybe.Nothing
+      ,placeholder: p.placeholder
+      ,required: false
+      ,type$: "url"
+      ,update: p.update},
+      _L.fromArray([$Html$Attributes.value(A2($Maybe.withDefault,
+                   "",
+                   p.value))
+                   ,$Html$Attributes.autocomplete(p.autocomplete)]));
+   };
+   var select$ = function (p) {
+      return function () {
+         var i$ = encodeId(p.name);
+         return $Html.select(_L.fromArray([class$(p.$class)
+                                          ,$Html$Attributes.id(i$)
+                                          ,$Html$Attributes.name(i$)
+                                          ,A2($Html$Shorthand$Event.onChange,
+                                          $Html$Events.targetValue,
+                                          p.update.onSelect)]));
+      }();
+   };
+   var output$ = function (p) {
+      return function () {
+         var i$ = encodeId(p.name);
+         return $Html.output(_L.fromArray([class$(p.$class)
+                                          ,$Html$Attributes.id(i$)
+                                          ,$Html$Attributes.name(i$)
+                                          ,$Html$Attributes.$for($String.join(" ")(A2($List.map,
+                                          encodeId,
+                                          p.$for)))]));
+      }();
+   };
+   var fieldUpdateFallbackFocusLost = function (handler) {
+      return function () {
+         var doErr = function (r) {
+            return function () {
+               switch (r.ctor)
+               {case "Err":
+                  return function () {
+                       var _v24 = A2($Json$Decode.decodeValue,
+                       $Html$Events.targetValue,
+                       r._0.event);
+                       switch (_v24.ctor)
+                       {case "Err":
+                          return $Maybe.Nothing;
+                          case "Ok":
+                          return $Maybe.Just(handler.onFallback(_v24._0));}
+                       _U.badCase($moduleName,
+                       "between lines 256 and 259");
+                    }();
+                  case "Ok":
+                  return $Maybe.Nothing;}
+               _U.badCase($moduleName,
+               "between lines 253 and 259");
+            }();
+         };
+         var doOk = function (r) {
+            return function () {
+               switch (r.ctor)
+               {case "Err":
+                  return $Maybe.Nothing;
+                  case "Ok":
+                  return $Maybe.Just(handler.onInput(r._0));}
+               _U.badCase($moduleName,
+               "between lines 250 and 253");
+            }();
+         };
+         return {_: {}
+                ,onEnter: $Maybe.Just(doErr)
+                ,onInput: $Maybe.Just(doOk)
+                ,onKeyboardLost: $Maybe.Just(doErr)};
+      }();
+   };
+   var fieldUpdate = {_: {}
+                     ,onEnter: $Maybe.Nothing
+                     ,onInput: $Maybe.Nothing
+                     ,onKeyboardLost: $Maybe.Nothing};
+   var fieldUpdateContinuous = function (handler) {
+      return function () {
+         var doOk = function (r) {
+            return function () {
+               switch (r.ctor)
+               {case "Err":
+                  return $Maybe.Nothing;
+                  case "Ok":
+                  return $Maybe.Just(handler.onInput(r._0));}
+               _U.badCase($moduleName,
+               "between lines 198 and 201");
+            }();
+         };
+         return _U.replace([["onInput"
+                            ,$Maybe.Just(doOk)]],
+         fieldUpdate);
+      }();
+   };
+   var fieldUpdateFocusLost = function (handler) {
+      return function () {
+         var doOk = function (r) {
+            return function () {
+               switch (r.ctor)
+               {case "Err":
+                  return $Maybe.Nothing;
+                  case "Ok":
+                  return $Maybe.Just(handler.onInput(r._0));}
+               _U.badCase($moduleName,
+               "between lines 211 and 214");
+            }();
+         };
+         return _U.replace([["onEnter"
+                            ,$Maybe.Just(doOk)]
+                           ,["onKeyboardLost"
+                            ,$Maybe.Just(doOk)]],
+         fieldUpdate);
+      }();
+   };
+   var fieldUpdateFallbackContinuous = function (handler) {
+      return function () {
+         var doOkErr = function (r) {
+            return function () {
+               switch (r.ctor)
+               {case "Err":
+                  return function () {
+                       var _v39 = A2($Json$Decode.decodeValue,
+                       $Html$Events.targetValue,
+                       r._0.event);
+                       switch (_v39.ctor)
+                       {case "Err":
+                          return $Maybe.Nothing;
+                          case "Ok":
+                          return $Maybe.Just(handler.onFallback(_v39._0));}
+                       _U.badCase($moduleName,
+                       "between lines 289 and 292");
+                    }();
+                  case "Ok":
+                  return $Maybe.Just(handler.onInput(r._0));}
+               _U.badCase($moduleName,
+               "between lines 286 and 292");
+            }();
+         };
+         return _U.replace([["onInput"
+                            ,$Maybe.Just(doOkErr)]],
+         fieldUpdate);
+      }();
+   };
+   var AutoDirection = {ctor: "AutoDirection"};
+   var RightToLeft = {ctor: "RightToLeft"};
+   var LeftToRight = {ctor: "LeftToRight"};
+   _elm.Html.Shorthand.values = {_op: _op
+                                ,LeftToRight: LeftToRight
+                                ,RightToLeft: RightToLeft
+                                ,AutoDirection: AutoDirection
+                                ,fieldUpdate: fieldUpdate
+                                ,fieldUpdateContinuous: fieldUpdateContinuous
+                                ,fieldUpdateFocusLost: fieldUpdateFocusLost
+                                ,fieldUpdateFallbackFocusLost: fieldUpdateFallbackFocusLost
+                                ,fieldUpdateFallbackContinuous: fieldUpdateFallbackContinuous
+                                ,encodeId: encodeId
+                                ,encodeClass: encodeClass
+                                ,id$: id$
+                                ,class$: class$
+                                ,body_: body_
+                                ,body$: body$
+                                ,section_: section_
+                                ,section$: section$
+                                ,nav_: nav_
+                                ,nav$: nav$
+                                ,article_: article_
+                                ,article$: article$
+                                ,aside$: aside$
+                                ,h1_: h1_
+                                ,h1$: h1$
+                                ,h2_: h2_
+                                ,h2$: h2$
+                                ,h3_: h3_
+                                ,h3$: h3$
+                                ,h4_: h4_
+                                ,h4$: h4$
+                                ,h5_: h5_
+                                ,h5$: h5$
+                                ,h6_: h6_
+                                ,h6$: h6$
+                                ,header_: header_
+                                ,header$: header$
+                                ,footer_: footer_
+                                ,footer$: footer$
+                                ,address_: address_
+                                ,address$: address$
+                                ,main_: main_
+                                ,p_: p_
+                                ,p$: p$
+                                ,hr_: hr_
+                                ,pre_: pre_
+                                ,pre$: pre$
+                                ,blockquote_: blockquote_
+                                ,blockquote$: blockquote$
+                                ,ol_: ol_
+                                ,ol$: ol$
+                                ,ul_: ul_
+                                ,ul$: ul$
+                                ,li_: li_
+                                ,li$: li$
+                                ,dl_: dl_
+                                ,dl$: dl$
+                                ,dt$: dt$
+                                ,dd_: dd_
+                                ,dd$: dd$
+                                ,figure$: figure$
+                                ,figcaption_: figcaption_
+                                ,figcaption$: figcaption$
+                                ,div_: div_
+                                ,div$: div$
+                                ,a_: a_
+                                ,a$: a$
+                                ,em_: em_
+                                ,em$: em$
+                                ,strong_: strong_
+                                ,strong$: strong$
+                                ,small_: small_
+                                ,small$: small$
+                                ,s_: s_
+                                ,s$: s$
+                                ,cite_: cite_
+                                ,cite$: cite$
+                                ,q_: q_
+                                ,q$: q$
+                                ,dfn$: dfn$
+                                ,abbr_: abbr_
+                                ,abbr$: abbr$
+                                ,code_: code_
+                                ,code$: code$
+                                ,var_: var_
+                                ,var$: var$
+                                ,samp_: samp_
+                                ,samp$: samp$
+                                ,kbd_: kbd_
+                                ,kbd$: kbd$
+                                ,sub_: sub_
+                                ,sub$: sub$
+                                ,sup_: sup_
+                                ,sup$: sup$
+                                ,i_: i_
+                                ,i$: i$
+                                ,b_: b_
+                                ,b$: b$
+                                ,u_: u_
+                                ,u$: u$
+                                ,mark_: mark_
+                                ,mark$: mark$
+                                ,ruby_: ruby_
+                                ,ruby$: ruby$
+                                ,rt_: rt_
+                                ,rt$: rt$
+                                ,rp_: rp_
+                                ,rp$: rp$
+                                ,bdi_: bdi_
+                                ,bdi$: bdi$
+                                ,bdo$: bdo$
+                                ,span_: span_
+                                ,span$: span$
+                                ,br$: br$
+                                ,wbr$: wbr$
+                                ,ins_: ins_
+                                ,ins$: ins$
+                                ,del_: del_
+                                ,del$: del$
+                                ,img$: img$
+                                ,img_: img_
+                                ,iframe$: iframe$
+                                ,embed$: embed$
+                                ,object$: object$
+                                ,param$: param$
+                                ,video_: video_
+                                ,video$: video$
+                                ,audio_: audio_
+                                ,audio$: audio$
+                                ,table_: table_
+                                ,table$: table$
+                                ,caption_: caption_
+                                ,caption$: caption$
+                                ,tbody_: tbody_
+                                ,tbody$: tbody$
+                                ,thead_: thead_
+                                ,thead$: thead$
+                                ,tfoot_: tfoot_
+                                ,tfoot$: tfoot$
+                                ,tr_: tr_
+                                ,tr$: tr$
+                                ,td_: td_
+                                ,td$: td$
+                                ,th_: th_
+                                ,th$: th$
+                                ,form$: form$
+                                ,fieldset_: fieldset_
+                                ,fieldset$: fieldset$
+                                ,legend_: legend_
+                                ,legend$: legend$
+                                ,label_: label_
+                                ,label$: label$
+                                ,inputField$: inputField$
+                                ,inputText$: inputText$
+                                ,inputMaybeText$: inputMaybeText$
+                                ,inputFloat$: inputFloat$
+                                ,inputMaybeFloat$: inputMaybeFloat$
+                                ,inputInt$: inputInt$
+                                ,inputMaybeInt$: inputMaybeInt$
+                                ,inputUrl$: inputUrl$
+                                ,inputMaybeUrl$: inputMaybeUrl$
+                                ,button_: button_
+                                ,button$: button$
+                                ,buttonLink_: buttonLink_
+                                ,buttonLink$: buttonLink$
+                                ,buttonSubmit_: buttonSubmit_
+                                ,buttonSubmit$: buttonSubmit$
+                                ,buttonReset_: buttonReset_
+                                ,buttonReset$: buttonReset$
+                                ,select$: select$
+                                ,option_: option_
+                                ,option$: option$
+                                ,output$: output$
+                                ,progress$: progress$
+                                ,meter$: meter$};
+   return _elm.Html.Shorthand.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Shorthand = Elm.Html.Shorthand || {};
+Elm.Html.Shorthand.Event = Elm.Html.Shorthand.Event || {};
+Elm.Html.Shorthand.Event.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Shorthand = _elm.Html.Shorthand || {};
+   _elm.Html.Shorthand.Event = _elm.Html.Shorthand.Event || {};
+   if (_elm.Html.Shorthand.Event.values)
+   return _elm.Html.Shorthand.Event.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Shorthand.Event",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $Html$Shorthand$Type = Elm.Html.Shorthand.Type.make(_elm),
+   $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var messageDecoder = F2(function (dec,
+   f) {
+      return $Json$Decode.customDecoder($Json$Decode.value)(function (event) {
+         return function () {
+            var r = A2($Json$Decode.decodeValue,
+            dec,
+            event);
+            var r$ = A2($Result.formatError,
+            $Html$Shorthand$Type.EventDecodeError(event),
+            r);
+            return function () {
+               var _v0 = {ctor: "_Tuple2"
+                         ,_0: f(r$)
+                         ,_1: r};
+               switch (_v0.ctor)
+               {case "_Tuple2":
+                  switch (_v0._0.ctor)
+                    {case "Just":
+                       return $Result.Ok(_v0._0._0);
+                       case "Nothing":
+                       switch (_v0._1.ctor)
+                         {case "Err":
+                            return $Result.Err(_v0._1._0);
+                            case "Ok":
+                            return $Result.Err("no message in response to event");}
+                         break;}
+                    break;}
+               _U.badCase($moduleName,
+               "between lines 104 and 107");
+            }();
+         }();
+      });
+   });
+   var onMouseLost = $Html$Events.on("mouseleave");
+   var onKeyboardLost = $Html$Events.on("blur");
+   var onEnter = F2(function (dec,
+   f) {
+      return A3($Html$Events.on,
+      "keydown",
+      $Json$Decode.customDecoder(A3($Json$Decode.object2,
+      F2(function (v0,v1) {
+         return {ctor: "_Tuple2"
+                ,_0: v0
+                ,_1: v1};
+      }),
+      $Html$Events.keyCode,
+      dec))(function (_v6) {
+         return function () {
+            switch (_v6.ctor)
+            {case "_Tuple2":
+               return _U.eq(_v6._0,
+                 13) ? $Result.Ok(_v6._1) : $Result.Err("expected key code 13");}
+            _U.badCase($moduleName,
+            "on line 37, column 72 to 126");
+         }();
+      }),
+      f);
+   });
+   var onChange = $Html$Events.on("change");
+   var onInput = $Html$Events.on("input");
+   _elm.Html.Shorthand.Event.values = {_op: _op
+                                      ,onInput: onInput
+                                      ,onChange: onChange
+                                      ,onEnter: onEnter
+                                      ,onKeyboardLost: onKeyboardLost
+                                      ,onMouseLost: onMouseLost
+                                      ,messageDecoder: messageDecoder};
+   return _elm.Html.Shorthand.Event.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Shorthand = Elm.Html.Shorthand || {};
+Elm.Html.Shorthand.Internal = Elm.Html.Shorthand.Internal || {};
+Elm.Html.Shorthand.Internal.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Shorthand = _elm.Html.Shorthand || {};
+   _elm.Html.Shorthand.Internal = _elm.Html.Shorthand.Internal || {};
+   if (_elm.Html.Shorthand.Internal.values)
+   return _elm.Html.Shorthand.Internal.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Shorthand.Internal",
+   $Basics = Elm.Basics.make(_elm),
+   $Char = Elm.Char.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Shorthand$Type = Elm.Html.Shorthand.Type.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm);
+   var encodeClass = function () {
+      var isAlpha = function (c) {
+         return function () {
+            var cc = $Char.toCode($Char.toLower(c));
+            return _U.cmp(cc,
+            $Char.toCode(_U.chr("a"))) > -1 && _U.cmp(cc,
+            $Char.toCode(_U.chr("z"))) < 1;
+         }();
+      };
+      var startWithAlpha = function (s) {
+         return function () {
+            var _v0 = $String.uncons(s);
+            switch (_v0.ctor)
+            {case "Just":
+               switch (_v0._0.ctor)
+                 {case "_Tuple2":
+                    return $Basics.not(isAlpha(_v0._0._0)) ? A2($String.cons,
+                      _U.chr("x"),
+                      s) : s;}
+                 break;
+               case "Nothing": return s;}
+            _U.badCase($moduleName,
+            "between lines 53 and 56");
+         }();
+      };
+      var hu = _L.fromArray([_U.chr("-")
+                            ,_U.chr("_")]);
+      var isClassChar = function (c) {
+         return $Char.isDigit(c) || (isAlpha(c) || A2($List.member,
+         c,
+         hu));
+      };
+      var smartTrimLeft = function (s) {
+         return function () {
+            var _v4 = $String.uncons(s);
+            switch (_v4.ctor)
+            {case "Just":
+               switch (_v4._0.ctor)
+                 {case "_Tuple2":
+                    return A2($List.member,
+                      _v4._0._0,
+                      hu) ? _v4._0._1 : s;}
+                 break;
+               case "Nothing": return s;}
+            _U.badCase($moduleName,
+            "between lines 56 and 59");
+         }();
+      };
+      var smartTrimRight = function (s) {
+         return function () {
+            var _v8 = $String.uncons($String.reverse(s));
+            switch (_v8.ctor)
+            {case "Just":
+               switch (_v8._0.ctor)
+                 {case "_Tuple2":
+                    return A2($List.member,
+                      _v8._0._0,
+                      hu) ? $String.reverse(_v8._0._1) : s;}
+                 break;
+               case "Nothing": return s;}
+            _U.badCase($moduleName,
+            "between lines 59 and 62");
+         }();
+      };
+      var smartTrim = function ($) {
+         return smartTrimRight(smartTrimLeft($));
+      };
+      return function ($) {
+         return $String.join(" ")($List.map(function ($) {
+            return startWithAlpha(smartTrim($String.filter(isClassChar)($String.toLower($))));
+         })($String.words($)));
+      };
+   }();
+   var class$ = function ($) {
+      return $Html$Attributes.$class(encodeClass($));
+   };
+   var encodeId = function () {
+      var isAlpha = function (c) {
+         return function () {
+            var cc = $Char.toCode($Char.toLower(c));
+            return _U.cmp(cc,
+            $Char.toCode(_U.chr("a"))) > -1 && _U.cmp(cc,
+            $Char.toCode(_U.chr("z"))) < 1;
+         }();
+      };
+      var startWithAlpha = function (s) {
+         return function () {
+            var _v12 = $String.uncons(s);
+            switch (_v12.ctor)
+            {case "Just":
+               switch (_v12._0.ctor)
+                 {case "_Tuple2":
+                    return $Basics.not(isAlpha(_v12._0._0)) ? A2($String.cons,
+                      _U.chr("x"),
+                      s) : s;}
+                 break;
+               case "Nothing": return s;}
+            _U.badCase($moduleName,
+            "between lines 24 and 27");
+         }();
+      };
+      var hu = _L.fromArray([_U.chr("-")
+                            ,_U.chr("_")]);
+      var isIdChar = function (c) {
+         return $Char.isDigit(c) || (isAlpha(c) || A2($List.member,
+         c,
+         hu));
+      };
+      var smartTrimLeft = function (s) {
+         return function () {
+            var _v16 = $String.uncons(s);
+            switch (_v16.ctor)
+            {case "Just":
+               switch (_v16._0.ctor)
+                 {case "_Tuple2":
+                    return A2($List.member,
+                      _v16._0._0,
+                      hu) ? _v16._0._1 : s;}
+                 break;
+               case "Nothing": return s;}
+            _U.badCase($moduleName,
+            "between lines 27 and 30");
+         }();
+      };
+      var smartTrimRight = function (s) {
+         return function () {
+            var _v20 = $String.uncons($String.reverse(s));
+            switch (_v20.ctor)
+            {case "Just":
+               switch (_v20._0.ctor)
+                 {case "_Tuple2":
+                    return A2($List.member,
+                      _v20._0._0,
+                      hu) ? $String.reverse(_v20._0._1) : s;}
+                 break;
+               case "Nothing": return s;}
+            _U.badCase($moduleName,
+            "between lines 30 and 33");
+         }();
+      };
+      var smartTrim = function ($) {
+         return smartTrimRight(smartTrimLeft($));
+      };
+      return function ($) {
+         return startWithAlpha($String.join("-")($List.map(function ($) {
+            return smartTrim($String.filter(isIdChar)($String.toLower($)));
+         })($String.words($))));
+      };
+   }();
+   var id$ = function ($) {
+      return $Html$Attributes.id(encodeId($));
+   };
+   _elm.Html.Shorthand.Internal.values = {_op: _op
+                                         ,encodeId: encodeId
+                                         ,encodeClass: encodeClass
+                                         ,id$: id$
+                                         ,class$: class$};
+   return _elm.Html.Shorthand.Internal.values;
+};
+Elm.Html = Elm.Html || {};
+Elm.Html.Shorthand = Elm.Html.Shorthand || {};
+Elm.Html.Shorthand.Type = Elm.Html.Shorthand.Type || {};
+Elm.Html.Shorthand.Type.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Shorthand = _elm.Html.Shorthand || {};
+   _elm.Html.Shorthand.Type = _elm.Html.Shorthand.Type || {};
+   if (_elm.Html.Shorthand.Type.values)
+   return _elm.Html.Shorthand.Type.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Html.Shorthand.Type",
+   $Basics = Elm.Basics.make(_elm),
+   $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var MeterParam = F7(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g) {
+      return {_: {}
+             ,$class: a
+             ,high: f
+             ,low: e
+             ,max: d
+             ,min: c
+             ,optimum: g
+             ,value: b};
+   });
+   var ProgressParam = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,$class: a
+             ,max: c
+             ,value: b};
+   });
+   var OutputParam = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,$class: a
+             ,$for: c
+             ,name: b};
+   });
+   var OptionParam = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,label: a
+             ,selected: c
+             ,value: b};
+   });
+   var SelectParam = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,$class: a
+             ,name: b
+             ,update: c};
+   });
+   var ButtonParam = F2(function (a,
+   b) {
+      return {_: {}
+             ,$class: a
+             ,update: b};
+   });
+   var InputMaybeIntParam = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,$class: a
+             ,max: f
+             ,min: e
+             ,name: b
+             ,placeholder: c
+             ,step: g
+             ,update: h
+             ,value: d};
+   });
+   var InputIntParam = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,$class: a
+             ,max: f
+             ,min: e
+             ,name: b
+             ,placeholder: c
+             ,step: g
+             ,update: h
+             ,value: d};
+   });
+   var InputMaybeFloatParam = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,$class: a
+             ,max: f
+             ,min: e
+             ,name: b
+             ,placeholder: c
+             ,step: g
+             ,update: h
+             ,value: d};
+   });
+   var InputFloatParam = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,$class: a
+             ,max: f
+             ,min: e
+             ,name: b
+             ,placeholder: c
+             ,step: g
+             ,update: h
+             ,value: d};
+   });
+   var InputMaybeUrlParam = F6(function (a,
+   b,
+   c,
+   d,
+   e,
+   f) {
+      return {_: {}
+             ,$class: a
+             ,autocomplete: e
+             ,name: b
+             ,placeholder: c
+             ,update: f
+             ,value: d};
+   });
+   var InputUrlParam = F7(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g) {
+      return {_: {}
+             ,$class: a
+             ,autocomplete: f
+             ,name: b
+             ,placeholder: c
+             ,required: e
+             ,update: g
+             ,value: d};
+   });
+   var InputMaybeTextParam = F6(function (a,
+   b,
+   c,
+   d,
+   e,
+   f) {
+      return {_: {}
+             ,$class: a
+             ,autocomplete: e
+             ,name: b
+             ,placeholder: c
+             ,update: f
+             ,value: d};
+   });
+   var InputTextParam = F7(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g) {
+      return {_: {}
+             ,$class: a
+             ,autocomplete: f
+             ,name: b
+             ,placeholder: c
+             ,required: e
+             ,update: g
+             ,value: d};
+   });
+   var InputFieldParam = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,$class: a
+             ,decoder: h
+             ,name: b
+             ,pattern: f
+             ,placeholder: c
+             ,required: g
+             ,type$: e
+             ,update: d};
+   });
+   var LabelParam = F2(function (a,
+   b) {
+      return {_: {}
+             ,$class: a
+             ,$for: b};
+   });
+   var FieldsetParam = F2(function (a,
+   b) {
+      return {_: {}
+             ,$class: a
+             ,disabled: b};
+   });
+   var FormParam = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,$class: a
+             ,novalidate: b
+             ,update: c};
+   });
+   var VideoParam = function (a) {
+      return function (b) {
+         return function (c) {
+            return function (d) {
+               return function (e) {
+                  return function (f) {
+                     return function (g) {
+                        return function (h) {
+                           return function (i) {
+                              return function (j) {
+                                 return function (k) {
+                                    return function (l) {
+                                       return {_: {}
+                                              ,$class: a
+                                              ,autoplay: g
+                                              ,controls: h
+                                              ,height: d
+                                              ,loop: i
+                                              ,poster: k
+                                              ,preload: j
+                                              ,src: b
+                                              ,videoHeight: e
+                                              ,videoWidth: f
+                                              ,volume: l
+                                              ,width: c};
+                                    };
+                                 };
+                              };
+                           };
+                        };
+                     };
+                  };
+               };
+            };
+         };
+      };
+   };
+   var MediaParam = F8(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h) {
+      return {_: {}
+             ,$class: a
+             ,autoplay: c
+             ,controls: d
+             ,loop: e
+             ,poster: g
+             ,preload: f
+             ,src: b
+             ,volume: h};
+   });
+   var ObjectParam = F7(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g) {
+      return {_: {}
+             ,$class: a
+             ,data: c
+             ,height: f
+             ,name: b
+             ,type$: d
+             ,useMapName: e
+             ,width: g};
+   });
+   var EmbedParam = F7(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g) {
+      return {_: {}
+             ,$class: a
+             ,height: f
+             ,id: b
+             ,src: c
+             ,type$: d
+             ,useMapName: e
+             ,width: g};
+   });
+   var IframeParam = F7(function (a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g) {
+      return {_: {}
+             ,$class: a
+             ,height: e
+             ,name: b
+             ,sandbox: f
+             ,seamless: g
+             ,src: c
+             ,width: d};
+   });
+   var ImgParam = F5(function (a,
+   b,
+   c,
+   d,
+   e) {
+      return {_: {}
+             ,$class: a
+             ,alt: e
+             ,height: d
+             ,src: b
+             ,width: c};
+   });
+   var ModParam = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,$class: a
+             ,cite: b
+             ,datetime: c};
+   });
+   var AnchorParam = F2(function (a,
+   b) {
+      return {_: {}
+             ,$class: a
+             ,href: b};
+   });
+   var ClassCiteParam = F2(function (a,
+   b) {
+      return {_: {}
+             ,$class: a
+             ,cite: b};
+   });
+   var ClassIdParam = F2(function (a,
+   b) {
+      return {_: {}
+             ,$class: a
+             ,id: b};
+   });
+   var ClassParam = function (a) {
+      return {_: {},$class: a};
+   };
+   var SelectUpdate = function (a) {
+      return {_: {},onSelect: a};
+   };
+   var ButtonUpdate = function (a) {
+      return {_: {},onClick: a};
+   };
+   var FieldUpdate = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,onEnter: b
+             ,onInput: a
+             ,onKeyboardLost: c};
+   });
+   var FormUpdate = F2(function (a,
+   b) {
+      return {_: {}
+             ,onEnter: b
+             ,onSubmit: a};
+   });
+   var EventDecodeError = F2(function (a,
+   b) {
+      return {_: {}
+             ,event: a
+             ,reason: b};
+   });
+   _elm.Html.Shorthand.Type.values = {_op: _op
+                                     ,EventDecodeError: EventDecodeError
+                                     ,FormUpdate: FormUpdate
+                                     ,FieldUpdate: FieldUpdate
+                                     ,ButtonUpdate: ButtonUpdate
+                                     ,SelectUpdate: SelectUpdate
+                                     ,ClassParam: ClassParam
+                                     ,ClassIdParam: ClassIdParam
+                                     ,ClassCiteParam: ClassCiteParam
+                                     ,AnchorParam: AnchorParam
+                                     ,ModParam: ModParam
+                                     ,ImgParam: ImgParam
+                                     ,IframeParam: IframeParam
+                                     ,EmbedParam: EmbedParam
+                                     ,ObjectParam: ObjectParam
+                                     ,MediaParam: MediaParam
+                                     ,VideoParam: VideoParam
+                                     ,FormParam: FormParam
+                                     ,FieldsetParam: FieldsetParam
+                                     ,LabelParam: LabelParam
+                                     ,InputFieldParam: InputFieldParam
+                                     ,InputTextParam: InputTextParam
+                                     ,InputMaybeTextParam: InputMaybeTextParam
+                                     ,InputUrlParam: InputUrlParam
+                                     ,InputMaybeUrlParam: InputMaybeUrlParam
+                                     ,InputFloatParam: InputFloatParam
+                                     ,InputMaybeFloatParam: InputMaybeFloatParam
+                                     ,InputIntParam: InputIntParam
+                                     ,InputMaybeIntParam: InputMaybeIntParam
+                                     ,ButtonParam: ButtonParam
+                                     ,SelectParam: SelectParam
+                                     ,OptionParam: OptionParam
+                                     ,OutputParam: OutputParam
+                                     ,ProgressParam: ProgressParam
+                                     ,MeterParam: MeterParam};
+   return _elm.Html.Shorthand.Type.values;
+};
 Elm.Json = Elm.Json || {};
 Elm.Json.Decode = Elm.Json.Decode || {};
 Elm.Json.Decode.make = function (_elm) {
@@ -3634,37 +6649,15 @@ Elm.Main.make = function (_elm) {
    $Basics = Elm.Basics.make(_elm),
    $History = Elm.History.make(_elm),
    $Html = Elm.Html.make(_elm),
+   $Html$Shorthand = Elm.Html.Shorthand.make(_elm),
    $Keyboard = Elm.Keyboard.make(_elm),
    $List = Elm.List.make(_elm),
-   $Markdown = Elm.Markdown.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
    $SlideShow = Elm.SlideShow.make(_elm),
    $String = Elm.String.make(_elm),
    $Task = Elm.Task.make(_elm);
-   var Navigate = function (a) {
-      return {ctor: "Navigate"
-             ,_0: a};
-   };
-   var NoOp = {ctor: "NoOp"};
-   var keysToAction = function (keys) {
-      return _U.cmp(keys.x,
-      0) > 0 ? Navigate($SlideShow.gotoNext) : _U.cmp(keys.x,
-      0) < 0 ? Navigate($SlideShow.gotoPrevious) : NoOp;
-   };
-   var view = $SlideShow.toHtml;
-   var update = function (action) {
-      return function () {
-         switch (action.ctor)
-         {case "Navigate":
-            return action._0;
-            case "NoOp":
-            return $Basics.identity;}
-         _U.badCase($moduleName,
-         "between lines 258 and 260");
-      }();
-   };
    var makeTitle = function (slideShow) {
       return A2($Basics._op["++"],
       "Git Tutorial Presentation (slide ",
@@ -3672,58 +6665,146 @@ Elm.Main.make = function (_elm) {
       $Basics.toString(slideShow.currentIndex),
       ")"));
    };
-   var makeHash = function (slideShow) {
-      return A2($Basics._op["++"],
+   var setHash = function (slideShow) {
+      return $History.replacePath(A2($Basics._op["++"],
       "#",
-      $Basics.toString(slideShow.currentIndex));
+      $Basics.toString(slideShow.currentIndex)));
    };
-   var hashToInt = function ($) {
-      return $Result.toMaybe($String.toInt($String.dropLeft(1)($)));
+   var Navigate = function (a) {
+      return {ctor: "Navigate"
+             ,_0: a};
    };
-   var hashToAction = function (hash) {
+   var NoOp = {ctor: "NoOp"};
+   var actions = $Signal.mailbox(NoOp);
+   var view = F2(function (address,
+   slideShow) {
       return function () {
-         var _v2 = hashToInt(hash);
+         var slideAddress = A2($Signal.forwardTo,
+         address,
+         Navigate);
+         return A2($SlideShow.view,
+         slideAddress,
+         slideShow);
+      }();
+   });
+   var update = F2(function (action,
+   slideShow) {
+      return function () {
+         switch (action.ctor)
+         {case "Navigate":
+            return A2($SlideShow.update,
+              action._0,
+              slideShow);
+            case "NoOp": return slideShow;}
+         _U.badCase($moduleName,
+         "between lines 74 and 77");
+      }();
+   });
+   var parseHash = function (src) {
+      return function () {
+         var _v2 = $String.uncons(src);
          switch (_v2.ctor)
          {case "Just":
-            return Navigate($SlideShow.gotoIndex(_v2._0));
-            case "Nothing": return NoOp;}
+            switch (_v2._0.ctor)
+              {case "_Tuple2":
+                 switch (_v2._0._0 + "")
+                   {case "#":
+                      return $Result.toMaybe($String.toInt(_v2._0._1));}
+                   return $Maybe.Nothing;}
+              break;
+            case "Nothing":
+            return $Maybe.Nothing;}
          _U.badCase($moduleName,
-         "between lines 281 and 283");
+         "between lines 59 and 62");
       }();
    };
-   var input = $Signal.mergeMany(_L.fromArray([A2($Signal._op["<~"],
-                                              hashToAction,
-                                              $Signal.dropRepeats($History.hash))
-                                              ,A2($Signal._op["<~"],
-                                              keysToAction,
-                                              $Keyboard.arrows)]));
+   var input = function () {
+      var hashToAction = function (hash) {
+         return function () {
+            var _v6 = parseHash(hash);
+            switch (_v6.ctor)
+            {case "Just":
+               return Navigate($SlideShow.$goto(_v6._0));
+               case "Nothing": return NoOp;}
+            _U.badCase($moduleName,
+            "between lines 110 and 113");
+         }();
+      };
+      var keyToAction = function (key) {
+         return function () {
+            switch (key)
+            {case 0:
+               return Navigate($SlideShow.gotoNext);
+               case 13:
+               return Navigate($SlideShow.gotoNext);
+               case 32:
+               return Navigate($SlideShow.gotoNext);
+               case 37:
+               return Navigate($SlideShow.gotoPrevious);
+               case 39:
+               return Navigate($SlideShow.gotoNext);}
+            return NoOp;
+         }();
+      };
+      return $Signal.mergeMany(_L.fromArray([actions.signal
+                                            ,A2($Signal._op["<~"],
+                                            hashToAction,
+                                            $Signal.dropRepeats($History.hash))
+                                            ,A2($Signal._op["<~"],
+                                            keyToAction,
+                                            $Keyboard.presses)]));
+   }();
    var initialHash = Elm.Native.Port.make(_elm).inbound("initialHash",
    "String",
    function (v) {
       return typeof v === "string" || typeof v === "object" && v instanceof String ? v : _U.badPort("a string",
       v);
    });
-   var src = "\n\n# Git\n\n---\n\nSo, you\'re working on a project:\n\n```\nmy_project\n└── main.c\n```\n\n---\n\nNow you make some changes, but you don\'t want to overwrite your old file because\nyou want to look back on it later:\n\n```\nmy_project\n├── main.c\n└── main_2.c\n```\n\n---\n\nBefore long:\n\n```\nmy_project\n├── main.c\n├── main_2.c\n└── main_3.c\n```\n\n---\n\nNow lets say you want to test something:\n\n```\nmy_project\n├── main.c\n├── main_2.c\n├── main_3.c\n├── main_test_3.c\n├── main_test_4.c\n└── main_test_4b.c\n```\n\n---\n\nProgrammers have had a solution to this for decades.\n\n---\n\nGit is a version control system that you can run from the terminal.\n\nThere are GUIs available for it, but I think it is important to learn it from\nthe command line first.\n\nThis has the added benefit of making you look like a wizard in front of your\nfriends.\n\n---\n\n### Starting a git repository\n\nIn a new directory:\n\n```\ngit init\n```\n\nThis will initialize a new repository in that directory.\n\n---\n\n### Staging changes\n\nYou might have made a change to a file:\n\n```\n  function hi() {\n-   console.log(\"hi\");\n+   console\n  }\n```\n\n```\ngit add <file-name>\ngit add .\n```\n\n---\n\n### Committing changes\n\n```\ngit commit -m \"Commit message\"\n```\n\nEach commit comes with:\n\n  - an identification code\n  - a message\n  - a date\n  - the committer\'s name and email address\n\n---\n\n### Checking the state of a repository\n\n```\ngit status\n```\n\n```\ngit log\n```\n\n```\ngit log --graph --decorate\n```\n\n---\n\n### Branching\n\n---\n\n### Merging\n\n---\n\n## Working with remote repositories\n\n---\n\n### Cloning a repository\n\n```\ngit clone <path>\n```\n\nThis can be a repository in your file system, or one from a remote server.\n\n---\n\n### Pushing to a remote\n\n```\ngit push\n```\n\n\n---\n\n### Common workflows\n\n```bash\nmkdir my_project\ncd my_project\ngit init\necho \'This is my git repository!\' > README.md\ngit add README.md\ngit commit -m \'Initial commit\'\n```\n\n---\n\n```\n$ git init my_project\n$ cd my_project\n$ git add .\n$ git commit -m \"Initial commit\"\n```\n\n---\n\n# Git grows with you\n\n---\n\nAdd changes peice by peice:\n\n```\n$ git add -p README.md\n```\n\nRender an ASCII history graph:\n\n```\n$ git log --graph --decorate --abbrev-commit \\\n   --all --pretty=oneline\n```\n\nRewrite your history interactively:\n\n```\n$ git rebase -i HEAD~3\n```\n\n";
-   var parseMarkdown = $Markdown.toHtmlWith({_: {}
-                                            ,githubFlavored: $Maybe.Just({_: {}
-                                                                         ,breaks: true
-                                                                         ,tables: true})
-                                            ,sanitize: false
-                                            ,smartypants: false});
-   var slides = $List.map(parseMarkdown)($String.split("---")(src));
-   var slideShow = A2($SlideShow.$new,
+   var slides = _L.fromArray([{_: {}
+                              ,notes: ""
+                              ,view: _L.fromArray([$Html$Shorthand.h1_("Git")])}
+                             ,{_: {}
+                              ,notes: ""
+                              ,view: _L.fromArray([A2($Html.p,
+                                                  _L.fromArray([]),
+                                                  _L.fromArray([$Html.text("Most common workflow:")]))
+                                                  ,A2($Html.ol,
+                                                  _L.fromArray([]),
+                                                  _L.fromArray([A2($Html.li,
+                                                               _L.fromArray([]),
+                                                               _L.fromArray([$Html.text("create")]))
+                                                               ,A2($Html.li,
+                                                               _L.fromArray([]),
+                                                               _L.fromArray([$Html.text("edit")]))
+                                                               ,A2($Html.li,
+                                                               _L.fromArray([]),
+                                                               _L.fromArray([$Html.text("save")]))
+                                                               ,A2($Html.li,
+                                                               _L.fromArray([]),
+                                                               _L.fromArray([$Html.text("goto 2")]))]))])}
+                             ,{_: {}
+                              ,notes: ""
+                              ,view: _L.fromArray([$Html$Shorthand.h2_("Starting a git repository")
+                                                  ,A2($Html.p,
+                                                  _L.fromArray([]),
+                                                  _L.fromArray([$Html.text("In a new directory:")]))
+                                                  ,A2($Html.code,
+                                                  _L.fromArray([]),
+                                                  _L.fromArray([$Html.text("git init")]))
+                                                  ,A2($Html.p,
+                                                  _L.fromArray([]),
+                                                  _L.fromArray([$Html.text("This will initialize a new repository in that directory.")]))])}]);
+   var slideShow = A2($SlideShow.init,
    $Array.fromList(slides),
-   $Maybe.withDefault(0)(hashToInt(initialHash)));
-   var slideShows = $Signal.dropRepeats(A3($Signal.foldp,
+   $Maybe.withDefault(0)(parseHash(initialHash)));
+   var slideShows = A3($Signal.foldp,
    update,
    slideShow,
-   input));
+   input);
    var runTask = Elm.Native.Task.make(_elm).performSignal("runTask",
    A2($Signal._op["<~"],
-   $History.setPath,
-   A2($Signal._op["<~"],
-   makeHash,
-   slideShows)));
+   setHash,
+   slideShows));
    var title = Elm.Native.Port.make(_elm).outboundSignal("title",
    function (v) {
       return v;
@@ -3732,80 +6813,23 @@ Elm.Main.make = function (_elm) {
    makeTitle,
    slideShows));
    var main = A2($Signal._op["<~"],
-   view,
+   view(actions.address),
    slideShows);
    _elm.Main.values = {_op: _op
-                      ,parseMarkdown: parseMarkdown
                       ,slides: slides
-                      ,src: src
-                      ,hashToInt: hashToInt
-                      ,makeHash: makeHash
-                      ,makeTitle: makeTitle
+                      ,parseHash: parseHash
+                      ,slideShow: slideShow
                       ,update: update
                       ,view: view
                       ,NoOp: NoOp
                       ,Navigate: Navigate
-                      ,keysToAction: keysToAction
-                      ,hashToAction: hashToAction
+                      ,actions: actions
                       ,input: input
                       ,slideShows: slideShows
-                      ,slideShow: slideShow
+                      ,setHash: setHash
+                      ,makeTitle: makeTitle
                       ,main: main};
    return _elm.Main.values;
-};
-Elm.Markdown = Elm.Markdown || {};
-Elm.Markdown.make = function (_elm) {
-   "use strict";
-   _elm.Markdown = _elm.Markdown || {};
-   if (_elm.Markdown.values)
-   return _elm.Markdown.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Markdown",
-   $Basics = Elm.Basics.make(_elm),
-   $Graphics$Element = Elm.Graphics.Element.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Native$Markdown = Elm.Native.Markdown.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var toElementWith = $Native$Markdown.toElementWith;
-   var toHtmlWith = $Native$Markdown.toHtmlWith;
-   var defaultOptions = {_: {}
-                        ,githubFlavored: $Maybe.Just({_: {}
-                                                     ,breaks: false
-                                                     ,tables: false})
-                        ,sanitize: false
-                        ,smartypants: false};
-   var Options = F3(function (a,
-   b,
-   c) {
-      return {_: {}
-             ,githubFlavored: a
-             ,sanitize: b
-             ,smartypants: c};
-   });
-   var toElement = function (string) {
-      return A2($Native$Markdown.toElementWith,
-      defaultOptions,
-      string);
-   };
-   var toHtml = function (string) {
-      return A2($Native$Markdown.toHtmlWith,
-      defaultOptions,
-      string);
-   };
-   _elm.Markdown.values = {_op: _op
-                          ,toHtml: toHtml
-                          ,toElement: toElement
-                          ,Options: Options
-                          ,defaultOptions: defaultOptions
-                          ,toHtmlWith: toHtmlWith
-                          ,toElementWith: toElementWith};
-   return _elm.Markdown.values;
 };
 Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
@@ -3879,6 +6903,37 @@ Elm.Maybe.make = function (_elm) {
                        ,Just: Just
                        ,Nothing: Nothing};
    return _elm.Maybe.values;
+};
+Elm.Mouse = Elm.Mouse || {};
+Elm.Mouse.make = function (_elm) {
+   "use strict";
+   _elm.Mouse = _elm.Mouse || {};
+   if (_elm.Mouse.values)
+   return _elm.Mouse.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Mouse",
+   $Basics = Elm.Basics.make(_elm),
+   $Native$Mouse = Elm.Native.Mouse.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var clicks = $Native$Mouse.clicks;
+   var isDown = $Native$Mouse.isDown;
+   var position = $Native$Mouse.position;
+   var x = A2($Signal.map,
+   $Basics.fst,
+   position);
+   var y = A2($Signal.map,
+   $Basics.snd,
+   position);
+   _elm.Mouse.values = {_op: _op
+                       ,position: position
+                       ,x: x
+                       ,y: y
+                       ,isDown: isDown
+                       ,clicks: clicks};
+   return _elm.Mouse.values;
 };
 Elm.Native.Array = {};
 Elm.Native.Array.make = function(localRuntime) {
@@ -7379,95 +10434,50 @@ Elm.Native.List.make = function(localRuntime) {
 
 };
 
-
-// setup
 Elm.Native = Elm.Native || {};
-Elm.Native.Markdown = Elm.Native.Markdown || {};
+Elm.Native.Mouse = {};
+Elm.Native.Mouse.make = function(localRuntime) {
 
-// definition
-Elm.Native.Markdown.make = function(localRuntime) {
-    'use strict';
+	localRuntime.Native = localRuntime.Native || {};
+	localRuntime.Native.Mouse = localRuntime.Native.Mouse || {};
+	if (localRuntime.Native.Mouse.values)
+	{
+		return localRuntime.Native.Mouse.values;
+	}
 
-    // attempt to short-circuit
-    if ('values' in Elm.Native.Markdown)
-    {
-        return Elm.Native.Markdown.values;
-    }
+	var NS = Elm.Native.Signal.make(localRuntime);
+	var Utils = Elm.Native.Utils.make(localRuntime);
 
-    var Element = Elm.Native.Graphics.Element.make(localRuntime);
+	var position = NS.input('Mouse.position', Utils.Tuple2(0,0));
 
-    /**
-     * marked - a markdown parser
-     * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
-     * https://github.com/chjj/marked
-     */
-    (function(){var block={newline:/^\n+/,code:/^( {4}[^\n]+\n*)+/,fences:noop,hr:/^( *[-*_]){3,} *(?:\n+|$)/,heading:/^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,nptable:noop,lheading:/^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,blockquote:/^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,list:/^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,html:/^ *(?:comment|closed|closing) *(?:\n{2,}|\s*$)/,def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,table:noop,paragraph:/^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,text:/^[^\n]+/};block.bullet=/(?:[*+-]|\d+\.)/;block.item=/^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;block.item=replace(block.item,"gm")(/bull/g,block.bullet)();block.list=replace(block.list)(/bull/g,block.bullet)("hr","\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))")("def","\\n+(?="+block.def.source+")")();block.blockquote=replace(block.blockquote)("def",block.def)();block._tag="(?!(?:"+"a|em|strong|small|s|cite|q|dfn|abbr|data|time|code"+"|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo"+"|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b";block.html=replace(block.html)("comment",/<!--[\s\S]*?-->/)("closed",/<(tag)[\s\S]+?<\/\1>/)("closing",/<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)(/tag/g,block._tag)();block.paragraph=replace(block.paragraph)("hr",block.hr)("heading",block.heading)("lheading",block.lheading)("blockquote",block.blockquote)("tag","<"+block._tag)("def",block.def)();block.normal=merge({},block);block.gfm=merge({},block.normal,{fences:/^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,paragraph:/^/});block.gfm.paragraph=replace(block.paragraph)("(?!","(?!"+block.gfm.fences.source.replace("\\1","\\2")+"|"+block.list.source.replace("\\1","\\3")+"|")();block.tables=merge({},block.gfm,{nptable:/^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,table:/^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/});function Lexer(options){this.tokens=[];this.tokens.links={};this.options=options||marked.defaults;this.rules=block.normal;if(this.options.gfm){if(this.options.tables){this.rules=block.tables}else{this.rules=block.gfm}}}Lexer.rules=block;Lexer.lex=function(src,options){var lexer=new Lexer(options);return lexer.lex(src)};Lexer.prototype.lex=function(src){src=src.replace(/\r\n|\r/g,"\n").replace(/\t/g,"    ").replace(/\u00a0/g," ").replace(/\u2424/g,"\n");return this.token(src,true)};Lexer.prototype.token=function(src,top,bq){var src=src.replace(/^ +$/gm,""),next,loose,cap,bull,b,item,space,i,l;while(src){if(cap=this.rules.newline.exec(src)){src=src.substring(cap[0].length);if(cap[0].length>1){this.tokens.push({type:"space"})}}if(cap=this.rules.code.exec(src)){src=src.substring(cap[0].length);cap=cap[0].replace(/^ {4}/gm,"");this.tokens.push({type:"code",text:!this.options.pedantic?cap.replace(/\n+$/,""):cap});continue}if(cap=this.rules.fences.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"code",lang:cap[2],text:cap[3]});continue}if(cap=this.rules.heading.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"heading",depth:cap[1].length,text:cap[2]});continue}if(top&&(cap=this.rules.nptable.exec(src))){src=src.substring(cap[0].length);item={type:"table",header:cap[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:cap[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:cap[3].replace(/\n$/,"").split("\n")};for(i=0;i<item.align.length;i++){if(/^ *-+: *$/.test(item.align[i])){item.align[i]="right"}else if(/^ *:-+: *$/.test(item.align[i])){item.align[i]="center"}else if(/^ *:-+ *$/.test(item.align[i])){item.align[i]="left"}else{item.align[i]=null}}for(i=0;i<item.cells.length;i++){item.cells[i]=item.cells[i].split(/ *\| */)}this.tokens.push(item);continue}if(cap=this.rules.lheading.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"heading",depth:cap[2]==="="?1:2,text:cap[1]});continue}if(cap=this.rules.hr.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"hr"});continue}if(cap=this.rules.blockquote.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"blockquote_start"});cap=cap[0].replace(/^ *> ?/gm,"");this.token(cap,top,true);this.tokens.push({type:"blockquote_end"});continue}if(cap=this.rules.list.exec(src)){src=src.substring(cap[0].length);bull=cap[2];this.tokens.push({type:"list_start",ordered:bull.length>1});cap=cap[0].match(this.rules.item);next=false;l=cap.length;i=0;for(;i<l;i++){item=cap[i];space=item.length;item=item.replace(/^ *([*+-]|\d+\.) +/,"");if(~item.indexOf("\n ")){space-=item.length;item=!this.options.pedantic?item.replace(new RegExp("^ {1,"+space+"}","gm"),""):item.replace(/^ {1,4}/gm,"")}if(this.options.smartLists&&i!==l-1){b=block.bullet.exec(cap[i+1])[0];if(bull!==b&&!(bull.length>1&&b.length>1)){src=cap.slice(i+1).join("\n")+src;i=l-1}}loose=next||/\n\n(?!\s*$)/.test(item);if(i!==l-1){next=item.charAt(item.length-1)==="\n";if(!loose)loose=next}this.tokens.push({type:loose?"loose_item_start":"list_item_start"});this.token(item,false,bq);this.tokens.push({type:"list_item_end"})}this.tokens.push({type:"list_end"});continue}if(cap=this.rules.html.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:this.options.sanitize?"paragraph":"html",pre:cap[1]==="pre"||cap[1]==="script"||cap[1]==="style",text:cap[0]});continue}if(!bq&&top&&(cap=this.rules.def.exec(src))){src=src.substring(cap[0].length);this.tokens.links[cap[1].toLowerCase()]={href:cap[2],title:cap[3]};continue}if(top&&(cap=this.rules.table.exec(src))){src=src.substring(cap[0].length);item={type:"table",header:cap[1].replace(/^ *| *\| *$/g,"").split(/ *\| */),align:cap[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:cap[3].replace(/(?: *\| *)?\n$/,"").split("\n")};for(i=0;i<item.align.length;i++){if(/^ *-+: *$/.test(item.align[i])){item.align[i]="right"}else if(/^ *:-+: *$/.test(item.align[i])){item.align[i]="center"}else if(/^ *:-+ *$/.test(item.align[i])){item.align[i]="left"}else{item.align[i]=null}}for(i=0;i<item.cells.length;i++){item.cells[i]=item.cells[i].replace(/^ *\| *| *\| *$/g,"").split(/ *\| */)}this.tokens.push(item);continue}if(top&&(cap=this.rules.paragraph.exec(src))){src=src.substring(cap[0].length);this.tokens.push({type:"paragraph",text:cap[1].charAt(cap[1].length-1)==="\n"?cap[1].slice(0,-1):cap[1]});continue}if(cap=this.rules.text.exec(src)){src=src.substring(cap[0].length);this.tokens.push({type:"text",text:cap[0]});continue}if(src){throw new Error("Infinite loop on byte: "+src.charCodeAt(0))}}return this.tokens};var inline={escape:/^\\([\\`*{}\[\]()#+\-.!_>])/,autolink:/^<([^ >]+(@|:\/)[^ >]+)>/,url:noop,tag:/^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,link:/^!?\[(inside)\]\(href\)/,reflink:/^!?\[(inside)\]\s*\[([^\]]*)\]/,nolink:/^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,strong:/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,em:/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,code:/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,br:/^ {2,}\n(?!\s*$)/,del:noop,text:/^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/};inline._inside=/(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;inline._href=/\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;inline.link=replace(inline.link)("inside",inline._inside)("href",inline._href)();inline.reflink=replace(inline.reflink)("inside",inline._inside)();inline.normal=merge({},inline);inline.pedantic=merge({},inline.normal,{strong:/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,em:/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/});inline.gfm=merge({},inline.normal,{escape:replace(inline.escape)("])","~|])")(),url:/^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,del:/^~~(?=\S)([\s\S]*?\S)~~/,text:replace(inline.text)("]|","~]|")("|","|https?://|")()});inline.breaks=merge({},inline.gfm,{br:replace(inline.br)("{2,}","*")(),text:replace(inline.gfm.text)("{2,}","*")()});function InlineLexer(links,options){this.options=options||marked.defaults;this.links=links;this.rules=inline.normal;this.renderer=this.options.renderer||new Renderer;this.renderer.options=this.options;if(!this.links){throw new Error("Tokens array requires a `links` property.")}if(this.options.gfm){if(this.options.breaks){this.rules=inline.breaks}else{this.rules=inline.gfm}}else if(this.options.pedantic){this.rules=inline.pedantic}}InlineLexer.rules=inline;InlineLexer.output=function(src,links,options){var inline=new InlineLexer(links,options);return inline.output(src)};InlineLexer.prototype.output=function(src){var out="",link,text,href,cap;while(src){if(cap=this.rules.escape.exec(src)){src=src.substring(cap[0].length);out+=cap[1];continue}if(cap=this.rules.autolink.exec(src)){src=src.substring(cap[0].length);if(cap[2]==="@"){text=cap[1].charAt(6)===":"?this.mangle(cap[1].substring(7)):this.mangle(cap[1]);href=this.mangle("mailto:")+text}else{text=escape(cap[1]);href=text}out+=this.renderer.link(href,null,text);continue}if(!this.inLink&&(cap=this.rules.url.exec(src))){src=src.substring(cap[0].length);text=escape(cap[1]);href=text;out+=this.renderer.link(href,null,text);continue}if(cap=this.rules.tag.exec(src)){if(!this.inLink&&/^<a /i.test(cap[0])){this.inLink=true}else if(this.inLink&&/^<\/a>/i.test(cap[0])){this.inLink=false}src=src.substring(cap[0].length);out+=this.options.sanitize?escape(cap[0]):cap[0];continue}if(cap=this.rules.link.exec(src)){src=src.substring(cap[0].length);this.inLink=true;out+=this.outputLink(cap,{href:cap[2],title:cap[3]});this.inLink=false;continue}if((cap=this.rules.reflink.exec(src))||(cap=this.rules.nolink.exec(src))){src=src.substring(cap[0].length);link=(cap[2]||cap[1]).replace(/\s+/g," ");link=this.links[link.toLowerCase()];if(!link||!link.href){out+=cap[0].charAt(0);src=cap[0].substring(1)+src;continue}this.inLink=true;out+=this.outputLink(cap,link);this.inLink=false;continue}if(cap=this.rules.strong.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.strong(this.output(cap[2]||cap[1]));continue}if(cap=this.rules.em.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.em(this.output(cap[2]||cap[1]));continue}if(cap=this.rules.code.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.codespan(escape(cap[2],true));continue}if(cap=this.rules.br.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.br();continue}if(cap=this.rules.del.exec(src)){src=src.substring(cap[0].length);out+=this.renderer.del(this.output(cap[1]));continue}if(cap=this.rules.text.exec(src)){src=src.substring(cap[0].length);out+=escape(this.smartypants(cap[0]));continue}if(src){throw new Error("Infinite loop on byte: "+src.charCodeAt(0))}}return out};InlineLexer.prototype.outputLink=function(cap,link){var href=escape(link.href),title=link.title?escape(link.title):null;return cap[0].charAt(0)!=="!"?this.renderer.link(href,title,this.output(cap[1])):this.renderer.image(href,title,escape(cap[1]))};InlineLexer.prototype.smartypants=function(text){if(!this.options.smartypants)return text;return text.replace(/--/g,"—").replace(/(^|[-\u2014/(\[{"\s])'/g,"$1‘").replace(/'/g,"’").replace(/(^|[-\u2014/(\[{\u2018\s])"/g,"$1“").replace(/"/g,"”").replace(/\.{3}/g,"…")};InlineLexer.prototype.mangle=function(text){var out="",l=text.length,i=0,ch;for(;i<l;i++){ch=text.charCodeAt(i);if(Math.random()>.5){ch="x"+ch.toString(16)}out+="&#"+ch+";"}return out};function Renderer(options){this.options=options||{}}Renderer.prototype.code=function(code,lang,escaped){if(this.options.highlight){var out=this.options.highlight(code,lang);if(out!=null&&out!==code){escaped=true;code=out}}if(!lang){return"<pre><code>"+(escaped?code:escape(code,true))+"\n</code></pre>"}return'<pre><code class="'+this.options.langPrefix+escape(lang,true)+'">'+(escaped?code:escape(code,true))+"\n</code></pre>\n"};Renderer.prototype.blockquote=function(quote){return"<blockquote>\n"+quote+"</blockquote>\n"};Renderer.prototype.html=function(html){return html};Renderer.prototype.heading=function(text,level,raw){return"<h"+level+' id="'+this.options.headerPrefix+raw.toLowerCase().replace(/[^\w]+/g,"-")+'">'+text+"</h"+level+">\n"};Renderer.prototype.hr=function(){return this.options.xhtml?"<hr/>\n":"<hr>\n"};Renderer.prototype.list=function(body,ordered){var type=ordered?"ol":"ul";return"<"+type+">\n"+body+"</"+type+">\n"};Renderer.prototype.listitem=function(text){return"<li>"+text+"</li>\n"};Renderer.prototype.paragraph=function(text){return"<p>"+text+"</p>\n"};Renderer.prototype.table=function(header,body){return"<table>\n"+"<thead>\n"+header+"</thead>\n"+"<tbody>\n"+body+"</tbody>\n"+"</table>\n"};Renderer.prototype.tablerow=function(content){return"<tr>\n"+content+"</tr>\n"};Renderer.prototype.tablecell=function(content,flags){var type=flags.header?"th":"td";var tag=flags.align?"<"+type+' style="text-align:'+flags.align+'">':"<"+type+">";return tag+content+"</"+type+">\n"};Renderer.prototype.strong=function(text){return"<strong>"+text+"</strong>"};Renderer.prototype.em=function(text){return"<em>"+text+"</em>"};Renderer.prototype.codespan=function(text){return"<code>"+text+"</code>"};Renderer.prototype.br=function(){return this.options.xhtml?"<br/>":"<br>"};Renderer.prototype.del=function(text){return"<del>"+text+"</del>"};Renderer.prototype.link=function(href,title,text){if(this.options.sanitize){try{var prot=decodeURIComponent(unescape(href)).replace(/[^\w:]/g,"").toLowerCase()}catch(e){return""}if(prot.indexOf("javascript:")===0){return""}}var out='<a href="'+href+'"';if(title){out+=' title="'+title+'"'}out+=">"+text+"</a>";return out};Renderer.prototype.image=function(href,title,text){var out='<img src="'+href+'" alt="'+text+'"';if(title){out+=' title="'+title+'"'}out+=this.options.xhtml?"/>":">";return out};function Parser(options){this.tokens=[];this.token=null;this.options=options||marked.defaults;this.options.renderer=this.options.renderer||new Renderer;this.renderer=this.options.renderer;this.renderer.options=this.options}Parser.parse=function(src,options,renderer){var parser=new Parser(options,renderer);return parser.parse(src)};Parser.prototype.parse=function(src){this.inline=new InlineLexer(src.links,this.options,this.renderer);this.tokens=src.reverse();var out="";while(this.next()){out+=this.tok()}return out};Parser.prototype.next=function(){return this.token=this.tokens.pop()};Parser.prototype.peek=function(){return this.tokens[this.tokens.length-1]||0};Parser.prototype.parseText=function(){var body=this.token.text;while(this.peek().type==="text"){body+="\n"+this.next().text}return this.inline.output(body)};Parser.prototype.tok=function(){switch(this.token.type){case"space":{return""}case"hr":{return this.renderer.hr()}case"heading":{return this.renderer.heading(this.inline.output(this.token.text),this.token.depth,this.token.text)}case"code":{return this.renderer.code(this.token.text,this.token.lang,this.token.escaped)}case"table":{var header="",body="",i,row,cell,flags,j;cell="";for(i=0;i<this.token.header.length;i++){flags={header:true,align:this.token.align[i]};cell+=this.renderer.tablecell(this.inline.output(this.token.header[i]),{header:true,align:this.token.align[i]})}header+=this.renderer.tablerow(cell);for(i=0;i<this.token.cells.length;i++){row=this.token.cells[i];cell="";for(j=0;j<row.length;j++){cell+=this.renderer.tablecell(this.inline.output(row[j]),{header:false,align:this.token.align[j]})}body+=this.renderer.tablerow(cell)}return this.renderer.table(header,body)}case"blockquote_start":{var body="";while(this.next().type!=="blockquote_end"){body+=this.tok()}return this.renderer.blockquote(body)}case"list_start":{var body="",ordered=this.token.ordered;while(this.next().type!=="list_end"){body+=this.tok()}return this.renderer.list(body,ordered)}case"list_item_start":{var body="";while(this.next().type!=="list_item_end"){body+=this.token.type==="text"?this.parseText():this.tok()}return this.renderer.listitem(body)}case"loose_item_start":{var body="";while(this.next().type!=="list_item_end"){body+=this.tok()}return this.renderer.listitem(body)}case"html":{var html=!this.token.pre&&!this.options.pedantic?this.inline.output(this.token.text):this.token.text;return this.renderer.html(html)}case"paragraph":{return this.renderer.paragraph(this.inline.output(this.token.text))}case"text":{return this.renderer.paragraph(this.parseText())}}};function escape(html,encode){return html.replace(!encode?/&(?!#?\w+;)/g:/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}function unescape(html){return html.replace(/&([#\w]+);/g,function(_,n){n=n.toLowerCase();if(n==="colon")return":";if(n.charAt(0)==="#"){return n.charAt(1)==="x"?String.fromCharCode(parseInt(n.substring(2),16)):String.fromCharCode(+n.substring(1))}return""})}function replace(regex,opt){regex=regex.source;opt=opt||"";return function self(name,val){if(!name)return new RegExp(regex,opt);val=val.source||val;val=val.replace(/(^|[^\[])\^/g,"$1");regex=regex.replace(name,val);return self}}function noop(){}noop.exec=noop;function merge(obj){var i=1,target,key;for(;i<arguments.length;i++){target=arguments[i];for(key in target){if(Object.prototype.hasOwnProperty.call(target,key)){obj[key]=target[key]}}}return obj}function marked(src,opt,callback){if(callback||typeof opt==="function"){if(!callback){callback=opt;opt=null}opt=merge({},marked.defaults,opt||{});var highlight=opt.highlight,tokens,pending,i=0;try{tokens=Lexer.lex(src,opt)}catch(e){return callback(e)}pending=tokens.length;var done=function(err){if(err){opt.highlight=highlight;return callback(err)}var out;try{out=Parser.parse(tokens,opt)}catch(e){err=e}opt.highlight=highlight;return err?callback(err):callback(null,out)};if(!highlight||highlight.length<3){return done()}delete opt.highlight;if(!pending)return done();for(;i<tokens.length;i++){(function(token){if(token.type!=="code"){return--pending||done()}return highlight(token.text,token.lang,function(err,code){if(err)return done(err);if(code==null||code===token.text){return--pending||done()}token.text=code;token.escaped=true;--pending||done()})})(tokens[i])}return}try{if(opt)opt=merge({},marked.defaults,opt);return Parser.parse(Lexer.lex(src,opt),opt)}catch(e){e.message+="\nPlease report this to https://github.com/chjj/marked.";if((opt||marked.defaults).silent){return"<p>An error occured:</p><pre>"+escape(e.message+"",true)+"</pre>"}throw e}}marked.options=marked.setOptions=function(opt){merge(marked.defaults,opt);return marked};marked.defaults={gfm:true,tables:true,breaks:false,pedantic:false,sanitize:false,smartLists:false,silent:false,highlight:null,langPrefix:"lang-",smartypants:false,headerPrefix:"",renderer:new Renderer,xhtml:false};marked.Parser=Parser;marked.parser=Parser.parse;marked.Renderer=Renderer;marked.Lexer=Lexer;marked.lexer=Lexer.lex;marked.InlineLexer=InlineLexer;marked.inlineLexer=InlineLexer.output;marked.parse=marked;if(typeof module!=="undefined"&&typeof exports==="object"){module.exports=marked}else if(typeof define==="function"&&define.amd){define(function(){return marked})}else{this.marked=marked}}).call(function(){return this||(typeof window!=="undefined"?window:global)}());
+	var isDown = NS.input('Mouse.isDown', false);
 
-    marked.setOptions({
-        highlight: function (code, lang) {
-            if (typeof hljs !== 'undefined'
-                && lang
-                && hljs.listLanguages().indexOf(lang) >= 0)
-            {
-                return hljs.highlight(lang, code, true).value;
-            }
-            return code;
-        }
-    });
+	var clicks = NS.input('Mouse.clicks', Utils.Tuple0);
 
-    function formatOptions(options) {
-        var gfm = options.githubFlavored;
-        if (gfm.ctor === 'Just')
-        {
-            return {
-                gfm: true,
-                tables: gfm.tables,
-                breaks: gfm.breaks,
-                sanitize: options.sanitize,
-                smartypants: options.smartypants
-            };
-        }
-        else
-        {
-            return {
-                gfm: false,
-                tables: false,
-                breaks: false,
-                sanitize: options.sanitize,
-                smartypants: options.smartypants
-            };
-        }
-    }
+	var node = localRuntime.isFullscreen()
+		? document
+		: localRuntime.node;
 
-    function toHtmlWith(options, rawMarkdown) {
-        var widget = {
-            type: "Widget",
+	localRuntime.addListener([clicks.id], node, 'click', function click() {
+		localRuntime.notify(clicks.id, Utils.Tuple0);
+	});
+	localRuntime.addListener([isDown.id], node, 'mousedown', function down() {
+		localRuntime.notify(isDown.id, true);
+	});
+	localRuntime.addListener([isDown.id], node, 'mouseup', function up() {
+		localRuntime.notify(isDown.id, false);
+	});
+	localRuntime.addListener([position.id], node, 'mousemove', function move(e) {
+		localRuntime.notify(position.id, Utils.getXY(e));
+	});
 
-            init: function () {
-                var html = marked(rawMarkdown, formatOptions(options));
-                var div = document.createElement('div');
-                div.innerHTML = html;
-                return div;
-            },
-
-            update: function (previous, node) {
-                var html = marked(rawMarkdown, formatOptions(options));
-                node.innerHTML = html;
-                return node;
-            }
-        };
-        return widget;
-    }
-
-    function toElementWith(options, rawMarkdown) {
-        return Element.markdown(marked(rawMarkdown, formatOptions(options)));
-    }
-
-    return Elm.Native.Markdown.values = {
-        toHtmlWith: F2(toHtmlWith),
-        toElementWith: F2(toElementWith)
-    };
+	return localRuntime.Native.Mouse.values = {
+		position: position,
+		isDown: isDown,
+		clicks: clicks
+	};
 };
+
 Elm.Native.Port = {};
 Elm.Native.Port.make = function(localRuntime) {
 
@@ -12220,6 +15230,75 @@ Elm.Native.VirtualDom.make = function(elm)
 
 },{}]},{},[39]);
 
+Elm.Native = Elm.Native || {};
+Elm.Native.Window = {};
+Elm.Native.Window.make = function(localRuntime) {
+
+	localRuntime.Native = localRuntime.Native || {};
+	localRuntime.Native.Window = localRuntime.Native.Window || {};
+	if (localRuntime.Native.Window.values)
+	{
+		return localRuntime.Native.Window.values;
+	}
+
+	var NS = Elm.Native.Signal.make(localRuntime);
+	var Tuple2 = Elm.Native.Utils.make(localRuntime).Tuple2;
+
+
+	function getWidth()
+	{
+		return localRuntime.node.clientWidth;
+	}
+
+
+	function getHeight()
+	{
+		if (localRuntime.isFullscreen())
+		{
+			return window.innerHeight;
+		}
+		return localRuntime.node.clientHeight;
+	}
+
+
+	var dimensions = NS.input('Window.dimensions', Tuple2(getWidth(), getHeight()));
+
+
+	function resizeIfNeeded()
+	{
+		// Do not trigger event if the dimensions have not changed.
+		// This should be most of the time.
+		var w = getWidth();
+		var h = getHeight();
+		if (dimensions.value._0 === w && dimensions.value._1 === h)
+		{
+			return;
+		}
+
+		setTimeout(function () {
+			// Check again to see if the dimensions have changed.
+			// It is conceivable that the dimensions have changed
+			// again while some other event was being processed.
+			var w = getWidth();
+			var h = getHeight();
+			if (dimensions.value._0 === w && dimensions.value._1 === h)
+			{
+				return;
+			}
+			localRuntime.notify(dimensions.id, Tuple2(w,h));
+		}, 0);
+	}
+
+
+	localRuntime.addListener([dimensions.id], window, 'resize', resizeIfNeeded);
+
+
+	return localRuntime.Native.Window.values = {
+		dimensions: dimensions,
+		resizeIfNeeded: resizeIfNeeded
+	};
+};
+
 Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
    "use strict";
@@ -12713,159 +15792,6 @@ Elm.Signal.make = function (_elm) {
                         ,Mailbox: Mailbox};
    return _elm.Signal.values;
 };
-Elm.Slide = Elm.Slide || {};
-Elm.Slide.make = function (_elm) {
-   "use strict";
-   _elm.Slide = _elm.Slide || {};
-   if (_elm.Slide.values)
-   return _elm.Slide.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Slide",
-   $Basics = Elm.Basics.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm);
-   var stepBackward = function (nodes) {
-      return function () {
-         var stepBackward$ = F2(function (nodes,
-         acc) {
-            return $Maybe.Nothing;
-         });
-         return A2(stepBackward$,
-         nodes,
-         _L.fromArray([]));
-      }();
-   };
-   var renderNode = function (node) {
-      return function () {
-         switch (node.ctor)
-         {case "Animation":
-            switch (node._0.ctor)
-              {case "Complete":
-                 return renderNode(node._1);
-                 case "Pending":
-                 return $Maybe.Nothing;}
-              break;
-            case "GroupNode":
-            return $Maybe.Just(node._0(A2($List.filterMap,
-              renderNode,
-              node._1)));
-            case "ItemNode":
-            return $Maybe.Just(node._0);}
-         _U.badCase($moduleName,
-         "between lines 45 and 49");
-      }();
-   };
-   var render = function (nodes) {
-      return A2($List.filterMap,
-      renderNode,
-      nodes);
-   };
-   var Animation = F2(function (a,
-   b) {
-      return {ctor: "Animation"
-             ,_0: a
-             ,_1: b};
-   });
-   var GroupNode = F2(function (a,
-   b) {
-      return {ctor: "GroupNode"
-             ,_0: a
-             ,_1: b};
-   });
-   var group = GroupNode;
-   var ItemNode = function (a) {
-      return {ctor: "ItemNode"
-             ,_0: a};
-   };
-   var item = ItemNode;
-   var Complete = {ctor: "Complete"};
-   var stepForward = function (nodes) {
-      return function () {
-         var stepCons = F2(function (node,
-         rest) {
-            return A2($Maybe.map,
-            function (rest) {
-               return A2($List._op["::"],
-               node,
-               rest);
-            },
-            stepForward(rest));
-         });
-         return function () {
-            switch (nodes.ctor)
-            {case "::":
-               switch (nodes._0.ctor)
-                 {case "Animation":
-                    switch (nodes._0._0.ctor)
-                      {case "Complete":
-                         return A2(stepCons,
-                           A2(Animation,
-                           Complete,
-                           nodes._0._1),
-                           nodes._1);
-                         case "Pending":
-                         return $Maybe.Just(A2($List._op["::"],
-                           A2(Animation,
-                           Complete,
-                           nodes._0._1),
-                           nodes._1));}
-                      break;
-                    case "GroupNode":
-                    return A2(stepCons,
-                      A2(GroupNode,
-                      nodes._0._0,
-                      nodes._0._1),
-                      nodes._1);
-                    case "ItemNode":
-                    return A2(stepCons,
-                      ItemNode(nodes._0._0),
-                      nodes._1);}
-                 break;
-               case "[]":
-               return $Maybe.Nothing;}
-            _U.badCase($moduleName,
-            "between lines 65 and 70");
-         }();
-      }();
-   };
-   var Pending = {ctor: "Pending"};
-   var appear = Animation(Pending);
-   var testSlides = _L.fromArray([_L.fromArray([item(A2($Html.h1,
-                                 _L.fromArray([]),
-                                 _L.fromArray([$Html.text("Git Presentation")])))])
-                                 ,_L.fromArray([item(A2($Html.h1,
-                                               _L.fromArray([]),
-                                               _L.fromArray([$Html.text("A typical git workflow")])))
-                                               ,A2(group,
-                                               $Html.code(_L.fromArray([])),
-                                               _L.fromArray([function ($) {
-                                                               return appear(item($));
-                                                            }($Html.text("$ git init my_project"))
-                                                            ,function ($) {
-                                                               return appear(item($));
-                                                            }($Html.text("$ cd my_project"))
-                                                            ,function ($) {
-                                                               return appear(item($));
-                                                            }($Html.text("$ git add ."))
-                                                            ,function ($) {
-                                                               return appear(item($));
-                                                            }($Html.text("$ git commit -m \"Initial commit\""))]))])]);
-   _elm.Slide.values = {_op: _op
-                       ,item: item
-                       ,group: group
-                       ,appear: appear
-                       ,renderNode: renderNode
-                       ,render: render
-                       ,stepForward: stepForward
-                       ,stepBackward: stepBackward};
-   return _elm.Slide.values;
-};
 Elm.SlideShow = Elm.SlideShow || {};
 Elm.SlideShow.make = function (_elm) {
    "use strict";
@@ -12880,83 +15806,137 @@ Elm.SlideShow.make = function (_elm) {
    $Array = Elm.Array.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
-   var gotoFirst = function (slideShow) {
-      return _U.replace([["currentIndex"
-                         ,0]],
-      slideShow);
-   };
-   var $new = F2(function (slides,
-   index) {
-      return {_: {}
-             ,currentIndex: index
-             ,slides: slides};
-   });
-   var lastIndex = function (slideShow) {
-      return $Array.length(slideShow.slides) - 1;
-   };
-   var gotoIndex = F2(function (index,
+   var update = F2(function (action,
    slideShow) {
-      return _U.replace([["currentIndex"
-                         ,A3($Basics.clamp,
-                         0,
-                         lastIndex(slideShow),
-                         index)]],
-      slideShow);
-   });
-   var gotoNext = function (slideShow) {
-      return A2(gotoIndex,
-      slideShow.currentIndex + 1,
-      slideShow);
-   };
-   var gotoPrevious = function (slideShow) {
-      return A2(gotoIndex,
-      slideShow.currentIndex - 1,
-      slideShow);
-   };
-   var gotoLast = function (slideShow) {
-      return _U.replace([["currentIndex"
-                         ,lastIndex(slideShow)]],
-      slideShow);
-   };
-   var getCurrent = function (slideShow) {
-      return A2($Array.get,
-      slideShow.currentIndex,
-      slideShow.slides);
-   };
-   var toHtml = function (slideShow) {
       return function () {
-         var _v0 = getCurrent(slideShow);
-         switch (_v0.ctor)
-         {case "Just": return _v0._0;
-            case "Nothing":
-            return $Html.text(A2($Basics._op["++"],
-              "Error: slideShow.currentIndex = ",
-              A2($Basics._op["++"],
-              $Basics.toString(slideShow.currentIndex),
-              " does not exist!")));}
-         _U.badCase($moduleName,
-         "between lines 37 and 40");
+         var lastIndex = $Array.length(slideShow.slides) - 1;
+         var clampIndex = A2($Basics.clamp,
+         0,
+         lastIndex);
+         var nextIndex = function () {
+            switch (action.ctor)
+            {case "Goto":
+               return clampIndex(action._0);
+               case "GotoFirst": return 0;
+               case "GotoLast":
+               return lastIndex;
+               case "GotoNext":
+               return clampIndex(slideShow.currentIndex + 1);
+               case "GotoPrevious":
+               return clampIndex(slideShow.currentIndex - 1);
+               case "NoOp":
+               return slideShow.currentIndex;}
+            _U.badCase($moduleName,
+            "between lines 89 and 96");
+         }();
+         return _U.replace([["currentIndex"
+                            ,nextIndex]
+                           ,["currentSlide"
+                            ,A2($Array.get,
+                            nextIndex,
+                            slideShow.slides)]],
+         slideShow);
       }();
+   });
+   var NoOp = {ctor: "NoOp"};
+   var gotoCurrent = NoOp;
+   var GotoLast = {ctor: "GotoLast"};
+   var gotoLast = GotoLast;
+   var GotoFirst = {ctor: "GotoFirst"};
+   var gotoFirst = GotoFirst;
+   var GotoPrevious = {ctor: "GotoPrevious"};
+   var gotoPrevious = GotoPrevious;
+   var prevButton = function (address) {
+      return A2($Html.a,
+      _L.fromArray([$Html$Attributes.href("#")
+                   ,A2($Html$Events.onClick,
+                   address,
+                   gotoPrevious)]),
+      _L.fromArray([$Html.text("prev")]));
    };
-   var SlideShow = F2(function (a,
-   b) {
+   var GotoNext = {ctor: "GotoNext"};
+   var gotoNext = GotoNext;
+   var nextButton = function (address) {
+      return A2($Html.a,
+      _L.fromArray([$Html$Attributes.href("#")
+                   ,A2($Html$Events.onClick,
+                   address,
+                   gotoNext)]),
+      _L.fromArray([$Html.text("next")]));
+   };
+   var Goto = function (a) {
+      return {ctor: "Goto",_0: a};
+   };
+   var $goto = Goto;
+   var overflowSlide = function (index) {
+      return {_: {}
+             ,notes: ""
+             ,view: _L.fromArray([$Html.text(A2($Basics._op["++"],
+             "Slide #",
+             A2($Basics._op["++"],
+             $Basics.toString(index),
+             " does not exist!")))])};
+   };
+   var view = F2(function (address,
+   slideShow) {
+      return A2($Html.section,
+      _L.fromArray([$Html$Attributes.$class("slideshow")]),
+      _L.fromArray([A2($Html.nav,
+                   _L.fromArray([$Html$Attributes.$class("controls")]),
+                   _L.fromArray([prevButton(address)
+                                ,$Html.text(" ")
+                                ,nextButton(address)]))
+                   ,$Html.section(_L.fromArray([$Html$Attributes.$class("slide")]))(function () {
+                      var _v2 = slideShow.currentSlide;
+                      switch (_v2.ctor)
+                      {case "Just":
+                         return _v2._0.view;
+                         case "Nothing":
+                         return overflowSlide(slideShow.currentIndex).view;}
+                      _U.badCase($moduleName,
+                      "between lines 132 and 135");
+                   }())]));
+   });
+   var init = F2(function (slides,
+   index) {
+      return A2(update,
+      $goto(index),
+      {_: {}
+      ,currentIndex: 0
+      ,currentSlide: $Maybe.Nothing
+      ,slides: slides});
+   });
+   var SlideShow = F3(function (a,
+   b,
+   c) {
       return {_: {}
              ,currentIndex: a
-             ,slides: b};
+             ,currentSlide: b
+             ,slides: c};
+   });
+   var Slide = F2(function (a,b) {
+      return {_: {}
+             ,notes: b
+             ,view: a};
    });
    _elm.SlideShow.values = {_op: _op
-                           ,$new: $new
-                           ,toHtml: toHtml
-                           ,gotoIndex: gotoIndex
+                           ,init: init
+                           ,$goto: $goto
                            ,gotoNext: gotoNext
                            ,gotoPrevious: gotoPrevious
                            ,gotoFirst: gotoFirst
                            ,gotoLast: gotoLast
-                           ,SlideShow: SlideShow};
+                           ,gotoCurrent: gotoCurrent
+                           ,update: update
+                           ,view: view
+                           ,SlideShow: SlideShow
+                           ,Slide: Slide};
    return _elm.SlideShow.values;
 };
 Elm.String = Elm.String || {};
@@ -13481,4 +16461,31 @@ Elm.VirtualDom.make = function (_elm) {
                             ,lazy2: lazy2
                             ,lazy3: lazy3};
    return _elm.VirtualDom.values;
+};
+Elm.Window = Elm.Window || {};
+Elm.Window.make = function (_elm) {
+   "use strict";
+   _elm.Window = _elm.Window || {};
+   if (_elm.Window.values)
+   return _elm.Window.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Window",
+   $Basics = Elm.Basics.make(_elm),
+   $Native$Window = Elm.Native.Window.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var dimensions = $Native$Window.dimensions;
+   var width = A2($Signal.map,
+   $Basics.fst,
+   dimensions);
+   var height = A2($Signal.map,
+   $Basics.snd,
+   dimensions);
+   _elm.Window.values = {_op: _op
+                        ,dimensions: dimensions
+                        ,width: width
+                        ,height: height};
+   return _elm.Window.values;
 };
