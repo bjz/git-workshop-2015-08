@@ -38,7 +38,7 @@ init slides index =
 {-| A slide to be shown if the index is out of bounds -}
 overflowSlide : Int -> Slide
 overflowSlide index =
-  { view = [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
+  { view = [ Html.text <| "Slide #" ++ toString index ++ " does not exist!" ]
   , notes = ""
   }
 
