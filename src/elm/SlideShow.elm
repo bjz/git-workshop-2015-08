@@ -1,12 +1,14 @@
 module SlideShow
   ( SlideShow, Slide, init
-  , Action, goto, gotoNext, gotoPrevious, gotoFirst, gotoLast
+  , Action, goto, gotoNext, gotoPrevious, gotoFirst, gotoLast, gotoCurrent
   , update, view
   ) where
 
 import Array exposing (Array)
 import Html exposing (Html)
 import Html.Attributes as Html
+import Html.Events as Html
+import Signal exposing (Address)
 import String
 
 
@@ -52,6 +54,7 @@ type Action
   | GotoPrevious
   | GotoFirst
   | GotoLast
+  | NoOp
 
 
 goto : Int -> Action
@@ -74,6 +77,10 @@ gotoLast : Action
 gotoLast = GotoLast
 
 
+gotoCurrent : Action
+gotoCurrent = NoOp
+
+
 update : Action -> SlideShow -> SlideShow
 update action slideShow =
   let lastIndex = (Array.length slideShow.slides) - 1
@@ -85,6 +92,7 @@ update action slideShow =
           GotoPrevious -> clampIndex (slideShow.currentIndex - 1)
           GotoFirst -> 0
           GotoLast -> lastIndex
+          NoOp -> slideShow.currentIndex
   in
     { slideShow
     | currentIndex <- nextIndex
@@ -94,10 +102,34 @@ update action slideShow =
 
 -- View
 
+prevButton address =
+  Html.a
+    [ Html.href "#"
+    , Html.onClick address gotoPrevious
+    ]
+    [ Html.text "prev"
+    ]
 
-view : SlideShow -> Html
-view slideShow =
-  Html.section [ Html.class "slide" ] <|
-    case slideShow.currentSlide of
-      Just slide -> slide.view
-      Nothing -> (overflowSlide slideShow.currentIndex).view
+nextButton address =
+  Html.a
+    [ Html.href "#"
+    , Html.onClick address gotoNext
+    ]
+    [ Html.text "next"
+    ]
+
+
+view : Address Action -> SlideShow -> Html
+view address slideShow =
+  Html.section [ Html.class "slideshow" ]
+    [ Html.nav
+      [ Html.class "controls" ]
+      [ prevButton address
+      , Html.text " "
+      , nextButton address
+      ]
+    , Html.section [ Html.class "slide" ] <|
+        case slideShow.currentSlide of
+          Just slide -> slide.view
+          Nothing -> (overflowSlide slideShow.currentIndex).view
+    ]

@@ -80,15 +80,10 @@ update action slideShow =
 
 view : Address Action -> SlideShow -> Html
 view address slideShow =
-  Html.section [ Html.class "slideshow" ]
-    [ Html.nav
-      [ Html.class "controls" ]
-      [ Html.a [ Html.href "#", Html.onClick address (Navigate SlideShow.gotoPrevious) ] [ Html.text "prev" ]
-      , Html.text " "
-      , Html.a [ Html.href "#", Html.onClick address (Navigate SlideShow.gotoNext) ] [ Html.text "next" ]
-      ]
-    , SlideShow.view slideShow
-    ]
+  let slideAddress =
+        Signal.forwardTo address Navigate
+  in
+    SlideShow.view slideAddress slideShow
 
 -- Input
 
