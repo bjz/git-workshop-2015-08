@@ -6697,7 +6697,7 @@ Elm.Main.make = function (_elm) {
               slideShow);
             case "NoOp": return slideShow;}
          _U.badCase($moduleName,
-         "between lines 74 and 77");
+         "between lines 75 and 78");
       }();
    });
    var parseHash = function (src) {
@@ -6734,15 +6734,13 @@ Elm.Main.make = function (_elm) {
          return function () {
             switch (key)
             {case 0:
-               return Navigate($SlideShow.gotoNext);
-               case 13:
-               return Navigate($SlideShow.gotoNext);
+               return Navigate($SlideShow.next);
                case 32:
-               return Navigate($SlideShow.gotoNext);
+               return Navigate($SlideShow.next);
                case 37:
-               return Navigate($SlideShow.gotoPrevious);
+               return Navigate($SlideShow.previous);
                case 39:
-               return Navigate($SlideShow.gotoNext);}
+               return Navigate($SlideShow.next);}
             return NoOp;
          }();
       };
@@ -6794,9 +6792,11 @@ Elm.Main.make = function (_elm) {
                                                   ,A2($Html.p,
                                                   _L.fromArray([]),
                                                   _L.fromArray([$Html.text("This will initialize a new repository in that directory.")]))])}]);
-   var slideShow = A2($SlideShow.init,
-   $Array.fromList(slides),
-   $Maybe.withDefault(0)(parseHash(initialHash)));
+   var slideShow = $SlideShow.init({_: {}
+                                   ,index: A2($Maybe.withDefault,
+                                   0,
+                                   parseHash(initialHash))
+                                   ,slides: $Array.fromList(slides)});
    var slideShows = A3($Signal.foldp,
    update,
    slideShow,
@@ -15808,6 +15808,7 @@ Elm.SlideShow.make = function (_elm) {
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $Html$Events = Elm.Html.Events.make(_elm),
+   $Html$Shorthand = Elm.Html.Shorthand.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
@@ -15821,19 +15822,18 @@ Elm.SlideShow.make = function (_elm) {
          lastIndex);
          var nextIndex = function () {
             switch (action.ctor)
-            {case "Goto":
+            {case "First": return 0;
+               case "Goto":
                return clampIndex(action._0);
-               case "GotoFirst": return 0;
-               case "GotoLast":
-               return lastIndex;
-               case "GotoNext":
+               case "Last": return lastIndex;
+               case "Next":
                return clampIndex(slideShow.currentIndex + 1);
-               case "GotoPrevious":
-               return clampIndex(slideShow.currentIndex - 1);
                case "NoOp":
-               return slideShow.currentIndex;}
+               return slideShow.currentIndex;
+               case "Previous":
+               return clampIndex(slideShow.currentIndex - 1);}
             _U.badCase($moduleName,
-            "between lines 89 and 96");
+            "between lines 96 and 103");
          }();
          return _U.replace([["currentIndex"
                             ,nextIndex]
@@ -15845,31 +15845,15 @@ Elm.SlideShow.make = function (_elm) {
       }();
    });
    var NoOp = {ctor: "NoOp"};
-   var gotoCurrent = NoOp;
-   var GotoLast = {ctor: "GotoLast"};
-   var gotoLast = GotoLast;
-   var GotoFirst = {ctor: "GotoFirst"};
-   var gotoFirst = GotoFirst;
-   var GotoPrevious = {ctor: "GotoPrevious"};
-   var gotoPrevious = GotoPrevious;
-   var prevButton = function (address) {
-      return A2($Html.a,
-      _L.fromArray([$Html$Attributes.href("#")
-                   ,A2($Html$Events.onClick,
-                   address,
-                   gotoPrevious)]),
-      _L.fromArray([$Html.text("prev")]));
-   };
-   var GotoNext = {ctor: "GotoNext"};
-   var gotoNext = GotoNext;
-   var nextButton = function (address) {
-      return A2($Html.a,
-      _L.fromArray([$Html$Attributes.href("#")
-                   ,A2($Html$Events.onClick,
-                   address,
-                   gotoNext)]),
-      _L.fromArray([$Html.text("next")]));
-   };
+   var current = NoOp;
+   var Last = {ctor: "Last"};
+   var gotoLast = Last;
+   var First = {ctor: "First"};
+   var first = First;
+   var Previous = {ctor: "Previous"};
+   var previous = Previous;
+   var Next = {ctor: "Next"};
+   var next = Next;
    var Goto = function (a) {
       return {ctor: "Goto",_0: a};
    };
@@ -15885,32 +15869,57 @@ Elm.SlideShow.make = function (_elm) {
    };
    var view = F2(function (address,
    slideShow) {
-      return A2($Html.section,
-      _L.fromArray([$Html$Attributes.$class("slideshow")]),
-      _L.fromArray([A2($Html.nav,
-                   _L.fromArray([$Html$Attributes.$class("controls")]),
-                   _L.fromArray([prevButton(address)
-                                ,$Html.text(" ")
-                                ,nextButton(address)]))
-                   ,$Html.section(_L.fromArray([$Html$Attributes.$class("slide")]))(function () {
-                      var _v2 = slideShow.currentSlide;
-                      switch (_v2.ctor)
-                      {case "Just":
-                         return _v2._0.view;
-                         case "Nothing":
-                         return overflowSlide(slideShow.currentIndex).view;}
-                      _U.badCase($moduleName,
-                      "between lines 132 and 135");
-                   }())]));
+      return function () {
+         var slide = $Html.article(_L.fromArray([$Html$Attributes.$class("slide")]))(function () {
+            var _v2 = slideShow.currentSlide;
+            switch (_v2.ctor)
+            {case "Just":
+               return _v2._0.view;
+               case "Nothing":
+               return overflowSlide(slideShow.currentIndex).view;}
+            _U.badCase($moduleName,
+            "between lines 133 and 136");
+         }());
+         var navButton = F3(function ($class,
+         text,
+         onClick) {
+            return A2($Html.li,
+            _L.fromArray([$Html$Attributes.$class($class)]),
+            _L.fromArray([A2($Html.a,
+            _L.fromArray([$Html$Attributes.href("#")
+                         ,A2($Html$Events.onClick,
+                         address,
+                         onClick)]),
+            _L.fromArray([$Html.text(text)]))]));
+         });
+         var controls = A2($Html.nav,
+         _L.fromArray([$Html$Attributes.$class("controls")]),
+         _L.fromArray([$Html$Shorthand.ul_(_L.fromArray([A3(navButton,
+                                                        "previous",
+                                                        "Previous slide",
+                                                        previous)
+                                                        ,A3(navButton,
+                                                        "next",
+                                                        "Next slide",
+                                                        next)]))]));
+         return A2($Html.article,
+         _L.fromArray([$Html$Attributes.$class("slideshow")]),
+         _L.fromArray([controls,slide]));
+      }();
    });
-   var init = F2(function (slides,
-   index) {
+   var init = function (options) {
       return A2(update,
-      $goto(index),
+      $goto(options.index),
       {_: {}
       ,currentIndex: 0
       ,currentSlide: $Maybe.Nothing
-      ,slides: slides});
+      ,slides: options.slides});
+   };
+   var Options = F2(function (a,
+   b) {
+      return {_: {}
+             ,index: a
+             ,slides: b};
    });
    var SlideShow = F3(function (a,
    b,
@@ -15928,15 +15937,16 @@ Elm.SlideShow.make = function (_elm) {
    _elm.SlideShow.values = {_op: _op
                            ,init: init
                            ,$goto: $goto
-                           ,gotoNext: gotoNext
-                           ,gotoPrevious: gotoPrevious
-                           ,gotoFirst: gotoFirst
+                           ,next: next
+                           ,previous: previous
+                           ,first: first
                            ,gotoLast: gotoLast
-                           ,gotoCurrent: gotoCurrent
+                           ,current: current
                            ,update: update
                            ,view: view
+                           ,Slide: Slide
                            ,SlideShow: SlideShow
-                           ,Slide: Slide};
+                           ,Options: Options};
    return _elm.SlideShow.values;
 };
 Elm.String = Elm.String || {};
