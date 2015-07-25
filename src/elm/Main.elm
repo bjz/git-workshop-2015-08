@@ -64,8 +64,9 @@ parseHash src =
 slideShow : SlideShow
 slideShow =
   SlideShow.init
-    (slides |> Array.fromList)
-    (parseHash initialHash |> Maybe.withDefault 0)
+    { index = Maybe.withDefault 0 (parseHash initialHash)
+    , slides = Array.fromList slides
+    }
 
 -- Update
 

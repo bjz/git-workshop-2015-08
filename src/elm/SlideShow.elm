@@ -1,5 +1,5 @@
 module SlideShow
-  ( SlideShow, Slide, init
+  ( Slide, SlideShow, Options, init
   , Action, goto, next, previous, first, last, current
   , update, view
   ) where
@@ -29,12 +29,18 @@ type alias SlideShow =
   }
 
 
-init : Array Slide -> Int -> SlideShow
-init slides index =
-  update (goto index)
+type alias Options =
+  { index : Int
+  , slides : Array Slide
+  }
+
+
+init : Options -> SlideShow
+init options =
+  update (goto options.index)
     { currentIndex = 0
     , currentSlide = Nothing
-    , slides = slides
+    , slides = options.slides
     }
 
 
