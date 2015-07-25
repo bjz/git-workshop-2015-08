@@ -102,10 +102,14 @@ actions =
 
 input : Signal Action
 input =
-  let keysToAction keys =
-        if | keys.x > 0 -> Navigate SlideShow.gotoNext
-           | keys.x < 0 -> Navigate SlideShow.gotoPrevious
-           | otherwise  -> NoOp
+  let keyToAction key =
+        case key of
+          0  -> Navigate SlideShow.gotoNext -- space
+          13 -> Navigate SlideShow.gotoNext -- enter
+          32 -> Navigate SlideShow.gotoNext -- space (?)
+          39 -> Navigate SlideShow.gotoNext -- right arrow
+          37 -> Navigate SlideShow.gotoPrevious -- left arrow
+          _  -> NoOp
 
       hashToAction hash =
         case parseHash hash of
@@ -115,7 +119,7 @@ input =
     Signal.mergeMany
       [ actions.signal
       , hashToAction <~ Signal.dropRepeats History.hash
-      , keysToAction <~ Keyboard.arrows
+      , keyToAction <~ Keyboard.presses
       ]
 
 slideShows : Signal SlideShow
