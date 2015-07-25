@@ -8,6 +8,7 @@ var ghPages     = require('gulp-gh-pages');
 var plumber     = require('gulp-plumber');
 var prompt      = require('gulp-prompt');
 var sass        = require('gulp-sass');
+var sourcemaps  = require('gulp-sourcemaps');
 var tildify     = require('tildify');
 var util        = require('gulp-util');
 
@@ -24,7 +25,9 @@ gulp.task('build:elm', ['build:elm-init'], function() {
 
 gulp.task('build:sass', function() {
   return gulp.src('./src/styles/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./tmp/styles'));
 });
 
