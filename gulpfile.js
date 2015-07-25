@@ -28,7 +28,12 @@ gulp.task('build:sass', function() {
     .pipe(gulp.dest('./tmp/styles'));
 });
 
-gulp.task('build:pages', function() {
+gulp.task('build:images', function() {
+  return gulp.src('./images/**/*')
+    .pipe(gulp.dest('./tmp/images'));
+});
+
+gulp.task('build:pages', ['build:images'], function() {
   return gulp.src('./src/pages/**/*.html')
     .pipe(gulp.dest('./tmp'));
 });
