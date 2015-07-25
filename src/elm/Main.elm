@@ -99,11 +99,10 @@ input : Signal Action
 input =
   let keyToAction key =
         case key of
-          0  -> Navigate SlideShow.gotoNext -- space
-          13 -> Navigate SlideShow.gotoNext -- enter
-          32 -> Navigate SlideShow.gotoNext -- space (?)
-          39 -> Navigate SlideShow.gotoNext -- right arrow
-          37 -> Navigate SlideShow.gotoPrevious -- left arrow
+          0  -> Navigate SlideShow.next -- space
+          32 -> Navigate SlideShow.next -- space (?)
+          39 -> Navigate SlideShow.next -- right arrow
+          37 -> Navigate SlideShow.previous -- left arrow
           _  -> NoOp
 
       hashToAction hash =

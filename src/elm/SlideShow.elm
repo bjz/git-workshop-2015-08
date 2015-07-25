@@ -1,6 +1,6 @@
 module SlideShow
   ( SlideShow, Slide, init
-  , Action, goto, gotoNext, gotoPrevious, gotoFirst, gotoLast, gotoCurrent
+  , Action, goto, next, previous, first, last, current
   , update, view
   ) where
 
@@ -50,10 +50,10 @@ overflowSlide index =
 
 type Action
   = Goto Int
-  | GotoNext
-  | GotoPrevious
-  | GotoFirst
-  | GotoLast
+  | Next
+  | Previous
+  | First
+  | Last
   | NoOp
 
 
@@ -61,24 +61,24 @@ goto : Int -> Action
 goto = Goto
 
 
-gotoNext : Action
-gotoNext = GotoNext
+next : Action
+next = Next
 
 
-gotoPrevious : Action
-gotoPrevious = GotoPrevious
+previous : Action
+previous = Previous
 
 
-gotoFirst : Action
-gotoFirst = GotoFirst
+first : Action
+first = First
 
 
-gotoLast : Action
-gotoLast = GotoLast
+last : Action
+last = Last
 
 
-gotoCurrent : Action
-gotoCurrent = NoOp
+current : Action
+current = NoOp
 
 
 update : Action -> SlideShow -> SlideShow
@@ -88,10 +88,10 @@ update action slideShow =
       nextIndex =
         case action of
           Goto index -> clampIndex index
-          GotoNext -> clampIndex (slideShow.currentIndex + 1)
-          GotoPrevious -> clampIndex (slideShow.currentIndex - 1)
-          GotoFirst -> 0
-          GotoLast -> lastIndex
+          Next -> clampIndex (slideShow.currentIndex + 1)
+          Previous -> clampIndex (slideShow.currentIndex - 1)
+          First -> 0
+          Last -> lastIndex
           NoOp -> slideShow.currentIndex
   in
     { slideShow
