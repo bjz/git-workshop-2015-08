@@ -7,7 +7,6 @@ module SlideShow
 import Array exposing (Array)
 import Html exposing (Html)
 import Html.Attributes as Html
-import TypedStyles as Css exposing (px)
 import String
 
 
@@ -96,15 +95,9 @@ update action slideShow =
 -- View
 
 
-view : { width : Int, height : Int } -> SlideShow -> Html
-view { width, height } slideShow =
-  Html.section
-    [ Html.class "slide"
-    , Html.style
-        [ Css.width width px
-        , Css.height height px
-        ]
-    ] <|
+view : SlideShow -> Html
+view slideShow =
+  Html.section [ Html.class "slide" ] <|
     case slideShow.currentSlide of
       Just slide -> slide.view
       Nothing -> (overflowSlide slideShow.currentIndex).view

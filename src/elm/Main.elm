@@ -1,15 +1,18 @@
 import Array
 import History
 import Html exposing (Html)
+import Html.Attributes as Html
+import Html.Events as Html
 import Html.Shorthand as Html
 import Keyboard
 import Mouse
-import Signal exposing ((<~), (~))
+import Signal exposing (Mailbox, Address, (<~), (~))
 import String
 import Task exposing (Task)
 import Window
 
 import SlideShow exposing (SlideShow, Slide)
+
 
 -- Presentation
 
@@ -75,15 +78,27 @@ update action slideShow =
 
 -- View
 
-view : (Int, Int) -> SlideShow -> Html
-view (w, h) =
-  SlideShow.view { width = w, height = h }
+view : Address Action -> SlideShow -> Html
+view address slideShow =
+  Html.section [ Html.class "slideshow" ]
+    [ Html.nav
+      [ Html.class "controls" ]
+      [ Html.a [ Html.href "#", Html.onClick address (Navigate SlideShow.gotoPrevious) ] [ Html.text "prev" ]
+      , Html.text " "
+      , Html.a [ Html.href "#", Html.onClick address (Navigate SlideShow.gotoNext) ] [ Html.text "next" ]
+      ]
+    , SlideShow.view slideShow
+    ]
 
 -- Input
 
 type Action
   = NoOp
   | Navigate SlideShow.Action
+
+actions : Mailbox Action
+actions =
+  Signal.mailbox NoOp
 
 input : Signal Action
 input =
@@ -92,17 +107,14 @@ input =
            | keys.x < 0 -> Navigate SlideShow.gotoPrevious
            | otherwise  -> NoOp
 
-      clicksToAction () =
-        Navigate SlideShow.gotoNext
-
       hashToAction hash =
         case parseHash hash of
           Just index -> Navigate (SlideShow.goto index)
           Nothing -> NoOp
   in
     Signal.mergeMany
-      [ hashToAction <~ Signal.dropRepeats History.hash
-      , clicksToAction <~ Mouse.clicks
+      [ actions.signal
+      , hashToAction <~ Signal.dropRepeats History.hash
       , keysToAction <~ Keyboard.arrows
       ]
 
@@ -125,4 +137,5 @@ port title : Signal String
 port title = makeTitle <~ slideShows
 
 main : Signal Html
-main = view <~ Window.dimensions ~ slideShows
+main =
+    view actions.address <~ slideShows
