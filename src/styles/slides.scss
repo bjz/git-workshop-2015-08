@@ -1,15 +1,43 @@
-@import "code";
-@import "common";
+@import 'code';
+@import 'common';
 
-#slideshow {
-  padding: 1em;
-  font-size: 20px;
+@mixin icon($content) {
+  a {
+    font-size: 40px;
+    text-indent: -9999px;
+    display: block;
+
+    &:after {
+      content: $content;
+      display: block;
+      text-indent: 0;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
-.slideshow {
-  .controls {
+article.slideshow {
+  padding: 1em;
+  font-size: 20px;
+
+  nav.controls {
     position: fixed;
     bottom: 0;
     right: 0;
+    margin: 30px;
+
+    ul {
+      margin: 0;
+
+      li {
+        display: inline-block;
+
+        &.previous { @include icon('◄') };
+        &.next { @include icon('►') };
+      }
+    }
   }
 }

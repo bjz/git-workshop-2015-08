@@ -8,6 +8,7 @@ import Array exposing (Array)
 import Html exposing (Html)
 import Html.Attributes as Html
 import Html.Events as Html
+import Html.Shorthand as Html
 import Signal exposing (Address)
 import String
 
@@ -102,34 +103,31 @@ update action slideShow =
 
 -- View
 
-prevButton address =
-  Html.a
-    [ Html.href "#"
-    , Html.onClick address gotoPrevious
-    ]
-    [ Html.text "prev"
-    ]
-
-nextButton address =
-  Html.a
-    [ Html.href "#"
-    , Html.onClick address gotoNext
-    ]
-    [ Html.text "next"
-    ]
-
 
 view : Address Action -> SlideShow -> Html
 view address slideShow =
-  Html.section [ Html.class "slideshow" ]
-    [ Html.nav
-      [ Html.class "controls" ]
-      [ prevButton address
-      , Html.text " "
-      , nextButton address
-      ]
-    , Html.section [ Html.class "slide" ] <|
-        case slideShow.currentSlide of
-          Just slide -> slide.view
-          Nothing -> (overflowSlide slideShow.currentIndex).view
-    ]
+  let navButton class text onClick =
+        Html.li [ Html.class class ]
+          [ Html.a
+            [ Html.href "#", Html.onClick address onClick ]
+            [ Html.text text ]
+          ]
+
+      controls =
+        Html.nav
+          [ Html.class "controls" ]
+          [ Html.ul_
+            [ navButton "previous" "Previous slide" previous
+            , navButton "next" "Next slide" next
+            ]
+          ]
+
+      slide =
+        Html.article [ Html.class "slide" ] <|
+          case slideShow.currentSlide of
+            Just slide -> slide.view
+            Nothing -> (overflowSlide slideShow.currentIndex).view
+  in
+    Html.article
+      [ Html.class "slideshow" ]
+      [ controls, slide ]
