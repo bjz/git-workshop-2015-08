@@ -14,7 +14,10 @@ import String
 -- SlideShow
 
 
-type alias Slide = List Html
+type alias Slide =
+  { view: List Html
+  , notes: String
+  }
 
 
 type alias SlideShow =
@@ -36,7 +39,9 @@ init slides index =
 {-| A slide to be shown if the index is out of bounds -}
 overflowSlide : Int -> Slide
 overflowSlide index =
-  [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
+  { view = [ Html.text <| "Slide #" ++ (toString index) ++ " does not exist!" ]
+  , notes = ""
+  }
 
 
 -- Update
@@ -101,5 +106,5 @@ view { width, height } slideShow =
         ]
     ] <|
     case slideShow.currentSlide of
-      Just slide -> slide
-      Nothing -> overflowSlide slideShow.currentIndex
+      Just slide -> slide.view
+      Nothing -> (overflowSlide slideShow.currentIndex).view
