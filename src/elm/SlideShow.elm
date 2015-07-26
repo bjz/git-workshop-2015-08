@@ -12,6 +12,8 @@ import Html.Shorthand as Html
 import Signal exposing (Address)
 import String
 
+import Component
+
 
 -- SlideShow
 
@@ -35,7 +37,7 @@ type alias Options =
   }
 
 
-init : Options -> State
+init : Component.Init Options State
 init options =
   update (goto options.index)
     { currentIndex = 0
@@ -80,7 +82,7 @@ current : Action
 current = NoOp
 
 
-update : Action -> State -> State
+update : Component.Update Action State
 update action slideShow =
   let lastIndex = (Array.length slideShow.slides) - 1
       clampIndex = clamp 0 lastIndex
@@ -102,7 +104,7 @@ update action slideShow =
 -- View
 
 
-view : Address Action -> State -> Html
+view : Component.View Action State
 view address slideShow =
   let navButton class text onClick =
         Html.li [ Html.class class ]
