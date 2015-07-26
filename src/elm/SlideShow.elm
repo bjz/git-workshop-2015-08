@@ -1,5 +1,5 @@
 module SlideShow
-  ( Slide, SlideShow, Options, init
+  ( Slide, State, Options, init
   , Action, goto, next, previous, first, last, current
   , update, view
   ) where
@@ -22,7 +22,7 @@ type alias Slide =
   }
 
 
-type alias SlideShow =
+type alias State =
   { currentIndex : Int
   , currentSlide : Maybe Slide
   , slides : Array Slide
@@ -35,21 +35,13 @@ type alias Options =
   }
 
 
-init : Options -> SlideShow
+init : Options -> State
 init options =
   update (goto options.index)
     { currentIndex = 0
     , currentSlide = Nothing
     , slides = options.slides
     }
-
-
-{-| A slide to be shown if the index is out of bounds -}
-overflowSlide : Int -> Slide
-overflowSlide index =
-  { view = [ Html.text <| "Slide #" ++ toString index ++ " does not exist!" ]
-  , notes = ""
-  }
 
 
 -- Update
@@ -88,7 +80,7 @@ current : Action
 current = NoOp
 
 
-update : Action -> SlideShow -> SlideShow
+update : Action -> State -> State
 update action slideShow =
   let lastIndex = (Array.length slideShow.slides) - 1
       clampIndex = clamp 0 lastIndex
@@ -110,7 +102,7 @@ update action slideShow =
 -- View
 
 
-view : Address Action -> SlideShow -> Html
+view : Address Action -> State -> Html
 view address slideShow =
   let navButton class text onClick =
         Html.li [ Html.class class ]
@@ -129,10 +121,11 @@ view address slideShow =
           ]
 
       slide =
-        Html.article [ Html.class "slide" ] <|
+        Html.section [ Html.class "slide" ] <|
           case slideShow.currentSlide of
             Just slide -> slide.view
-            Nothing -> (overflowSlide slideShow.currentIndex).view
+            Nothing ->
+              [ Html.text <| "Slide #" ++ toString slideShow.currentIndex ++ " does not exist" ]
   in
     Html.article
       [ Html.class "slideshow" ]

@@ -11,7 +11,7 @@ import String
 import Task exposing (Task)
 import Window
 
-import SlideShow exposing (SlideShow, Slide)
+import SlideShow exposing (Slide)
 
 
 -- Presentation
@@ -61,7 +61,7 @@ parseHash src =
     Just (_, x) -> Nothing
     Nothing -> Nothing
 
-slideShow : SlideShow
+slideShow : SlideShow.State
 slideShow =
   SlideShow.init
     { index = Maybe.withDefault 0 (parseHash initialHash)
@@ -70,27 +70,27 @@ slideShow =
 
 -- Update
 
-update : Action -> SlideShow -> SlideShow
+update : Action -> SlideShow.State -> SlideShow.State
 update action slideShow =
   case action of
     NoOp -> slideShow
-    Navigate action ->
+    SlideShow action ->
       SlideShow.update action slideShow
 
 -- View
 
-view : Address Action -> SlideShow -> Html
+view : Address Action -> SlideShow.State -> Html
 view address slideShow =
   let slideAddress =
-        Signal.forwardTo address Navigate
+        Signal.forwardTo address SlideShow
   in
     SlideShow.view slideAddress slideShow
 
 -- Input
 
 type Action
-  = NoOp
-  | Navigate SlideShow.Action
+  = SlideShow SlideShow.Action
+  | NoOp
 
 actions : Mailbox Action
 actions =
@@ -100,15 +100,15 @@ input : Signal Action
 input =
   let keyToAction key =
         case key of
-          0  -> Navigate SlideShow.next -- space
-          32 -> Navigate SlideShow.next -- space (?)
-          39 -> Navigate SlideShow.next -- right arrow
-          37 -> Navigate SlideShow.previous -- left arrow
+          0  -> SlideShow SlideShow.next -- space
+          32 -> SlideShow SlideShow.next -- space (?)
+          39 -> SlideShow SlideShow.next -- right arrow
+          37 -> SlideShow SlideShow.previous -- left arrow
           _  -> NoOp
 
       hashToAction hash =
         case parseHash hash of
-          Just index -> Navigate (SlideShow.goto index)
+          Just index -> SlideShow (SlideShow.goto index)
           Nothing -> NoOp
   in
     Signal.mergeMany
@@ -117,8 +117,8 @@ input =
       , keyToAction <~ Keyboard.presses
       ]
 
-slideShows : Signal SlideShow
-slideShows =
+states : Signal SlideShow.State
+states =
   Signal.foldp update slideShow input
 
 -- Output
@@ -127,14 +127,14 @@ setHash slideShow =
   History.replacePath ("#" ++ toString slideShow.currentIndex)
 
 port runTask : Signal (Task error ())
-port runTask = setHash <~ slideShows
+port runTask = setHash <~ states
 
 makeTitle slideShow =
   "Git Tutorial Presentation (slide " ++ toString slideShow.currentIndex ++ ")"
 
 port title : Signal String
-port title = makeTitle <~ slideShows
+port title = makeTitle <~ states
 
 main : Signal Html
 main =
-    view actions.address <~ slideShows
+    view actions.address <~ states
