@@ -26,7 +26,6 @@ type alias Slide =
 
 type alias State =
   { currentIndex : Int
-  , currentSlide : Maybe Slide
   , slides : Array Slide
   }
 
@@ -41,9 +40,30 @@ init : Component.Init Options State
 init options =
   update (goto options.index)
     { currentIndex = 0
-    , currentSlide = Nothing
     , slides = options.slides
     }
+
+
+blankSlide : Slide
+blankSlide =
+  { view = []
+  , notes = ""
+  }
+
+
+getSlideAt : Int -> State -> Maybe Slide
+getSlideAt index slideShow =
+  Array.get index slideShow.slides
+
+
+getCurrentSlide : State -> Maybe Slide
+getCurrentSlide slideShow =
+  getSlideAt slideShow.currentIndex slideShow
+
+
+getNextSlide : State -> Maybe Slide
+getNextSlide slideShow =
+  getSlideAt (slideShow.currentIndex + 1) slideShow
 
 
 -- Update
@@ -86,6 +106,7 @@ update : Component.Update Action State
 update action slideShow =
   let lastIndex = (Array.length slideShow.slides) - 1
       clampIndex = clamp 0 lastIndex
+
       nextIndex =
         case action of
           Goto index -> clampIndex index
@@ -97,7 +118,6 @@ update action slideShow =
   in
     { slideShow
     | currentIndex <- nextIndex
-    , currentSlide <- Array.get nextIndex slideShow.slides
     }
 
 
@@ -133,8 +153,10 @@ viewSlide address slide =
 
 view : Component.View Action State
 view address slideShow =
-  let slide = slideShow.currentSlide
-        |> Maybe.withDefault { view = [], notes = "" }
+  let slide =
+        slideShow
+          |> getCurrentSlide
+          |> Maybe.withDefault blankSlide
   in
     Html.article
       [ Html.class "slideshow" ]
