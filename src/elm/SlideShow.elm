@@ -104,31 +104,40 @@ update action slideShow =
 -- View
 
 
-view : Component.View Action State
-view address slideShow =
+viewControls : Component.View Action State
+viewControls address slideShow =
   let navButton class text onClick =
-        Html.li [ Html.class class ]
+        Html.li
+          [ Html.class class ]
           [ Html.a
             [ Html.href "#", Html.onClick address onClick ]
             [ Html.text text ]
           ]
+  in
+    Html.nav
+      [ Html.class "controls" ]
+      [ Html.ul_
+        [ navButton "previous" "Previous slide" previous
+        , navButton "next" "Next slide" next
+        ]
+      ]
 
-      controls =
-        Html.nav
-          [ Html.class "controls" ]
-          [ Html.ul_
-            [ navButton "previous" "Previous slide" previous
-            , navButton "next" "Next slide" next
-            ]
-          ]
 
-      slide =
-        Html.section [ Html.class "slide" ] <|
-          case slideShow.currentSlide of
-            Just slide -> slide.view
-            Nothing ->
-              [ Html.text <| "Slide #" ++ toString slideShow.currentIndex ++ " does not exist" ]
+viewSlide : Component.View Action Slide
+viewSlide address slide =
+  Html.section [ Html.class "slide" ] slide.view
+
+
+-- viewClock : Component.View
+
+
+view : Component.View Action State
+view address slideShow =
+  let slide = slideShow.currentSlide
+        |> Maybe.withDefault { view = [], notes = "" }
   in
     Html.article
       [ Html.class "slideshow" ]
-      [ controls, slide ]
+      [ viewControls address slideShow
+      , viewSlide address slide
+      ]
