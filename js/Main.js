@@ -785,6 +785,26 @@ Elm.Color.make = function (_elm) {
                        ,darkGray: darkGray};
    return _elm.Color.values;
 };
+Elm.Component = Elm.Component || {};
+Elm.Component.make = function (_elm) {
+   "use strict";
+   _elm.Component = _elm.Component || {};
+   if (_elm.Component.values)
+   return _elm.Component.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Component",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   _elm.Component.values = {_op: _op};
+   return _elm.Component.values;
+};
 Elm.Debug = Elm.Debug || {};
 Elm.Debug.make = function (_elm) {
    "use strict";
@@ -6670,18 +6690,18 @@ Elm.Main.make = function (_elm) {
       "#",
       $Basics.toString(slideShow.currentIndex)));
    };
-   var Navigate = function (a) {
-      return {ctor: "Navigate"
-             ,_0: a};
-   };
    var NoOp = {ctor: "NoOp"};
    var actions = $Signal.mailbox(NoOp);
+   var SlideShow = function (a) {
+      return {ctor: "SlideShow"
+             ,_0: a};
+   };
    var view = F2(function (address,
    slideShow) {
       return function () {
          var slideAddress = A2($Signal.forwardTo,
          address,
-         Navigate);
+         SlideShow);
          return A2($SlideShow.view,
          slideAddress,
          slideShow);
@@ -6691,11 +6711,11 @@ Elm.Main.make = function (_elm) {
    slideShow) {
       return function () {
          switch (action.ctor)
-         {case "Navigate":
+         {case "NoOp": return slideShow;
+            case "SlideShow":
             return A2($SlideShow.update,
               action._0,
-              slideShow);
-            case "NoOp": return slideShow;}
+              slideShow);}
          _U.badCase($moduleName,
          "between lines 75 and 78");
       }();
@@ -6724,7 +6744,7 @@ Elm.Main.make = function (_elm) {
             var _v6 = parseHash(hash);
             switch (_v6.ctor)
             {case "Just":
-               return Navigate($SlideShow.$goto(_v6._0));
+               return SlideShow($SlideShow.$goto(_v6._0));
                case "Nothing": return NoOp;}
             _U.badCase($moduleName,
             "between lines 110 and 113");
@@ -6734,13 +6754,13 @@ Elm.Main.make = function (_elm) {
          return function () {
             switch (key)
             {case 0:
-               return Navigate($SlideShow.next);
+               return SlideShow($SlideShow.next);
                case 32:
-               return Navigate($SlideShow.next);
+               return SlideShow($SlideShow.next);
                case 37:
-               return Navigate($SlideShow.previous);
+               return SlideShow($SlideShow.previous);
                case 39:
-               return Navigate($SlideShow.next);}
+               return SlideShow($SlideShow.next);}
             return NoOp;
          }();
       };
@@ -6797,35 +6817,35 @@ Elm.Main.make = function (_elm) {
                                    0,
                                    parseHash(initialHash))
                                    ,slides: $Array.fromList(slides)});
-   var slideShows = A3($Signal.foldp,
+   var states = A3($Signal.foldp,
    update,
    slideShow,
    input);
    var runTask = Elm.Native.Task.make(_elm).performSignal("runTask",
    A2($Signal._op["<~"],
    setHash,
-   slideShows));
+   states));
    var title = Elm.Native.Port.make(_elm).outboundSignal("title",
    function (v) {
       return v;
    },
    A2($Signal._op["<~"],
    makeTitle,
-   slideShows));
+   states));
    var main = A2($Signal._op["<~"],
    view(actions.address),
-   slideShows);
+   states);
    _elm.Main.values = {_op: _op
                       ,slides: slides
                       ,parseHash: parseHash
                       ,slideShow: slideShow
                       ,update: update
                       ,view: view
+                      ,SlideShow: SlideShow
                       ,NoOp: NoOp
-                      ,Navigate: Navigate
                       ,actions: actions
                       ,input: input
-                      ,slideShows: slideShows
+                      ,states: states
                       ,setHash: setHash
                       ,makeTitle: makeTitle
                       ,main: main};
@@ -15299,6 +15319,95 @@ Elm.Native.Window.make = function(localRuntime) {
 	};
 };
 
+
+// setup
+Elm.Native = Elm.Native || {};
+Elm.Native.Window = Elm.Native.Window || {};
+Elm.Native.Window.Extra = Elm.Native.Window.Extra || {};
+
+// definition
+Elm.Native.Window.Extra.make = function(localRuntime){
+
+  localRuntime.Native = localRuntime.Native || {};
+  localRuntime.Native.Window = localRuntime.Native.Window || {};
+  if (localRuntime.Native.Window.values) {
+    return localRuntime.Native.Window.values;
+  }
+
+  var NS = Elm.Native.Signal.make(localRuntime);
+
+  var Just = function(x) { return { ctor: 'Just', _0: x }; }
+  var Nothing = function() { return { ctor: 'Nothing' }; }
+
+
+  // current : Window
+  var current = window;
+
+  // open : String -> String -> Maybe Window
+  var open = function(origin, name, features) {
+    var newWindow = null;
+    try {
+      newWindow = window.open(origin, name, features);
+    } catch(e) {
+      newWindow = null;
+    }
+    return newWindow ? Just(newWindow) : Nothing();
+  };
+
+  // opener : Maybe Window
+  var opener = window.opener ? Just(window.opener) : Nothing();
+
+  // close : Task error ()
+  var close = Task.asyncFunction(function(callback) {
+    setTimeout(function() {
+      window.close();
+    }, 0);
+    return callback(Task.succeed(Utils.Tuple0));
+  });
+
+  // focus : Task error ()
+  var focus = Task.asyncFunction(function(callback) {
+    setTimeout(function() {
+      window.focus();
+    }, 0);
+    return callback(Task.succeed(Utils.Tuple0));
+  });
+
+
+  // postMessage : String -> Json.Encode.Value -> Window -> Task error ()
+  var postMessage = function(targetOrigin, message, otherWindow) {
+    return Task.asyncFunction(function(callback) {
+      setTimeout(function() {
+        otherWindow.postMessage(message, targetOrigin);
+      }, 0);
+      return callback(Task.succeed(Utils.Tuple0));
+    });
+  };
+
+  // messages : Signal (Maybe Message)
+  var messages = NS.input('WindowExt.messages', Nothing());
+
+  localRuntime.addListener([messages.id], window, 'message', function(event) {
+    localRuntime.notify(messages.id, Just({
+      origin: event.origin,
+      source: event.source,
+      value: event.data
+    }));
+  });
+
+  return {
+    current: current,
+    open: F2(open),
+    opener: opener,
+    close: close,
+    focus: focus,
+
+    postMessage: F3(postMessage),
+    messages: F2(messages)
+  };
+
+};
+
 Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
    "use strict";
@@ -15805,6 +15914,7 @@ Elm.SlideShow.make = function (_elm) {
    $moduleName = "SlideShow",
    $Array = Elm.Array.make(_elm),
    $Basics = Elm.Basics.make(_elm),
+   $Component = Elm.Component.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
    $Html$Events = Elm.Html.Events.make(_elm),
@@ -15813,39 +15923,26 @@ Elm.SlideShow.make = function (_elm) {
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
-   var update = F2(function (action,
-   slideShow) {
-      return function () {
-         var lastIndex = $Array.length(slideShow.slides) - 1;
-         var clampIndex = A2($Basics.clamp,
-         0,
-         lastIndex);
-         var nextIndex = function () {
-            switch (action.ctor)
-            {case "First": return 0;
-               case "Goto":
-               return clampIndex(action._0);
-               case "Last": return lastIndex;
-               case "Next":
-               return clampIndex(slideShow.currentIndex + 1);
-               case "NoOp":
-               return slideShow.currentIndex;
-               case "Previous":
-               return clampIndex(slideShow.currentIndex - 1);}
-            _U.badCase($moduleName,
-            "between lines 88 and 95");
-         }();
-         return _U.replace([["currentIndex"
-                            ,nextIndex]
-                           ,["currentSlide"
-                            ,A2($Array.get,
-                            nextIndex,
-                            slideShow.slides)]],
-         slideShow);
-      }();
+   var viewNotes = function (slide) {
+      return A2($Html.section,
+      _L.fromArray([$Html$Attributes.$class("notes")]),
+      _L.fromArray([$Html.text(slide.notes)]));
+   };
+   var viewSlide = F2(function (address,
+   slide) {
+      return A2($Html.section,
+      _L.fromArray([$Html$Attributes.$class("slide")]),
+      slide.view);
    });
    var NoOp = {ctor: "NoOp"};
    var current = NoOp;
+   var SetMode = function (a) {
+      return {ctor: "SetMode"
+             ,_0: a};
+   };
+   var setMode = SetMode;
+   var ToggleMode = {ctor: "ToggleMode"};
+   var toggleMode = ToggleMode;
    var Last = {ctor: "Last"};
    var last = Last;
    var First = {ctor: "First"};
@@ -15854,23 +15951,9 @@ Elm.SlideShow.make = function (_elm) {
    var previous = Previous;
    var Next = {ctor: "Next"};
    var next = Next;
-   var view = F2(function (address,
+   var viewControls = F2(function (address,
    slideShow) {
       return function () {
-         var slide = $Html.article(_L.fromArray([$Html$Attributes.$class("slide")]))(function () {
-            var _v2 = slideShow.currentSlide;
-            switch (_v2.ctor)
-            {case "Just":
-               return _v2._0.view;
-               case "Nothing":
-               return _L.fromArray([$Html.text(A2($Basics._op["++"],
-                 "Slide #",
-                 A2($Basics._op["++"],
-                 $Basics.toString(slideShow.currentIndex),
-                 " does not exist!")))]);}
-            _U.badCase($moduleName,
-            "between lines 125 and 129");
-         }());
          var navButton = F3(function ($class,
          text,
          onClick) {
@@ -15883,7 +15966,7 @@ Elm.SlideShow.make = function (_elm) {
                          onClick)]),
             _L.fromArray([$Html.text(text)]))]));
          });
-         var controls = A2($Html.nav,
+         return A2($Html.nav,
          _L.fromArray([$Html$Attributes.$class("controls")]),
          _L.fromArray([$Html$Shorthand.ul_(_L.fromArray([A3(navButton,
                                                         "previous",
@@ -15893,36 +15976,152 @@ Elm.SlideShow.make = function (_elm) {
                                                         "next",
                                                         "Next slide",
                                                         next)]))]));
-         return A2($Html.article,
-         _L.fromArray([$Html$Attributes.$class("slideshow")]),
-         _L.fromArray([controls,slide]));
       }();
    });
    var Goto = function (a) {
       return {ctor: "Goto",_0: a};
    };
    var $goto = Goto;
-   var init = function (options) {
-      return A2(update,
-      $goto(options.index),
-      {_: {}
-      ,currentIndex: 0
-      ,currentSlide: $Maybe.Nothing
-      ,slides: options.slides});
+   var getSlideAt = F2(function (index,
+   slideShow) {
+      return A2($Array.get,
+      index,
+      slideShow.slides);
+   });
+   var getCurrentSlide = function (slideShow) {
+      return A2(getSlideAt,
+      slideShow.currentIndex,
+      slideShow);
    };
+   var getNextSlide = function (slideShow) {
+      return A2(getSlideAt,
+      slideShow.currentIndex + 1,
+      slideShow);
+   };
+   var blankSlide = {_: {}
+                    ,notes: ""
+                    ,view: _L.fromArray([])};
+   var viewFullScreen = F2(function (address,
+   slideShow) {
+      return function () {
+         var slide = $Maybe.withDefault(blankSlide)(getCurrentSlide(slideShow));
+         return A2($Html.article,
+         _L.fromArray([$Html$Attributes.$class("slideshow")]),
+         _L.fromArray([A2(viewControls,
+                      address,
+                      slideShow)
+                      ,A2(viewSlide,address,slide)]));
+      }();
+   });
+   var viewPresenter = F2(function (address,
+   slideShow) {
+      return function () {
+         var defaultToBlank = $Maybe.withDefault(blankSlide);
+         var currentSlide = defaultToBlank(getCurrentSlide(slideShow));
+         var nextSlide = defaultToBlank(getNextSlide(slideShow));
+         return A2($Html.article,
+         _L.fromArray([$Html$Attributes.$class("presenter")]),
+         _L.fromArray([A2(viewControls,
+                      address,
+                      slideShow)
+                      ,A2($Html.section,
+                      _L.fromArray([$Html$Attributes.$class("current")]),
+                      _L.fromArray([A2(viewSlide,
+                                   address,
+                                   currentSlide)
+                                   ,viewNotes(currentSlide)]))
+                      ,A2($Html.section,
+                      _L.fromArray([$Html$Attributes.$class("next")]),
+                      _L.fromArray([A2(viewSlide,
+                                   address,
+                                   nextSlide)
+                                   ,viewNotes(nextSlide)]))]));
+      }();
+   });
+   var view = F2(function (address,
+   slideShow) {
+      return function () {
+         var slide = $Maybe.withDefault(blankSlide)(getCurrentSlide(slideShow));
+         return A2($Html.article,
+         _L.fromArray([$Html$Attributes.$class("slideshow")]),
+         _L.fromArray([A2(viewControls,
+                      address,
+                      slideShow)
+                      ,A2(viewSlide,address,slide)]));
+      }();
+   });
    var Options = F2(function (a,
    b) {
       return {_: {}
              ,index: a
              ,slides: b};
    });
-   var SlideShow = F3(function (a,
+   var Presenter = {ctor: "Presenter"};
+   var FullScreen = {ctor: "FullScreen"};
+   var update = F2(function (action,
+   slideShow) {
+      return function () {
+         var nextMode = function () {
+            var _v0 = {ctor: "_Tuple2"
+                      ,_0: slideShow.mode
+                      ,_1: action};
+            switch (_v0.ctor)
+            {case "_Tuple2":
+               switch (_v0._0.ctor)
+                 {case "FullScreen":
+                    switch (_v0._1.ctor)
+                      {case "ToggleMode":
+                         return Presenter;}
+                      break;
+                    case "Presenter":
+                    switch (_v0._1.ctor)
+                      {case "ToggleMode":
+                         return FullScreen;}
+                      break;}
+                 switch (_v0._1.ctor)
+                 {case "SetMode":
+                    return _v0._1._0;}
+                 return _v0._0;}
+            _U.badCase($moduleName,
+            "between lines 138 and 143");
+         }();
+         var lastIndex = $Array.length(slideShow.slides) - 1;
+         var clampIndex = A2($Basics.clamp,
+         0,
+         lastIndex);
+         var nextIndex = function () {
+            switch (action.ctor)
+            {case "First": return 0;
+               case "Goto":
+               return clampIndex(action._0);
+               case "Last": return lastIndex;
+               case "Next":
+               return clampIndex(slideShow.currentIndex + 1);
+               case "Previous":
+               return clampIndex(slideShow.currentIndex - 1);}
+            return slideShow.currentIndex;
+         }();
+         return _U.replace([["currentIndex"
+                            ,nextIndex]
+                           ,["mode",nextMode]],
+         slideShow);
+      }();
+   });
+   var init = function (options) {
+      return A2(update,
+      $goto(options.index),
+      {_: {}
+      ,currentIndex: 0
+      ,mode: FullScreen
+      ,slides: options.slides});
+   };
+   var State = F3(function (a,
    b,
    c) {
       return {_: {}
              ,currentIndex: a
-             ,currentSlide: b
-             ,slides: c};
+             ,mode: c
+             ,slides: b};
    });
    var Slide = F2(function (a,b) {
       return {_: {}
@@ -15940,7 +16139,7 @@ Elm.SlideShow.make = function (_elm) {
                            ,update: update
                            ,view: view
                            ,Slide: Slide
-                           ,SlideShow: SlideShow
+                           ,State: State
                            ,Options: Options};
    return _elm.SlideShow.values;
 };
@@ -16493,4 +16692,134 @@ Elm.Window.make = function (_elm) {
                         ,width: width
                         ,height: height};
    return _elm.Window.values;
+};
+Elm.Window = Elm.Window || {};
+Elm.Window.Extra = Elm.Window.Extra || {};
+Elm.Window.Extra.make = function (_elm) {
+   "use strict";
+   _elm.Window = _elm.Window || {};
+   _elm.Window.Extra = _elm.Window.Extra || {};
+   if (_elm.Window.Extra.values)
+   return _elm.Window.Extra.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Window.Extra",
+   $Basics = Elm.Basics.make(_elm),
+   $Json$Encode = Elm.Json.Encode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Native$Window$Extra = Elm.Native.Window.Extra.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm),
+   $Task = Elm.Task.make(_elm);
+   var width = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "width"
+             ,_1: $Basics.toString(value)};
+   };
+   var height = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "height"
+             ,_1: $Basics.toString(value)};
+   };
+   var top = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "top"
+             ,_1: $Basics.toString(value)};
+   };
+   var left = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "left"
+             ,_1: $Basics.toString(value)};
+   };
+   var toFeatureString = function ($) {
+      return $String.join(",")($List.map(function (_v0) {
+         return function () {
+            switch (_v0.ctor)
+            {case "_Tuple2":
+               return A2($Basics._op["++"],
+                 _v0._0,
+                 A2($Basics._op["++"],
+                 "=",
+                 _v0._1));}
+            _U.badCase($moduleName,
+            "on line 93, column 24 to 37");
+         }();
+      })($));
+   };
+   var toYesNo = function (x) {
+      return x ? "yes" : "no";
+   };
+   var centerscreen = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "centerscreen"
+             ,_1: toYesNo(value)};
+   };
+   var menubar = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "menubar"
+             ,_1: toYesNo(value)};
+   };
+   var toolbar = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "toolbar"
+             ,_1: toYesNo(value)};
+   };
+   var location = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "location"
+             ,_1: toYesNo(value)};
+   };
+   var personalbar = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "personalbar"
+             ,_1: toYesNo(value)};
+   };
+   var status = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "status"
+             ,_1: toYesNo(value)};
+   };
+   var resizable = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "resizable"
+             ,_1: toYesNo(value)};
+   };
+   var scrollbars = function (value) {
+      return {ctor: "_Tuple2"
+             ,_0: "scrollbars"
+             ,_1: toYesNo(value)};
+   };
+   var messages = $Native$Window$Extra.messages;
+   var postMessage = $Native$Window$Extra.postMessage;
+   var Message = F3(function (a,
+   b,
+   c) {
+      return {_: {}
+             ,origin: a
+             ,source: b
+             ,value: c};
+   });
+   var prompt = $Native$Window$Extra.prompt;
+   var confirm = $Native$Window$Extra.confirm;
+   var alert = $Native$Window$Extra.alert;
+   var focus = $Native$Window$Extra.focus;
+   var close = $Native$Window$Extra.close;
+   var opener = $Native$Window$Extra.opener;
+   var open = F3(function (origin,
+   name,
+   features) {
+      return A3($Native$Window$Extra.open,
+      origin,
+      name,
+      toFeatureString(features));
+   });
+   var current = $Native$Window$Extra.current;
+   var Window = {ctor: "Window"};
+   _elm.Window.Extra.values = {_op: _op
+                              ,current: current};
+   return _elm.Window.Extra.values;
 };
