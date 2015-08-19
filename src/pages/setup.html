@@ -19,16 +19,27 @@
       <li>In an administrator-enabled command prompt, run the following commands:
 <pre class="command-line cmd-exe">
 <span class="command">choco install git</span>                            <span class="comment"># Git!</span>
-<span class="command">choco install sublimetext3</span>                   <span class="comment"># The editor we will be using</span>
 <span class="command">choco install cmder</span>                          <span class="comment"># A prettier terminal than cmd.exe :)</span>
+<span class="command">choco install sublimetext3</span>                   <span class="comment"># The editor we will be using</span>
 </pre>
       Note: If you see an error when installing cmder, you might need to install <a href="https://www.microsoft.com/en-US/download/details.aspx?id=46881">Visual C++ Redistributable</a>.</li>
       <li>Add the <code>subl</code> command to your <code>PATH</code>. (See <a href="https://scotch.io/tutorials/open-sublime-text-from-the-command-line-using-subl-exe-windows">this blog post</a> for help)</li>
-      <li>Check if everything installed correctly by opening up the Cmder application that you installed before, then running:
-<pre class="command-line cmd-exe">
-<span class="command">git help</span>   <span class="comment"># This should print out a help message for Git</span>
-<span class="command">subl .</span>     <span class="comment"># Sublime text should open in the current working directory</span>
-</pre></li>
+      <li>
+        <p>Open Cmder, then click on the new tab menu, selecting the <em>Setup tasks...</em> option.</p>
+        <p><img src="images/setup/windows/cmder-task-menu.png"></p>
+      </li>
+      <li>
+        <p>Create a new task by clicking the <em>+</em> button, and enter the following settings:</p>
+        <p>
+          <ul>
+              <li>Name: <code>Git Bash</code></li>
+              <li>Task parameters: <code>/icon "%ProgramFiles(x86)%\Git\etc\git.ico" /dir "%userprofile%"</code></li>
+              <li>Commands: <code></code>""C:\Program Files (x86)\Git\bin\sh.exe" --login -i"</li>
+          </ul>
+        </p>
+        <p><img src="images/setup/windows/cmder-task-settings.png"></p>
+      </li>
+      <li>Follow <a href="https://scotch.io/tutorials/open-sublime-text-from-the-command-line-using-subl-exe-windows">this tutorial</a> to add the <code>subl</code> command to your command line.</li>
       <li>Suggested Sublime Text settings (under <code>Preferences > Settings - User</code>):
 <pre>
 {
@@ -47,7 +58,7 @@
 <span class="command">git config --global user.name <span class="string">"YOUR NAME"</span></span>
 <span class="command">git config --global user.email <span class="string">"YOUR EMAIL"</span></span>
 <span class="command">git config --global core.autocrlf true     <span class="comment"># For more info, see <a href="https://help.github.com/articles/dealing-with-line-endings/#platform-windows">Dealing with line endings</a></span></span>
-<span class="command">git config --global core.editor subl -n -w</span>
+<span class="command">git config --global core.editor <span class="string">"'C:/Program Files/Sublime Text 3/subl.exe' -w"</span></span>
 <span class="command">git config --global color.ui true</span>
 <span class="command">git config --global push.default simple</span>
 </pre>
@@ -96,14 +107,8 @@
     <h2>Windows</h2>
 
     <ol>
-      <li>
-<pre class="command-line cmd-exe">
-<span class="command">choco install cygwin</span>
-<span class="command">choco install cyg-get</span>
-<span class="command">cyg-get openssh</span>
-</pre>
-      </li>
-      <li>Follow Github's <a href="https://help.github.com/articles/generating-ssh-keys/#platform-windows">instructions for setting up your SSH keys</a>, but use <code>C:\tools\cygwin\bin\ssh-keygen</code> instead of <code>ssh-keygen</code>.</li>
+      <li>Open Git Bash in cmder.</li>
+      <li>Follow Github's <a href="https://help.github.com/articles/generating-ssh-keys/#platform-windows">instructions for setting up your SSH keys</a> using <code>ssh-keygen</code></li>
     </ol>
 
     <h2>Mac</h2>
