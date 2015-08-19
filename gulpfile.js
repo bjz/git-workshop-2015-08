@@ -3,7 +3,6 @@
 var gulp        = require('gulp');
 
 var del         = require('del');
-var elm         = require('gulp-elm');
 var ghPages     = require('gulp-gh-pages');
 var plumber     = require('gulp-plumber');
 var prompt      = require('gulp-prompt');
@@ -13,15 +12,6 @@ var tildify     = require('tildify');
 var util        = require('gulp-util');
 
 // Build
-
-gulp.task('build:elm-init', elm.init);
-
-gulp.task('build:elm', ['build:elm-init'], function() {
-  return gulp.src('./src/elm/Main.elm')
-    .pipe(plumber())
-    .pipe(elm.make({ filetype: 'js' }))
-    .pipe(gulp.dest('./tmp/js'));
-});
 
 gulp.task('build:sass', function() {
   return gulp.src('./src/styles/**/*.scss')
@@ -41,14 +31,13 @@ gulp.task('build:pages', ['build:images'], function() {
     .pipe(gulp.dest('./tmp'));
 });
 
-gulp.task('build', ['build:elm', 'build:sass', 'build:pages']);
+gulp.task('build', ['build:sass', 'build:pages']);
 
 // Watcher
 
 gulp.task('watch', ['build'], function() {
   var index_path = tildify(__dirname + '/tmp/index.html');
   util.log('Homepage built to', util.colors.magenta(index_path));
-  gulp.watch(['./src/elm/**/*.elm'], ['build:elm']);
   gulp.watch(['./src/styles/**/*.scss'], ['build:sass']);
   gulp.watch(['./src/pages/**/*.html'], ['build:pages']);
 });
@@ -71,7 +60,6 @@ gulp.task('deploy', ['build', 'readme'], function() {
 // Cleaning
 
 gulp.task('clean:build', function(cb) { del(['./tmp', './.publish'], cb); });
-gulp.task('clean:elm', function(cb) { del(['./elm-stuff']); });
 gulp.task('clean:npm', function(cb) { del(['./node_modules']); });
 
 // Default
